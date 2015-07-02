@@ -36,7 +36,6 @@
 	var ua = window.navigator.userAgent.toLowerCase();
 	if(ua.indexOf("msie")!=-1 || ua.indexOf("rident")!=-1 || ua.indexOf('firefox')!=-1) {
 		$('#main_screen img').css('display', 'inline');
-		$('#event_background').css('display', 'none');
 	}
 	var url = false;
 
