@@ -13,11 +13,12 @@
 			'	if(a) {'.
 			'		a.load();'.
 			'	}'.
-			'}'.							
+			'}'.
 			'if(is_mobile) {'.
 			'	$("#sidebar, #setting_close").fadeOut();'.
 			'}'.
-			'document.getElementById(audio_books_folder_name).play();';
+			'document.getElementById(audio_books_folder_name).play();'.
+			'url = "https://'.$_SERVER['SERVER_NAME'].'/play/index/'.$title.'"';
 	}
 ?>
 

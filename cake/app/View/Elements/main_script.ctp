@@ -38,6 +38,7 @@
 		$('#main_screen img').css('display', 'inline');
 		$('#event_background').css('display', 'none');
 	}
+	var url = '';
 
 	/*
 	 * DOMが全て読み込み終わった際の初期化関数。
@@ -47,6 +48,13 @@
 		if(is_mobile) {
 			skip = false;
 		}
+
+		$(document).ajaxSuccess(function(){
+			if(url !== '') {
+			    ga('send','pageview', url);
+			}
+			url = '';
+		});
 
 		setImagesByHours();
 		$('.balloon').hideBalloon();
