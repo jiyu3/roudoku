@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule    ^$    webroot/    [L]
+    RewriteRule    (.*) webroot/$1    [L]
+</IfModule>
+<Files ~ ".(gif|jpe?g|png|ico|m4a)$">
+	Header set Cache-Control "max-age=2592000, public"
+</Files>
+<Files ~ "\.(css|js|event|title|subtitles|json|srt)$">
+	Header set Pragma no-cache
+	Header set Cache-Control no-cache
+</Files>
+AddType audio/aac .aac
+AddType audio/mp4 .mp4 .m4a
+AddType audio/mpeg .mp1 .mp2 .mp3 .mpg .mpeg
+AddType audio/ogg .oga .ogg
+AddType audio/wav .wav
+AddType audio/webm .webm

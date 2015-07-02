@@ -1,0 +1,10 @@
+#law {
+	font-size: 12px;
+	width: 680px;
+}
+
+#law td {
+	padding: 3px;
+	background-color: #fff;
+	border: 1px solid #b9b9b9;
+}

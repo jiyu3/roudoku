@@ -1,0 +1,272 @@
+/* main start */
+#main {
+	z-index: 1;
+	position: relative;
+}
+
+#main_screen {
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+#main_background {
+	background-size: contain;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+}
+
+#event_background {
+	background-size: contain;
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	display: none;
+	z-index: 1;
+}
+
+#chair {
+	background-size: contain;
+	z-index: 2;
+	width: 320px;
+	height: 480px;
+	position: absolute;
+}
+/* main end */
+
+/* sidebar start */
+#sidebar {
+	width: 50%;
+	height: 100%;
+	float: right;
+	display: none;
+}
+
+#audio_links {
+	position: relative;
+	height: 100%;
+	width: 95%;
+	overflow: scroll;
+	white-space : nowrap;
+	margin-left: 5%;
+	z-index: 3;
+	border: black 1px solid;
+}
+
+#audio_links h3 {
+	margin-left: 10px; 
+}
+
+#audio_links a {
+	margin-left: 20px;
+	text-decoration:none;
+	color:teal;'
+}
+
+#recommendation {
+	position: absolute;
+	z-index: 4;
+	top: 0;
+	right: -1px;
+	width: 47.5%;
+	height: 100%;
+	margin-top: 30%;
+}
+/* sidebar end */
+
+/* others start*/
+#loading {
+	border: 1px solid black;
+	width: 100%;
+	height: 100%;
+	bottom: 0;
+	left: 0;
+	text-align: center;
+	vertical-align: middle;
+	background-color: white;
+	position: absolute;
+	z-index: 11;
+}
+
+#bumper {
+	position: absolute;
+	z-index: 12;
+	bottom: 20px;
+	left: 20px;
+	border: lightgrey 1px solid;
+}
+
+#skip {
+	position: absolute;
+	z-index: 12;
+	display: none;
+	left: 0;
+}
+/* others end */
+
+/* character start */
+.character {
+	background-size: contain;
+	text-align:left;
+	width: 640px;
+	height: 480px;
+	position: absolute;
+	z-index: 3;
+}
+
+.character img {
+	width: 320px;
+	height: 480px;
+	position: absolute;
+	display: none;
+}
+
+.t:not(.paging):not(.blinking) {
+	z-index: 3;
+}
+
+.a:not(.paging):not(.blinking), .n:not(.paging):not(.blinking) {
+	z-index: 4;
+}
+
+.t.paging, .t.blinking {
+	z-index: 4;
+}
+
+.a.blinking, .a.paging, .n.blinking, .n.paging {
+	z-index: 5;
+}
+/* character end */
+
+/* objects start */
+#clock {
+	top: 0; 
+	left: 128px;
+	width: 70px;
+	height: 105px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+#affiliate {
+	top: 230px;
+	left: -10px;
+	width: 320px;
+	height: 20px;
+	position: absolute;
+}
+/* objects end */
+
+/* subtitles start */
+#subtitles {
+	top: 360px;
+	left: 35px;
+	width: 230px;
+	height: 80px;
+	position: absolute;
+	color: white;
+	z-index: 7;
+	font-size: 16px;
+}
+
+/* subtitles end */
+
+/* player start */
+#main_player {
+	top: 90%;
+	left: 10px;
+	z-index: 10;
+	width: 300px;
+	height: 30px;
+	margin: 0 auto;
+	position: absolute;
+}
+
+#sub_players {
+	display: none;
+}
+/* player end */
+
+/* body start */
+.face {
+	top: 120px;
+	left: 80px;
+	width: 50px;
+	height: 60px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+.shoulders {
+	top: 185px;
+	left: 65px;
+	width: 70px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+.upperarm {
+	top: 208px;
+	left: 65px;
+	width: 20px;
+	height: 25px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+.forearm {
+	top: 233px;
+	left: 65px;
+	width: 37px;
+	height: 30px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+.boobs {
+	top: 205px;
+	left: 83px;
+	width: 50px;
+	height: 22px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+.book {
+	top: 227px;
+	left: 100px;
+	width: 77px;
+	height: 21px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+.skirt {
+	top: 270px;
+	left: 70px;
+	width: 70px;
+	height: 60px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+
+.legs {
+	top: 300px;
+	left: 140px;
+	width: 50px;
+	height: 130px;
+	display: block;
+	position: absolute;
+	z-index: 6;
+}
+/* body end */
