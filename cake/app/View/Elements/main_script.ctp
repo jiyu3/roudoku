@@ -38,7 +38,7 @@
 		$('#main_screen img').css('display', 'inline');
 		$('#event_background').css('display', 'none');
 	}
-	var url = '';
+	var url = false;
 
 	/*
 	 * DOMが全て読み込み終わった際の初期化関数。
@@ -50,10 +50,10 @@
 		}
 
 		$(document).ajaxSuccess(function(){
-			if(url !== '') {
+			if(url) {
 			    ga('send','pageview', url);
 			}
-			url = '';
+			url = false;
 		});
 
 		setImagesByHours();
