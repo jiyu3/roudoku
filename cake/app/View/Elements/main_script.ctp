@@ -34,9 +34,6 @@
 		onclick_text['<?php echo $i; ?>'] = '<?php echo $onclick_text[$i]; ?>';
 	<?php endfor; ?>
 	var ua = window.navigator.userAgent.toLowerCase();
-	if(ua.indexOf("msie")!=-1 || ua.indexOf("rident")!=-1 || ua.indexOf('firefox')!=-1) {
-		$('#main_screen img').css('display', 'inline');
-	}
 	var url = false;
 	if(!is_mobile) {
 		setTopByHours();
@@ -49,6 +46,15 @@
 	function init1(skip) {
 		if(is_mobile) {
 			skip = false;
+		}
+
+		if(ua.indexOf("msie")!=-1 || ua.indexOf("rident")!=-1 || ua.indexOf('firefox')!=-1) {
+			$('#main_screen img').css('display', 'inline');
+		}
+		for(key in evnt) {
+			if(evnt[key]['img_path']) {
+				$('#event_background').css('background-image', 'url("'+evnt[key]['img_path']+'")');
+			}
 		}
 
 		$(document).ajaxSuccess(function(){
