@@ -230,6 +230,7 @@
 				$('#loading').remove();
 			});
 		}
+		$('#event_background').css('display', 'none');
 	}
 
 	/**

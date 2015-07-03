@@ -77,6 +77,7 @@
 
 /* others start*/
 #loading {
+	border: 1px solid black;
 	padding: 0;
 	width: 642px;
 	height: 482px;
@@ -91,8 +92,8 @@
 
 #loaded {
 	position: absolute;
-	top: -1px;
-	left: -1px;
+	top: 0;
+	left: 0;
 	z-index: 10;
 	display: none;
 }
