@@ -38,6 +38,9 @@
 		$('#main_screen img').css('display', 'inline');
 	}
 	var url = false;
+	if(!is_mobile) {
+		setTopByHours();
+	}
 
 	/*
 	 * DOMが全て読み込み終わった際の初期化関数。
@@ -106,7 +109,13 @@
 		}
 
 		if(!skip) {
-			$('#loading > img').attr({'src':'<?php echo Router::url('/', false); ?>img/play.png'});
+			if(is_mobile) {
+				$('#loading > img').attr({'src':'<?php echo Router::url('/', false); ?>img/play.png'});
+				$('#loading > img').css('display', 'inline');
+			} else {
+				$('#loading > img, #bumper').fadeOut(1000);
+				$('#loaded').fadeIn(1000);
+			}
 			document.getElementById('loading').addEventListener('click', function() {
 				document.getElementById('BGM').load();
 				time = getTime(['month', 'day']);
@@ -589,6 +598,24 @@
 		chair_img_url = '<?php echo Router::url('/', false); ?>img/chair_L_'+num+'.png';
 		$('#main_background').css('background-image', 'url("' + main_img_url + '")');
 		$('#chair').css('background-image', 'url("' + chair_img_url + '")');
+	}
+
+	/**
+	 * 時刻に基づいてトップ画像をセットする。
+	 */
+	function setTopByHours() {
+		var time = getTime(['hours'], false);
+		var num;
+
+		if(time['hours']>6 && time['hours']<=15) {
+			num = 1;
+		} else if(time['hours']>15 && time['hours']<=18) {
+			num = 2;
+		} else {
+			num = 3;
+		}
+
+		$('#loaded').attr('src', '<?php echo Router::url('/', false); ?>img/play_'+num+'.png');
 	}
 
 	/**

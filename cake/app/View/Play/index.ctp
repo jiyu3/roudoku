@@ -24,6 +24,7 @@
 
 <button type='button' id='loading'>
 	<?php echo $this->Html->image('loading.gif', array('alt'=>'loading')); ?>
+	<img src='' id='loaded' />
 </button>
 <?php echo $this->Html->image('bumper.png', array('id'=>'bumper')); ?>
 <?php
