@@ -21,10 +21,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 	<meta property="og:title" content="<?php echo SERVICE_NAME; ?>">
-	<meta property="og:url" content="https://<?php echo $_SERVER['SERVER_NAME']; ?>.jp/">
+	<meta property="og:description" content="オーディオブック朗読サービス"/>
+	<meta property="og:url" content="https://<?php echo $_SERVER['SERVER_NAME']; ?>/play">
+	<meta property="og:image" content="http://<?php echo $_SERVER['SERVER_NAME']; ?>/img/play_3.png"/>
 	<meta property="og:site_name" content="<?php echo SERVICE_NAME; ?>">
 	<meta property="og:email" content="<?php echo COMPANY_EMAIL; ?>">
 	<meta property="og:phone_number" content="050-5585-1095">
+	<meta property="og:type" content="book"/>
+	<meta property="og:site_name" content="<?php echo SERVICE_NAME; ?>"/>
+	<meta property="fb:app_id" content="1450212918616270"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once(APP . 'Vendor/analyticstracking.php'); ?>
 </head>
