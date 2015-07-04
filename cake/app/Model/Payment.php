@@ -315,7 +315,13 @@ class Payment extends AppModel {
 
 		require APP . 'Vendor/autoload.php';
 		$webpay = new WebPay\WebPay($this->getSecretKey());
-		$charge_id = $this->findByUserId($user_id, array('webpay_charge_id'))['Payment']['webpay_charge_id'];
+		$charge_id = $this->find('first',
+	        array(
+	            'fields' => array('id', 'user_id', 'webpay_charge_id'),
+	            'conditions' => array('user_id' => $user_id),
+	        	'order' => array('id' => 'desc'),
+	        )
+	    )['Payment']['webpay_charge_id'];
 
 		try {
 			$charge = $webpay->recursion->delete(array("id"=>$charge_id));
@@ -358,11 +364,17 @@ class Payment extends AppModel {
 
 	/**
 	 * 有料会員かどうかを判定する。
-	 * @param  int $id		ユーザID
+	 * @param  int $user_id		ユーザID
 	 * @return boolean		有料会員の場合はtrue, そうでない場合は false 
 	 */
-	public function isPaying($id) {
-		$payment = $this->findByUserId($id);
+	public function isPaying($user_id) {
+		$payment = $this->find('first',
+	        array(
+	            'fields' => array('id', 'user_id', 'commencement','expiration', 'deleted'),
+	            'conditions' => array('user_id' => $user_id),
+	        	'order' => array('id' => 'desc')
+	        )
+	    );
 		if(!$payment || $payment['Payment']['deleted'] || 
 			strtotime($payment['Payment']['commencement']) >  strtotime(date("Y-m-d H:i:s")) ||
 			isset($payment['Payment']['expiration']) && strtotime($payment['Payment']['expiration']) <  strtotime(date("Y-m-d H:i:s"))) {

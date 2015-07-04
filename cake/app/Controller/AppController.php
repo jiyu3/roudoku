@@ -50,7 +50,7 @@ class AppController extends Controller {
 //			$this->redirect("https://{$_SERVER['SERVER_NAME']}/page/maintenance?header=none");
 		}
 		if($this->action === 'maintenance') {
-			$this->redirect("https://{$_SERVER['SERVER_NAME']}");
+//			$this->redirect("https://{$_SERVER['SERVER_NAME']}");
 		}
 
 		if(isset($_GET['debug'])) {
