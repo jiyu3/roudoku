@@ -117,6 +117,7 @@
 		if(!skip) {
 			if(is_mobile) {
 				$('#loading > img').attr({'src':'<?php echo Router::url('/', false); ?>img/play.png'});
+				$('#loaded').remove();
 				$('#loading > img').css('display', 'inline');
 			} else {
 				$('#loading > img, #bumper').fadeOut(1000);
