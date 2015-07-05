@@ -46,12 +46,6 @@ class AppController extends Controller {
 				$this->Session->delete('redirect_url');
 			}
 		}
-		if($this->action !== 'maintenance') {
-//			$this->redirect("https://{$_SERVER['SERVER_NAME']}/page/maintenance?header=none");
-		}
-		if($this->action === 'maintenance') {
-//			$this->redirect("https://{$_SERVER['SERVER_NAME']}");
-		}
 
 		if(isset($_GET['debug'])) {
 			Configure::write('debug', $_GET['debug']);

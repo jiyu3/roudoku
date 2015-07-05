@@ -44,11 +44,4 @@ class PageController extends AppController {
 	public function error() {
 		$this->set('title_for_layout', 'エラー - ' . SERVICE_NAME);
 	}
-
-	/**
-	 * メンテナンス画面
-	 */
-	public function maintenance() {
-		$this->set('title_for_layout', 'メンテナンス中 - ' . SERVICE_NAME);
-	}
 }
