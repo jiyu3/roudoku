@@ -134,11 +134,11 @@
 				if(document.getElementById('ending')) {
 					document.getElementById('ending').load();
 				}
-				for(var i=0; i<evnt.length; i++) {
-					if(evnt[i]['audio_id'] !== "") {
-						audio[evnt[i]['audio_id']].load();
-					}
-				}
+// 				for(var i=0; i<evnt.length; i++) {
+// 					if(evnt[i]['audio_id'] !== "") {
+// 						audio[evnt[i]['audio_id']].load();
+// 					}
+// 				}
 
 				init2_2(false);
 				$('#bumper').fadeOut('slow', function(){$(this).remove();});
@@ -284,22 +284,22 @@
 			}
 		});
 
-		for(key in evnt) {
-			if(evnt[key]['audio_id']) {
-				$('#'+evnt[key]['audio_id']).remove();
-			}
-		}
+// 		for(key in evnt) {
+// 			if(evnt[key]['audio_id']) {
+// 				$('#'+evnt[key]['audio_id']).remove();
+// 			}
+// 		}
 		evnt = [];
 		$.getScript('/audio/event/'+common_title+'_roudoku_frame.event', function() {
 			for(key in evnt) {
 				if(evnt[key]['img_path']) {
 					$('#event_background').css('background-image', 'url("' + evnt[key]['img_path'] + '")');
 				}
-				if(evnt[key]['audio_id']) {
-					$("<audio/>").attr('id', evnt[key]['audio_id'])
-						.attr('src', '/audio/event/'+evnt[key]['audio_id']+'.m4a').appendTo('body');
-					audio[evnt[key]['audio_id']] = document.getElementById(evnt[key]['audio_id']);
-				}
+// 				if(evnt[key]['audio_id']) {
+// 					$("<audio/>").attr('id', evnt[key]['audio_id'])
+// 						.attr('src', '/audio/event/'+evnt[key]['audio_id']+'.m4a').appendTo('body');
+// 					audio[evnt[key]['audio_id']] = document.getElementById(evnt[key]['audio_id']);
+// 				}
 			}
 		});
 	}
@@ -843,11 +843,11 @@
 						$('#event_background').css('background-image', 'url("' + evnt[key]['img_path'] + '")').fadeIn(300);
 					}
 				}
-				if(evnt[key]['audio_id']) {
-					if(audio[evnt[key]['audio_id']] && audio[evnt[key]['audio_id']].paused) {
-						audio[evnt[key]['audio_id']].play();
-					}
-				}
+// 				if(evnt[key]['audio_id']) {
+// 					if(audio[evnt[key]['audio_id']] && audio[evnt[key]['audio_id']].paused) {
+// 						audio[evnt[key]['audio_id']].play();
+// 					}
+// 				}
 				return true;
 			}
 		}
