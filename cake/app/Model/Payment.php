@@ -220,9 +220,22 @@ class Payment extends AppModel {
 		$payment = $payment['Payment'];
 
 		$year = substr($payment['commencement'], 0, 4);
-		$month = substr($payment['commencement'], 5, 2);
+		$month = (int)substr($payment['commencement'], 5, 2) + 1;
+		if($month===13) {
+			$month = 1;
+		}
+		if($month < 10) {
+			$month = "0{$month}";
+		}
 		$unixstanp_of_first_day = strtotime("{$year}-{$month}-01 00:00:00");
-		$charge_info = array(
+		$charge_info = array( // TODO 2015-08-01削除
+			'amount' => 108,
+			'currency' => 'jpy',
+			"customer" => $customer_id,
+			"created" => strtotime($payment['commencement']),
+			"description" => SERVICE_NAME . "　初月課金"
+		);
+		$recursion_info = array(
 			'amount' => intval($payment['amount']),
 			'currency' => 'jpy',
 			"customer" => $customer_id,
@@ -232,7 +245,8 @@ class Payment extends AppModel {
 			"description" => SERVICE_NAME . "　月額課金"
 		);
 		try {
-			$charge = $webpay->recursion->create($charge_info);
+			$charge = $webpay->charge->create($charge_info);
+			$charge = $webpay->recursion->create($recursion_info);
 		} catch (\WebPay\Exception\CardException $e) {
 			$error = "CardException\n" .
 				'Status is:' . $e->getStatus() . "\n" .
