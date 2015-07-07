@@ -41,6 +41,8 @@
 	<img id='event_background'>
 	<img id='chair'>
 
+	<a class="button twitter" title="Share this video on Twitter" data-referrer="PLAYER" href="https://roudokushoujo.com"></a>
+
 	<div class='character'>
 	<?php echo $this->element('read_images_direct'); ?>
 	</div>
@@ -56,7 +58,7 @@
 		<div id='main_player'>
 			<audio id='<?php echo AUDIO_BOOKS_FOLDER_NAME; ?>' controls="controls" onplay='start_reading();' onpause='stop_reading();' 
 					onvolumechange="$('audio').prop('volume', this.volume); $.cookie('volume', this.volume);">
-		 		<source src="https://133.130.55.52<?php echo $audio[AUDIO_BOOKS_FOLDER_NAME]; ?>" type="audio/mp4">
+		 		<source src="<?php echo $audio[AUDIO_BOOKS_FOLDER_NAME]; ?>" type="audio/mp4">
 				お客様のブラウザはhtml5 オーディオをサポートしておりません。最新のブラウザをご利用下さい。
 			</audio>
 		</div>

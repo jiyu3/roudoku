@@ -40,7 +40,7 @@ class PlayController extends AppController {
 			}
 		} else {
 			if($title !== self::DEFAULT_BOOK_TITLE) {
-				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE);
+				$this->redirect('/user/login');
 			}
 		}
 

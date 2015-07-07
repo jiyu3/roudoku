@@ -58,7 +58,7 @@
 			<?php echo $content_for_layout; ?>
 		</div>
 	</div>
-	<?php if($this->name==="Play" && $this->action==="index") : ?>
+	<?php if(!$this->App->isMobile() && $this->name==="Play" && $this->action==="index") : ?>
 		<?php echo $this->element('sns'); ?>
 		<div style="text-align: center; clear:both; margin-top:50px; width: 640px; margin: 50px auto 0;">
 			※現在、オープンテスト中です。不具合がありましたら、<br /><a href='mailto:info@noumenon.jp'>info@noumenon.jp</a> までメールにてご連絡下さい。
