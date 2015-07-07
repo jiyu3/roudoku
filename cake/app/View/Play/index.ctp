@@ -28,7 +28,7 @@
 </button>
 <?php echo $this->Html->image('bumper.png', array('id'=>'bumper')); ?>
 <?php
-	if($this->App->isMobile()) {
+	if($is_mobile) {
 		echo $this->Html->image('window_open.png',
 			array('id'=>'setting_open', 'onclick'=>"$('.balloon').hideBalloon(); $('#sidebar, #setting_close').fadeIn();"));
 		echo $this->Html->image('window_close.png',
@@ -74,22 +74,28 @@
 	<div id='subtitles'></div>
 </div>
 
+<?php if(!$is_mobile) : ?>
+	<div id='search_box'>
+		<input type="text" name="search" value="" id="search" placeholder='検索' />
+	</div>
+<?php endif; ?>
 <div id='sidebar'>
 	<div id='audio_links'>
 		<h3>オーディオブック一覧</h3>
-		<input style='margin-left:20px;' type="text" name="search" value="" id="search" placeholder='検索' />
+		<?php if($is_mobile) : ?>
+			<input style='margin-left:20px;' type="text" name="search" value="" id="search" placeholder='検索' />
+		<?php endif; ?>
 		<table>
 			<tbody>
 				<?php $i = 0; ?>
 				<?php if($is_paying) : ?>
 					<?php foreach($titles as $filename => $title) : ?>
-						<tr><td id='a_<?php echo $i; ?>'>
-							<a id='<?php echo $i; ?>' class='<?php echo $filename; ?>' onclick='<?php echo $onclick_text[$i++]; ?>'
+						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $i; ?>' class='<?php echo $filename; ?>' onclick='<?php echo $onclick_text[$i++]; ?>'
 								href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
 					<?php endforeach; ?>
 				<?php else : ?>
 					<?php foreach($titles as $title) : ?>
-						<tr><td><span style='text-decoration:none; color:teal;'><?php echo "本のタイトル{$i}"; $i++; //$title; ?></span></td></tr>
+						<tr><td>◆<span><?php echo $title; ?></span></td></tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</tbody>

@@ -209,7 +209,7 @@
 		}
 
 		if(!is_mobile) {
-			$('#sidebar').css('display', 'inline');
+			$('#sidebar, #search_box').fadeIn('slow');
 		}
 
 		if($.cookie('volume') === void 0) {

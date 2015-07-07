@@ -1,37 +1,37 @@
 <div id='navigation'>
-	<ul id='navigation_links'>
-		<li>
-			<div class='link_button'>
-				<a href='<?php echo Router::url('/'); ?>'>ホーム</a>
-			</div>
+	<ul>
+		<li style='margin-right:4px;'>
+			<img id='logo' src='/img/header/logo.png'>
 		</li>
-	</ul>
+		<li>
+			<a class='link_button' id='home_button' href='/'>
+				<img src='/img/header/home.png'>
+			</a>
+		</li>
 	<?php if(!($this->name==="User" && $this->action==="login") && $this->name!=="Register") : ?>
-		<ul id='navigation_functions'>
-			<?php if($logged_in) : ?>
-				<li>
-					<div class='link_button'>
-						<a href='<?php echo Router::url('/') . 'user'; ?>'>MyPage</a>
-					</div>
-				</li>
-				<li>
-					<div class='link_button' id='logout_button'>
-						<a href='<?php echo Router::url('/') . 'user/logout'; ?>'>Logout</a>
-					</div>
-				</li>
-			<?php else : ?>
-				<li>
-					<div class='link_button' id='login_button'>
-						<a href='<?php echo Router::url('/') . 'user/login'; ?>'>ログイン</a>
-					</div>
-				</li>
-				<li>
-					<div class='link_button'>
-						<a href='<?php echo Router::url('/') . 'register'; ?>'>新規登録</a>
-					</div>
-				</li>
-			<?php endif; ?>
-		</ul>
+		<?php if($logged_in) : ?>
+			<li>
+				<a class='link_button' id='mypage_button' href='/user' style='margin-left:10px;'>
+					<img src='/img/header/mypage.png'>
+				</a>
+			</li>
+			<li>
+				<a class='link_button' id='logout_button' href='/user/logout' style='margin-left:10px;'>
+					<img src='/img/header/logout.png'>
+				</a>
+			</li>
+		<?php else : ?>
+			<li>
+				<a class='link_button' id='login_button' href='/user/login' style='margin-left:10px;'>
+					<img src='/img/header/login.png'>
+				</a>
+			</li>
+			<li>
+				<a class='link_button' id='register_button' href='/register' style='margin-left:10px;'>
+					<img src='/img/header/register.png'>
+				</a>
+			</li>
+		<?php endif; ?>
 	<?php endif; ?>
-	<span></span>
+	</ul>
 </div>

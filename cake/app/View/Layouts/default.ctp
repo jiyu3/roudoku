@@ -36,11 +36,11 @@
 <body>
 	<div id="content">
 	<?php if(!$this->App->isMobile() && !(isset($_GET['header']) && $_GET['header']==='none')) : ?>
- 		<header>
-			<?php echo $this->element('header'); ?>
-		</header>
 	<?php endif; ?>
 		<div id="main">
+	 		<header>
+				<?php echo $this->element('header'); ?>
+			</header>
 			<?php echo $content_for_layout; ?>
 		</div>
 	<?php if($this->name==="Play" && $this->action==="index") : ?>
