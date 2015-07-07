@@ -44,6 +44,7 @@ class PlayController extends AppController {
 			}
 		}
 
+		$this->set('title_for_layout', SERVICE_NAME . ' - ' . $title);
 		$this->setAll($title);
 	}
 	
@@ -79,7 +80,7 @@ class PlayController extends AppController {
 	 * オーディオファイル（のリンクテキスト）、口パクのJSONデータ、オーディオファイルのタイトル一覧をビューにセットする。
 	 * @param string $title	そのページで表示すべきオーディオファイルのタイトル
 	 */
-	private function setAll($title=null) {
+	private function setAll($title) {
 		$current_filename = '';
 		$files = $this->getFileList("audio/".AUDIO_BOOKS_FOLDER_NAME);
 		foreach($files as $file) {

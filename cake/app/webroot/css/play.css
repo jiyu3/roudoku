@@ -1,18 +1,8 @@
 /* main start */
-#main {
-	z-index: 1;
-	position: relative;
-	background-image: url("/img/BG_frame_1.png");
-	width: 815px;
-	height: 656px;
-}
-
 #main_screen {
 	width: 320px;
 	height: 480px;
 	position: absolute;
-	top: 89px;
-	left: 89px;
 }
 
 #main_background {
@@ -60,7 +50,6 @@
 }
 
 #search {
-	font-family: ヒラギノ角ゴProN W3;
 	font-size: 12px;
 	position: absolute;
 	left: 7px;
@@ -77,16 +66,15 @@
 	width: 320px;
 	height: 480px;
 	position: absolute;
-	top: 88px;
-	left: 409px;
+	left: 320px;
 	border-radius: 0 0 20px 0;
 	-webkit-border-radius: 0 0 20px 0;
 	-moz-border-radius: 0 0 20px 0;
 	display: none;
+	top: -1px;
 }
 
 #audio_links {
-	font-family: ヒラギノ角ゴProN W3;
 	font-size: 12px;
 	position: relative;
 	height: 480px;
@@ -113,7 +101,6 @@
 }
 
 #recommendation {
-	font-family: ヒラギノ角ゴProN W3;
 	font-size: 16px;
 	position: absolute;
 	top: 0;
@@ -131,8 +118,6 @@
 	padding: 0;
 	width: 640px;
 	height: 480px;
-	left: 88px;
-	top: 89px;
 	text-align: center;
 	vertical-align: middle;
 	background-color: white;
@@ -161,8 +146,8 @@
 #bumper {
 	position: absolute;
 	z-index: 12;
-	bottom: 108px;
-	left: 108px;
+	bottom: 20px;
+	left: 20px;
 	border: lightgrey 1px solid;
 }
 
@@ -170,8 +155,6 @@
 	position: absolute;
 	z-index: 12;
 	display: none;
-	top: 89px;
-	left: 89px;
 }
 /* others end */
 

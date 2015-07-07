@@ -16,6 +16,7 @@
 		echo $this->Html->script('jquery.cookie.min');
 		echo $this->Html->script('jquery.balloon.min');
 		echo $this->Html->script('jquery.quicksearch.min');
+		echo $this->Html->script('jquery.pjax.min');
 		echo $this->Html->script('common.js');
 	?>
 	<meta charset="UTF-8">
@@ -32,28 +33,41 @@
 	<meta property="fb:app_id" content="1450212918616270"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<?php include_once(APP . 'Vendor/analyticstracking.php'); ?>
+	<script type='text/javascript'>
+		$(function() {
+			$("ul a").pjax("#content", {
+				link: 'a:not([target]):not(.no_pjax)',
+				fragment: "#content"
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="content">
-	<?php if(!$this->App->isMobile() && !(isset($_GET['header']) && $_GET['header']==='none')) : ?>
-	<?php endif; ?>
-		<div id="main">
+		<?php if(!$this->App->isMobile() && !(isset($_GET['header']) && $_GET['header']==='none')) : ?>
 	 		<header>
 				<?php echo $this->element('header'); ?>
 			</header>
+		<?php endif; ?>
+		<?php if(!$this->App->isMobile() && $this->name==="Play" && $this->action==="index") : ?>
+			<div id='search_box'>
+				<input type="text" name="search" value="" id="search" placeholder='検索' />
+			</div>
+		<?php endif; ?>
+		<div id="main">
 			<?php echo $content_for_layout; ?>
 		</div>
+	</div>
 	<?php if($this->name==="Play" && $this->action==="index") : ?>
 		<?php echo $this->element('sns'); ?>
-		<div style="text-align: center; clear:both;">
-			※現在、オープンテスト中です。不具合がありましたら、<a href='mailto:info@noumenon.jp'>info@noumenon.jp</a> までメールにてご連絡下さい。
+		<div style="text-align: center; clear:both; margin-top:50px; width: 640px; margin: 50px auto 0;">
+			※現在、オープンテスト中です。不具合がありましたら、<br /><a href='mailto:info@noumenon.jp'>info@noumenon.jp</a> までメールにてご連絡下さい。
 		</div>
 	<?php endif; ?>
-	<?php if(!$this->App->isMobile()) : ?>
+		<?php if(!$this->App->isMobile()) : ?>
 		<footer>
 			<?php echo $this->element('footer'); ?>
 		</footer>
 	<?php endif; ?>
-	</div>
  </body>
 </html>

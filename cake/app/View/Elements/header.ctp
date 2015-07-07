@@ -1,10 +1,8 @@
 <div id='navigation'>
 	<ul>
-		<?php if($this->name==="Play" && $this->action==="index") : ?>
-			<li style='margin-right:4px;'>
-				<img id='logo' src='/img/header/logo.png'>
-			</li>
-		<?php endif; ?>
+		<li style='margin-right:4px;'>
+			<img id='logo' src='/img/header/logo.png'>
+		</li>
 		<li>
 			<a class='link_button' id='home_button' href='/'>
 				<img src='/img/header/home.png'>

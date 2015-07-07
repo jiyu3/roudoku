@@ -74,11 +74,6 @@
 	<div id='subtitles'></div>
 </div>
 
-<?php if(!$is_mobile) : ?>
-	<div id='search_box'>
-		<input type="text" name="search" value="" id="search" placeholder='検索' />
-	</div>
-<?php endif; ?>
 <div id='sidebar'>
 	<div id='audio_links'>
 		<h3>オーディオブック一覧</h3>
@@ -90,7 +85,7 @@
 				<?php $i = 0; ?>
 				<?php if($is_paying) : ?>
 					<?php foreach($titles as $filename => $title) : ?>
-						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $i; ?>' class='<?php echo $filename; ?>' onclick='<?php echo $onclick_text[$i++]; ?>'
+						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $i; ?>' class='<?php echo $filename; ?> no_pjax' onclick='<?php echo $onclick_text[$i++]; ?>'
 								href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
 					<?php endforeach; ?>
 				<?php else : ?>

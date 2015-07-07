@@ -806,7 +806,7 @@
 	 */
 	function showSubtitle() {
 		if(!current_frame || getPlayingAudio().id != audio_books_folder_name) {
-			$('#subtitles').html('');
+			$('#subtitles').html(document.title.slice(7) + '<br />を朗読します。');
 			showEvent(0);
 			return false;
 		}
