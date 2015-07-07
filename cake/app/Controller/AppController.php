@@ -119,6 +119,8 @@ class AppController extends Controller {
 					$error .= $value . '<br />';
 				}
 			}
+		} else {
+			$error = $message;
 		}
 		$this->set('error', $error);
 	}
