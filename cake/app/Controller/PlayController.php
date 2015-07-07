@@ -29,7 +29,7 @@ class PlayController extends AppController {
 	 * プレイ画面を表示する。
 	 * @param string $title		オーディオブックのタイトル
 	 */
-	public function index($title = self::DEFAULT_BOOK_TITLE) {
+	public function index($title = null) {
 		if($this->Payment->isPaying($this->Auth->user('id'))) {
 			if($title === self::DEFAULT_BOOK_TITLE) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
@@ -40,7 +40,7 @@ class PlayController extends AppController {
 			}
 		} else {
 			if($title !== self::DEFAULT_BOOK_TITLE) {
-				$this->redirect('index');
+				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE);
 			}
 		}
 
