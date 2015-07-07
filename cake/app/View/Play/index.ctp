@@ -41,7 +41,7 @@
 	<img id='event_background'>
 	<img id='chair'>
 	https://twitter.com/intent/tweet?url=
-	<a id="twitter" title="Twitterでシェア" data-referrer="PLAYER" href="" target='_blank'><img src='/img/twitter.png'></a>
+	<a id="twitter" title="Twitterでシェア" data-referrer="PLAYER" href="" <?php echo $is_mobile ? "target='_blank'" : ''; ?>><img src='/img/twitter.png'></a>
 	<a id="facebook" title="Facebookでシェア" data-referrer="PLAYER" href=""><img src='/img/facebook.png'></a>
 	<a id="email" title="お問い合わせ" data-referrer="PLAYER" href="mailto:info@noumenon.jp"><img src='/img/email.png'></a>
 	<script type='text/javascript'>
