@@ -40,18 +40,22 @@
 	<img id='main_background'>
 	<img id='event_background'>
 	<img id='chair'>
-	https://twitter.com/intent/tweet?url=
+
+	<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 	<a id="twitter" title="Twitterでシェア" data-referrer="PLAYER" href="" <?php echo $is_mobile ? "target='_blank'" : ''; ?>><img src='/img/twitter.png'></a>
 	<a id="facebook" title="Facebookでシェア" data-referrer="PLAYER" href=""><img src='/img/facebook.png'></a>
 	<a id="email" title="お問い合わせ" data-referrer="PLAYER" href="mailto:info@noumenon.jp"><img src='/img/email.png'></a>
+	<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 	<script type='text/javascript'>
-		var share_url = 'https://<?php echo $_SERVER['SERVER_NAME']; ?>';
-		var share_url_encode = encodeURIComponent('https://<?php echo $_SERVER['SERVER_NAME']; ?>/play/index/' + document.title.slice(7)) +
-		'&text=' + encodeURIComponent('<?php echo CHARACTER_NAME; ?>が' + document.title.slice(7) + 'を朗読します。') +
-		'&hashtags=' + encodeURIComponent('<?php echo SERVICE_NAME; ?>');
+		var share_url = 'https://<?php echo $_SERVER['SERVER_NAME']; ?>/play/index/' + encodeURIComponent(encodeURIComponent(document.title.slice(7)));
+		var share_text = '<?php echo CHARACTER_NAME; ?>が' + document.title.slice(7) + 'を朗読します。';
+		var via = "otohashiori";
+		var related = "";
+		var hashtags = "朗読少女";
 		var fb_onclick = "window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;";
-		$('#twitter').attr('href', 'https://twitter.com/intent/tweet?url='+share_url_encode);
-		$('#facebook').attr({'href':'http://www.facebook.com/share.php?u='+share_url, 'onclick':fb_onclick});
+		$('#twitter').attr('href', 'https://twitter.com/intent/tweet?url=' + share_url + '&text=' + share_text + '&via=' + via + '&related=' + related +
+			'&hashtags=' + hashtags);
+		$('#facebook').attr({'href':'http://www.facebook.com/share.php?u=' + share_url, 'onclick':fb_onclick});
 	</script>
 
 	<div class='character'>
@@ -73,9 +77,7 @@
 				お客様のブラウザはhtml5 オーディオをサポートしておりません。最新のブラウザをご利用下さい。
 			</audio>
 		</div>
-		<div class='reload'>
-			<?php echo $this->element('sub_players'); ?>
-		</div>
+		<?php echo $this->element('sub_players'); ?>
 		<script type="text/javascript">
 			$('audio').not('#<?php echo AUDIO_BOOKS_FOLDER_NAME; ?>').not('#bgm').attr({'onpause':"$('*').css('pointer-events', '');"});
 		</script>
