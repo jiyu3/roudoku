@@ -246,7 +246,7 @@ class Payment extends AppModel {
 		);
 		try {
 			$charge = $webpay->charge->create($charge_info);
-			$charge = $webpay->recursion->create($recursion_info);
+			$recursion = $webpay->recursion->create($recursion_info);
 		} catch (\WebPay\Exception\CardException $e) {
 			$error = "CardException\n" .
 				'Status is:' . $e->getStatus() . "\n" .
@@ -294,6 +294,7 @@ class Payment extends AppModel {
 		}
 
 		$payment['webpay_charge_id'] = $charge->__get('id');
+		$payment['webpay_recursion_id'] = $recursion->__get('id');
 		if(!$this->save($payment)) {
 			$dataSource->rollback();
 			$this->putLog("failed to save Payment.", $payment, $webpay);
@@ -403,13 +404,17 @@ class Payment extends AppModel {
 	 * @param string $payment	SQLにINSERTしようとしたフィールドとカラム
 	 * @param string $webpay	WebPayオブジェクトの中身
 	 * @param string $charge	Chargeオブジェクトの中身（省略可）
+	 * @param string $recursion	Recursionオブジェクトの中身（省略可）
 	 */
-	private function putLog($error, $payment, $webpay, $charge=null) {
+	private function putLog($error, $payment, $webpay, $charge=null, $recursion=null) {
 		$this->log($error, 'payment');
 		$this->log($payment, 'payment');
 		$this->log($webpay, 'webpay');
 		if(isset($charge)) {
 			$this->log($charge, 'webpay');
+		}
+		if(isset($recursion)) {
+			$this->log($recursion, 'webpay');
 		}
 	}	
 }
