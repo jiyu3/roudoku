@@ -11,8 +11,8 @@ class PlayController extends AppController {
  */
 	public $uses = array('Payment', 'User');
 	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
-	const DEFAULT_BOOK_FILENAME = "rashomon_taiken_001";
-	const DEFAULT_BOOK_FILENAME_PAYMENT = "rashomon_001";
+	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門";
+	const DEFAULT_BOOK_TITLE_PAYMENT = "ごん狐";
 	public $fps = 8;
 
 	public function beforeFilter() {
@@ -30,8 +30,18 @@ class PlayController extends AppController {
 	 * @param string $title		オーディオブックのタイトル
 	 */
 	public function index($title = self::DEFAULT_BOOK_TITLE) {
-		if($title !== self::DEFAULT_BOOK_TITLE && !$this->Payment->isPaying($this->Auth->user('id'))) {
-			$this->redirect('index');
+		if($this->Payment->isPaying($this->Auth->user('id'))) {
+			if($title === self::DEFAULT_BOOK_TITLE) {
+				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
+			}
+		} else if($this->Auth->loggedIn()) {
+			if($title !== self::DEFAULT_BOOK_TITLE_LOGIN) {
+				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_LOGIN);
+			}
+		} else {
+			if($title !== self::DEFAULT_BOOK_TITLE) {
+				$this->redirect('index');
+			}
 		}
 
 		$this->setAll($title);
@@ -82,14 +92,9 @@ class PlayController extends AppController {
 			}
 		}
 		if(!$title || !file_exists('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.m4a')) {
-			$title = self::DEFAULT_BOOK_TITLE;
+			$this->redirect('index');
 		}
-		if($this->Payment->isPaying($this->Auth->user('id'))) {
-			if($title === self::DEFAULT_BOOK_TITLE) {
-				$current_filename = self::DEFAULT_BOOK_FILENAME_PAYMENT;
-			}
-			unset($titles[self::DEFAULT_BOOK_FILENAME]);
-		}
+		unset($titles[array_search(self::DEFAULT_BOOK_TITLE, $titles)]);
 
 		$files = $this->getFileList("audio");
 		$today = date("n_j");
