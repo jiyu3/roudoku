@@ -31,7 +31,7 @@ class PlayController extends AppController {
 	 */
 	public function index($title = null) {
 		if($this->Payment->isPaying($this->Auth->user('id'))) {
-			if($title === self::DEFAULT_BOOK_TITLE) {
+			if(!$title || $title===self::DEFAULT_BOOK_TITLE) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
 			}
 		} else if($this->Auth->loggedIn()) {
