@@ -1,8 +1,10 @@
 <div id='navigation'>
 	<ul>
-		<li style='margin-right:4px;'>
-			<img id='logo' src='/img/header/logo.png'>
-		</li>
+		<?php if($this->name==="Play" && $this->action==="index") : ?>
+			<li style='margin-right:4px;'>
+				<img id='logo' src='/img/header/logo.png'>
+			</li>
+		<?php endif; ?>
 		<li>
 			<a class='link_button' id='home_button' href='/'>
 				<img src='/img/header/home.png'>
@@ -35,3 +37,20 @@
 	<?php endif; ?>
 	</ul>
 </div>
+<script type='text/javascript'>
+	$('#home_button').hover(
+		function(){$('#home_button > img').attr('src', '/img/header/home_hover.png');},
+		function(){$('#home_button > img').attr('src', '/img/header/home.png');});
+	$('#mypage_button').hover(
+		function(){$('#mypage_button > img').attr('src', '/img/header/mypage_hover.png');},
+		function(){$('#mypage_button > img').attr('src', '/img/header/mypage.png');});
+	$('#login_button').hover(
+		function(){$('#login_button > img').attr('src', '/img/header/login_hover.png');},
+		function(){$('#login_button > img').attr('src', '/img/header/login.png');});
+	$('#logout_button').hover(
+		function(){$('#logout_button > img').attr('src', '/img/header/logout_hover.png');},
+		function(){$('#logout_button > img').attr('src', '/img/header/logout.png');});
+	$('#register_button').hover(
+		function(){$('#register_button > img').attr('src', '/img/header/register_hover.png');},
+		function(){$('#register_button > img').attr('src', '/img/header/register.png');});
+</script>
