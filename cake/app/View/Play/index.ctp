@@ -40,8 +40,19 @@
 	<img id='main_background'>
 	<img id='event_background'>
 	<img id='chair'>
-
-	<a class="button twitter" title="Share this video on Twitter" data-referrer="PLAYER" href="https://roudokushoujo.com"></a>
+	https://twitter.com/intent/tweet?url=
+	<a id="twitter" title="Twitterでシェア" data-referrer="PLAYER" href="" target='_blank'><img src='/img/twitter.png'></a>
+	<a id="facebook" title="Facebookでシェア" data-referrer="PLAYER" href=""><img src='/img/facebook.png'></a>
+	<a id="email" title="お問い合わせ" data-referrer="PLAYER" href="mailto:info@noumenon.jp"><img src='/img/email.png'></a>
+	<script type='text/javascript'>
+		var share_url = 'https://<?php echo $_SERVER['SERVER_NAME']; ?>';
+		var share_url_encode = encodeURIComponent('https://<?php echo $_SERVER['SERVER_NAME']; ?>/play/index/' + document.title.slice(7)) +
+		'&text=' + encodeURIComponent('<?php echo CHARACTER_NAME; ?>が' + document.title.slice(7) + 'を朗読します。') +
+		'&hashtags=' + encodeURIComponent('<?php echo SERVICE_NAME; ?>');
+		var fb_onclick = "window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;";
+		$('#twitter').attr('href', 'https://twitter.com/intent/tweet?url='+share_url_encode);
+		$('#facebook').attr({'href':'http://www.facebook.com/share.php?u='+share_url, 'onclick':fb_onclick});
+	</script>
 
 	<div class='character'>
 	<?php echo $this->element('read_images_direct'); ?>

@@ -60,6 +60,29 @@
 }
 /* searchbox end */
 
+/* communication start */
+#twitter {
+	z-index: 4;
+	position: absolute;
+	top: 122px;
+	left: 257px;
+}
+
+#facebook {
+	z-index: 4;
+	position: absolute;
+	top: 195px;
+	left: 257px;
+}
+
+#email {
+	z-index: 4;
+	position: absolute;
+	top: 265px;
+	left: 257px;
+}
+/* communication end */
+
 /* sidebar start */
 #sidebar {
 	background-image: url("/img/sidebar.png");
@@ -162,6 +185,7 @@
 .character {
 	background-size: contain;
 	text-align:left;
+	top: 0;
 	width: 640px;
 	height: 480px;
 	position: absolute;
