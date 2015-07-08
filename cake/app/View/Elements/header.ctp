@@ -1,6 +1,6 @@
 <div id='navigation'>
 	<ul>
-		<li style='margin-right:4px;'>
+		<li style='margin-right:18px;'>
 			<a href='/'><img id='logo' src='/img/header/logo.png'></a>
 		</li>
 		<li>

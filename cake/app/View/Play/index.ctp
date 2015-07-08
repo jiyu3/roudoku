@@ -24,7 +24,7 @@
 
 <button type='button' id='loading'>
 	<?php echo $this->Html->image('loading.gif', array('alt'=>'loading')); ?>
-	<img src='' id='loaded' />
+	<img src='' id='loaded' onmouseover='$(this).css("opacity", 0.7);' onmouseout='$(this).css("opacity", 1);'>
 </button>
 <?php echo $this->Html->image('bumper.png', array('id'=>'bumper')); ?>
 <?php
@@ -44,7 +44,7 @@
 	<?php echo $this->element('sns'); ?>
 
 	<div class='character'>
-	<?php echo $this->element('read_images_direct'); ?>
+		<?php echo $this->element('read_images_direct'); ?>
 	</div>
 	<?php echo $this->element('touch_body'); ?>
 
@@ -76,7 +76,7 @@
 
 <div id='sidebar'>
 	<div id='audio_links'>
-		<h3>オーディオブック一覧</h3>
+		<h3><img src='/img/audio_list.png'></h3>
 		<?php if($is_mobile) : ?>
 			<input style='margin-left:20px;' type="text" name="search" value="" id="search" placeholder='検索' />
 		<?php endif; ?>
@@ -106,8 +106,8 @@
 			$('#audio_links').animate({opacity:"0.2"});
 		</script>
 		<div id='recommendation'>
-			<p id='recommend_text'><a href='<?php echo $this->Html->url("/payment"); ?>'>月々300円支払えば</a>、
-			すべての朗読を聴くことができます。支払いは<a href='<?php echo $this->Html->url("/payment"); ?>'>こちら</a>で行えます。</p>
+			<p id='recommend_text'><a href='<?php echo $this->Html->url("/payment"); ?>'>月々300円で</a>、<br />
+			全ての朗読を聴くことができます。<br />手続きは<a href='<?php echo $this->Html->url("/payment"); ?>'>こちら</a>で行えます。</p>
 		</div>
 	<?php endif; ?>
 </div>

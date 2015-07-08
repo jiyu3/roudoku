@@ -330,16 +330,16 @@ class Payment extends AppModel {
 
 		require APP . 'Vendor/autoload.php';
 		$webpay = new WebPay\WebPay($this->getSecretKey());
-		$charge_id = $this->find('first',
-	        array(
-	            'fields' => array('id', 'user_id', 'webpay_charge_id'),
-	            'conditions' => array('user_id' => $user_id),
-	        	'order' => array('id' => 'desc'),
-	        )
-	    )['Payment']['webpay_charge_id'];
+		$recursion_id = $this->find('first',
+			array(
+	        	'fields' => array('id', 'user_id', 'webpay_recursion_id'),
+	        	'conditions' => array('user_id' => $user_id),
+				'order' => array('id' => 'desc'),
+			)
+		)['Payment']['webpay_recursion_id'];
 
 		try {
-			$charge = $webpay->recursion->delete(array("id"=>$charge_id));
+			$charge = $webpay->recursion->delete(array("id"=>$recursion_id));
 		} catch (\WebPay\Exception\InvalidRequestException $e) {
 			$error = "InvalidRequestException\n" .
 				'Message is:' . $e->getMessage() . "\n" .

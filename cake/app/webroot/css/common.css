@@ -64,9 +64,12 @@ header li {
 
 /* footer start */
 footer {
-	margin-top: 100px;
+	position: absolute;
 	border-top: 1px solid;
 	text-align: center;
-	width: 100%;
+	top: 500px;
+	width: 600px;
+	left: 105px;
+	z-index: 1;
 }
 /* footer end */

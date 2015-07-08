@@ -33,46 +33,46 @@
 }
 /* main end */
 
-/* communication start */
-#communication img {
+/* sns start */
+#sns img {
 	opacity:0.8;
 }
 
 #twitter {
 	z-index: 4;
 	position: absolute;
-	top: 60px;
-	left: 257px;
+	top: 100px;
+	left: 270px;
 }
 
 #facebook {
 	z-index: 4;
 	position: absolute;
-	top: 130px;
-	left: 257px;
+	top: 150px;
+	left: 270px;
 }
 
 #line {
 	z-index: 4;
 	position: absolute;
 	top: 200px;
-	left: 257px;
+	left: 270px;
 }
 
 #pinterest {
 	z-index: 4;
 	position: absolute;
-	top: 270px;
-	left: 257px;
+	top: 250px;
+	left: 270px;
 }
 
 #email {
 	z-index: 4;
 	position: absolute;
-	top: 340px;
-	left: 257px;
+	top: 300px;
+	left: 270px;
 }
-/* communication end */
+/* sns end */
 
 /* sidebar start */
 #sidebar {
@@ -105,7 +105,9 @@
 
 #audio_links h3 {
 	font-size: 18px;
-	margin-left: 10px; 
+	margin-top: 6px;
+	margin-left: -2px;
+	margin-bottom: 4px;
 }
 
 #audio_links a {
@@ -240,7 +242,7 @@
 	font-size: 16px;
 	line-height: 26px;
 	top: 75%;
-	left: 6%;
+	left: 13%;
 	width: 230px;
 	height: 80px;
 	position: absolute;

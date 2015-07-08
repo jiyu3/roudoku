@@ -51,18 +51,6 @@ class AppController extends Controller {
 			Configure::write('debug', $_GET['debug']);
 		}
 
-		App::import('Model', 'User');
-		$this->User = new User();
-		$this->set('today', 0);
-		if($this->Auth->loggedIn()) {
-			$user = $this->User->findById($this->Auth->user('id'));
-			if(isset($user['last_access']) && time() - strtotime($user['last_access']) > 86400) {
-				$this->set('today', 1);
-			}
-			$user['last_access'] = date("Y-m-d H:i:s");
-			$this->User->save($user);
-		}
-
 		$this->Auth->allow();
 		$this->Security->blackHoleCallback = 'blackhole';
 		$this->Security->requireSecure();

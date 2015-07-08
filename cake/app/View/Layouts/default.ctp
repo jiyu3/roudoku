@@ -57,11 +57,11 @@
 		<div id="main">
 			<?php echo $content_for_layout; ?>
 		</div>
+		<?php if(!$this->App->isMobile() && !($this->name==="Play" && $this->action==="index")) : ?>
+			<footer>
+				<?php echo $this->element('footer'); ?>
+			</footer>
+		<?php endif; ?>
 	</div>
-	<?php if(!$this->App->isMobile()) : ?>
-		<footer>
-			<?php echo $this->element('footer'); ?>
-		</footer>
-	<?php endif; ?>
  </body>
 </html>
