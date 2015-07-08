@@ -2,7 +2,7 @@
 <div id='communication'>
 	<a id="twitter" title="Twitterでシェア" href="" <?php echo $is_mobile ? "target='_blank'" : ''; ?>><img src='/img/twitter.png'></a>
 	<a id="facebook" title="Facebookでシェア" href=""><img src='/img/facebook.png'></a>
-	<a id="line" title="LINEでシェア" href=""><img src='/img/line.png'></a>
+	<a id="line" title="LINEでシェア" href="" target='_blank'><img src='/img/line.png'></a>
 	<a id="pinterest" title="Pinterestでシェア" href="" target='_blank'><img src='/img/pinterest.png'></a>
 	<a id="email" title="メールで問い合わせ" href="mailto:<?php echo COMPANY_EMAIL; ?>"><img src='/img/email.png'></a>
 </div>
