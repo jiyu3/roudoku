@@ -24,7 +24,7 @@
         </tr>
 		<tr>
 			<td>お問い合わせ先</td>
-			<td><?php echo COMPANY_EMAIL; ?></td>
+			<td><a href='mailto:<?php echo COMPANY_EMAIL; ?>'><?php echo COMPANY_EMAIL; ?></a></td>
         </tr>
         <tr>
 			<td>料金</td>

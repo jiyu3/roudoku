@@ -1,14 +1,13 @@
 <div id='navigation'>
 	<ul>
 		<li style='margin-right:4px;'>
-			<img id='logo' src='/img/header/logo.png'>
+			<a href='/'><img id='logo' src='/img/header/logo.png'></a>
 		</li>
 		<li>
 			<a class='link_button' id='home_button' href='/'>
 				<img src='/img/header/home.png'>
 			</a>
 		</li>
-	<?php if(!($this->name==="User" && $this->action==="login") && $this->name!=="Register") : ?>
 		<?php if($logged_in) : ?>
 			<li>
 				<a class='link_button' id='mypage_button' href='/user' style='margin-left:10px;'>
@@ -32,7 +31,6 @@
 				</a>
 			</li>
 		<?php endif; ?>
-	<?php endif; ?>
 	</ul>
 </div>
 <script type='text/javascript'>
