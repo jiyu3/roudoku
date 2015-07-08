@@ -57,7 +57,7 @@ class PlayController extends AppController {
 			if(substr($file, -3, 3) === 'wav') {
 				new Wave($file);
 				echo "'{$file}' has been converted.<br />";
-				unset($file);
+				unlink($file);
 			}
 
 			if(substr($file, -3, 3) === 'srt') {
@@ -71,7 +71,11 @@ class PlayController extends AppController {
 				file_put_contents('audio/'.AUDIO_BOOKS_FOLDER_NAME.'/'.basename($file, ".srt").'.subtitles', $result);
 				echo "'{$file}' has been converted.<br />";
 			}
-			unset($file);
+
+			if(substr($file, -3, 3) === 'txt') {
+				rename($file, 'audio/'.AUDIO_BOOKS_FOLDER_NAME.'/'.basename($file, ".txt").'.title');
+				echo "'{$file}' has been converted.<br />";
+			}
 		}
 		exit;
 	}

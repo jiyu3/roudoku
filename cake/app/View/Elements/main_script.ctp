@@ -150,8 +150,7 @@
 							contents: affiliate_txt,
 							position: 'bottom',
 							css: {
-								zIndex: "6",
-								backgroundColor: "lawngreen"
+								zIndex: "6"
 							}
 						}).addClass('balloon');
 
@@ -714,7 +713,6 @@
 	 */
 	function skip() {
 		page_change_stop = true;
-		$('.balloon').hideBalloon();
 		stopAll();
 		$('*').css('pointer-events', '');
 		$('#skip').css('display', 'none');
