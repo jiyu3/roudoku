@@ -35,27 +35,41 @@
 
 /* communication start */
 #communication img {
-	opacity:0.5;
+	opacity:0.8;
 }
 
 #twitter {
 	z-index: 4;
 	position: absolute;
-	top: 122px;
+	top: 60px;
 	left: 257px;
 }
 
 #facebook {
 	z-index: 4;
 	position: absolute;
-	top: 195px;
+	top: 130px;
+	left: 257px;
+}
+
+#line {
+	z-index: 4;
+	position: absolute;
+	top: 200px;
+	left: 257px;
+}
+
+#pinterest {
+	z-index: 4;
+	position: absolute;
+	top: 270px;
 	left: 257px;
 }
 
 #email {
 	z-index: 4;
 	position: absolute;
-	top: 265px;
+	top: 340px;
 	left: 257px;
 }
 /* communication end */
@@ -226,7 +240,7 @@
 	font-size: 16px;
 	line-height: 26px;
 	top: 75%;
-	left: 35px;
+	left: 6%;
 	width: 230px;
 	height: 80px;
 	position: absolute;

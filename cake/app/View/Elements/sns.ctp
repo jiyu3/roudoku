@@ -1,38 +1,22 @@
-<div style="margin-top: -40px;">
-	<?php if($this->App->isMobile()) : ?>
-		<div style="text-align: center; margin-top:10px; margin-bottom: 10px;">
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://roudokushoujo.com" data-text="朗読少女Web版" data-via="otohashiori" data-hashtags="roudokushoujo">Tweet</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-	
-			<div id="facebook_post" style="margin-top:10px; width:100px;">
-			<div id="fb-root"></div>
-			<script>(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3&appId=1450212918616270";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
-			<div class="fb-like" data-href="https://roudokushoujo.com" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-		</div>
-	<?php else : ?>
-		<div style="text-align: center; margin-top:10px; margin-bottom: 10px;">
-			<div id="twitter_post" style="float:left; width:175px; margin-left:30%;">
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://roudokushoujo.com" data-text="朗読少女Web版" data-via="otohashiori" data-hashtags="roudokushoujo">Tweet</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-			</div>
-		
-			<div id="facebook_post" style="margin-left:-30px; float:left; width:100px;">
-			<div id="fb-root"></div>
-			<script>(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.3&appId=1450212918616270";
-				fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));</script>
-			<div class="fb-like" data-href="https://roudokushoujo.com" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-			</div>
-		</div>
-	<?php endif; ?>
+<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
+<div id='communication'>
+	<a id="twitter" title="Twitterでシェア" href="" <?php echo $is_mobile ? "target='_blank'" : ''; ?>><img src='/img/twitter.png'></a>
+	<a id="facebook" title="Facebookでシェア" href=""><img src='/img/facebook.png'></a>
+	<a id="line" title="LINEでシェア" href=""><img src='/img/line.png'></a>
+	<a id="pinterest" title="Pinterestでシェア" href="" target='_blank'><img src='/img/pinterest.png'></a>
+	<a id="email" title="メールで問い合わせ" href="mailto:<?php echo COMPANY_EMAIL; ?>"><img src='/img/email.png'></a>
 </div>
+<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
+<script type='text/javascript'>
+	var share_url = 'https://<?php echo $_SERVER['SERVER_NAME']; ?>/play/index/' + encodeURIComponent(encodeURIComponent(document.title.slice(7)));
+	var share_text = '<?php echo CHARACTER_NAME; ?>が' + document.title.slice(7) + 'を朗読します。';
+	var via = "otohashiori";
+	var related = "";
+	var hashtags = "朗読少女";
+	var fb_onclick = "window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;";
+	$('#twitter').attr('href', 'https://twitter.com/intent/tweet?url=' + share_url + '&text=' + share_text + '&via=' + via + '&related=' + related +
+		'&hashtags=' + hashtags);
+	$('#facebook').attr({'href':'http://www.facebook.com/share.php?u=' + share_url, 'onclick':fb_onclick});
+	$('#line').attr('href', 'http://line.me/R/msg/text/?' + share_text + share_url);
+	$('#pinterest').attr('href', "http://www.pinterest.com/pin/create/button/?url=" + share_url + "&media=" + 'https://<?php echo $_SERVER['SERVER_NAME']; ?>/img/title.png' + "&description=" + share_text);
+</script>
