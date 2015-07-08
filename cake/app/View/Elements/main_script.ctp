@@ -520,7 +520,7 @@
 		touch['region'] = region;
 		touch['state'] = state;
 		touch['feature'] = feature;
-		interruptPlay(region);
+		interruptPlay(region, false);
 	}
 
 	/**
@@ -699,7 +699,12 @@
 		$('.mejs-button').css('pointer-events', 'none');
 
 		stopAll();
+		if(!document.getElementById(interrupt_audio_id).duration) {
+			$('*').css('pointer-events', '');
+			return false;
+		}
 		document.getElementById(interrupt_audio_id).play();
+
 		if(skippable) {
 			$('#skip').css({'display':'inline', 'pointer-events':''});
 		}
