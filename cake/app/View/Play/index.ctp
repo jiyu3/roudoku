@@ -112,6 +112,11 @@
 				<?php endif; ?>
 			</tbody>
 		</table>
+		<?php if($is_mobile) : ?>
+			<div style="float:right">
+				<a href="/page/law">特定商取引法に関する表示</a>
+			</div>
+		<?php endif; ?>
 	</div>
 	<?php if(!$is_paying) : ?>
 		<script type='text/javascript'>
