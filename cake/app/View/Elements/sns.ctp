@@ -9,7 +9,7 @@
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 <script type='text/javascript'>
 	var share_url = 'https://<?php echo $_SERVER['SERVER_NAME']; ?>/play/index/' + encodeURIComponent(encodeURIComponent(document.title.slice(7)));
-	var share_text = '<?php echo CHARACTER_NAME; ?>が' + document.title.slice(7) + 'を朗読します。';
+	var share_text = '<?php echo CHARACTER_NAME; ?>が『' + document.title.slice(7) + '』を朗読します。';
 	var via = "otohashiori";
 	var related = "";
 	var hashtags = "朗読少女";

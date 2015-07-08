@@ -5,7 +5,7 @@
 		$onclick_text[] = '$("#"+"'.AUDIO_BOOKS_FOLDER_NAME.'")'.
 			'.attr("src", "'.'/audio/'.AUDIO_BOOKS_FOLDER_NAME.'/'.$filename.'.m4a'.'");'.
 			'skip(); refresh("'.$filename.'");'.
-			'document.title = "朗読少女 - '.$title.'";'.
+			'document.title = "'.SERVICE_NAME.' - '.$title.'";'.
 			'document.getElementById(audio_books_folder_name).load();'.
 			'audio["ending"].load(); var a;'.
 			'for(key in evnt) {'.
