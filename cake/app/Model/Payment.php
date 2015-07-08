@@ -235,18 +235,8 @@ class Payment extends AppModel {
 			"created" => strtotime($payment['commencement']),
 			"description" => SERVICE_NAME . "　初月課金"
 		);
-		$recursion_info = array(
-			'amount' => intval($payment['amount']),
-			'currency' => 'jpy',
-			"customer" => $customer_id,
-			"created" => strtotime($payment['commencement']),
-			"first_scheduled" => $unixstanp_of_first_day,
-			"period" => "month",
-			"description" => SERVICE_NAME . "　月額課金"
-		);
 		try {
 			$charge = $webpay->charge->create($charge_info);
-			$recursion = $webpay->recursion->create($recursion_info);
 		} catch (\WebPay\Exception\CardException $e) {
 			$error = "CardException\n" .
 				'Status is:' . $e->getStatus() . "\n" .
@@ -293,6 +283,63 @@ class Payment extends AppModel {
 			return "UnexpectedException";
 		}
 
+		$recursion_info = array(
+				'amount' => intval($payment['amount']),
+				'currency' => 'jpy',
+				"customer" => $customer_id,
+				"created" => strtotime($payment['commencement']),
+				"first_scheduled" => $unixstanp_of_first_day,
+				"period" => "month",
+				"description" => SERVICE_NAME . "　月額課金"
+		);
+		try {
+			$recursion = $webpay->recursion->create($recursion_info);
+		} catch (\WebPay\Exception\CardException $e) {
+			$error = "CardException\n" .
+					'Status is:' . $e->getStatus() . "\n" .
+					'Code is:' . $e->getCardErrorCode() . "\n" .
+					'Message is:' . $e->getMessage() . "\n" .
+					'Params are:';
+			$dataSource->rollback();
+			$this->putLog($error, $payment, $webpay, null, $recursion);
+			return "CardException";
+		} catch (\WebPay\Exception\InvalidRequestException $e) {
+			$error = "InvalidRequestException\n" .
+					'Message is:' . $e->getMessage() . "\n" .
+					'Params are:';
+			$dataSource->rollback();
+			$this->putLog($error, $payment, $webpay, null, $recursion);
+			return "InvalidRequestException";
+		} catch (\WebPay\Exception\AuthenticationException $e) {
+			$error = "AuthenticationException\n" .
+					'Message is:' . $e->getMessage() . "\n" .
+					'Params are:';
+			$dataSource->rollback();
+			$this->putLog($error, $payment, $webpay, null, $recursion);
+			return "AuthenticationException";
+		} catch (\WebPay\Exception\APIConnectionException $e) {
+			$error = "APIConnectionException\n" .
+					'Message is:' . $e->getMessage() . "\n" .
+					'Params are:';
+			$dataSource->rollback();
+			$this->putLog($error, $payment, $webpay, null, $recursion);
+			return "APIConnectionException";
+		} catch (\WebPay\Exception\APIException $e) {
+			$error = "APIException\n" .
+					'Message is:' . $e->getMessage() . "\n" .
+					'Params are:';
+			$dataSource->rollback();
+			$this->putLog($error, $payment, $webpay, null, $recursion);
+			return "APIException";
+		} catch (Exception $e) {
+			$error = "UnexpectedException\n" .
+					'Message is:' . $e->getMessage() . "\n" .
+					'Params are:';
+			$dataSource->rollback();
+			$this->putLog($error, $payment, $webpay, null, $recursion);
+			return "UnexpectedException";
+		}
+
 		$payment['webpay_charge_id'] = $charge->__get('id');
 		$payment['webpay_recursion_id'] = $recursion->__get('id');
 		if(!$this->save($payment)) {
@@ -320,7 +367,13 @@ class Payment extends AppModel {
 		$dataSource = $this->getDataSource();
 		$dataSource->begin();
 
-		$payment = $this->findByUserId($user_id);
+		$payment = $this->find('first',
+			array(
+				'fields' => array('id', 'user_id', 'webpay_recursion_id'),
+				'conditions' => array('user_id' => $user_id),
+				'order' => array('id' => 'desc'),
+			)
+		);
 		$payment['Payment']['expiration'] = date("Y-m-d H:i:s");
 		if(!$payment = $this->save($payment)) {
 			$dataSource->rollback();
@@ -330,29 +383,23 @@ class Payment extends AppModel {
 
 		require APP . 'Vendor/autoload.php';
 		$webpay = new WebPay\WebPay($this->getSecretKey());
-		$recursion_id = $this->find('first',
-			array(
-	        	'fields' => array('id', 'user_id', 'webpay_recursion_id'),
-	        	'conditions' => array('user_id' => $user_id),
-				'order' => array('id' => 'desc'),
-			)
-		)['Payment']['webpay_recursion_id'];
+		$recursion_id = $payment['Payment']['webpay_recursion_id'];
 
 		try {
-			$charge = $webpay->recursion->delete(array("id"=>$recursion_id));
+			$recursion = $webpay->recursion->delete(array("id"=>$recursion_id));
 		} catch (\WebPay\Exception\InvalidRequestException $e) {
 			$error = "InvalidRequestException\n" .
 				'Message is:' . $e->getMessage() . "\n" .
 				'Params are:';
 			$dataSource->rollback();
-			$this->putLog($error, $payment);
+			$this->putLog($error, $payment, $webpay, null, $recursion);
 			return "InvalidRequestException";
 		} catch (Exception $e) {
 			$error = "UnexpectedException\n" .
 				'Message is:' . $e->getMessage() . "\n" .
 				'Params are:';
 			$dataSource->rollback();
-			$this->putLog($error, $payment, $webpay);
+			$this->putLog($error, $payment, $webpay, null, $recursion);
 			return "UnexpectedException";
 		}
 

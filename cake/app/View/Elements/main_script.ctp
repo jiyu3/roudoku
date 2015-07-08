@@ -228,7 +228,7 @@
 				loop();
 				time = getTime(['month', 'day']);
 				if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
-					!$.cookie(time['month']+'/'+time['day']) && !<?php echo $today; ?>
+					!$.cookie(time['month']+'/'+time['day'])
 				){
 					$.cookie(time['month']+'/'+time['day'], 'played', {expires:1});
 					interruptPlay('today');

@@ -68,7 +68,7 @@
 		</script>
 	</div>
 	<div class='reload'>
-		<?php echo $this->element('main_script', array('lip'=>$lip, 'fps'=>$fps, 'today'=>$today, 'current_filename'=>$current_filename, 'onclick_text'=>$onclick_text)); ?>
+		<?php echo $this->element('main_script', array('lip'=>$lip, 'fps'=>$fps, 'current_filename'=>$current_filename, 'onclick_text'=>$onclick_text)); ?>
 	</div>
 
 	<div id='subtitles'></div>
