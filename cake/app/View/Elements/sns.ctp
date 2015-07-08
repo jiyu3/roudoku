@@ -18,5 +18,5 @@
 		'&hashtags=' + hashtags);
 	$('#facebook').attr({'href':'http://www.facebook.com/share.php?u=' + share_url, 'onclick':fb_onclick});
 	$('#line').attr('href', 'http://line.me/R/msg/text/?' + share_text + share_url);
-	$('#pinterest').attr('href', "http://www.pinterest.com/pin/create/button/?url=" + share_url + "&media=" + 'https://<?php echo $_SERVER['SERVER_NAME']; ?>/img/title.png' + "&description=" + share_text);
+	$('#pinterest').attr('href', "http://www.pinterest.com/pin/create/button/?url=" + share_url + "&media=" + 'https://<?php echo $_SERVER['SERVER_NAME']; ?>/img/title.jpg' + "&description=" + share_text);
 </script>
