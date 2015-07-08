@@ -42,9 +42,11 @@
 	<img id='chair'>
 
 	<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
-	<a id="twitter" title="Twitterでシェア" data-referrer="PLAYER" href="" <?php echo $is_mobile ? "target='_blank'" : ''; ?>><img src='/img/twitter.png'></a>
-	<a id="facebook" title="Facebookでシェア" data-referrer="PLAYER" href=""><img src='/img/facebook.png'></a>
-	<a id="email" title="お問い合わせ" data-referrer="PLAYER" href="mailto:info@noumenon.jp"><img src='/img/email.png'></a>
+	<div id='communication'>
+		<a id="twitter" title="Twitterでシェア" data-referrer="PLAYER" href="" <?php echo $is_mobile ? "target='_blank'" : ''; ?>><img src='/img/twitter.png'></a>
+		<a id="facebook" title="Facebookでシェア" data-referrer="PLAYER" href=""><img src='/img/facebook.png'></a>
+		<a id="email" title="お問い合わせ" data-referrer="PLAYER" href="mailto:info@noumenon.jp"><img src='/img/email.png'></a>
+	</div>
 	<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 	<script type='text/javascript'>
 		var share_url = 'https://<?php echo $_SERVER['SERVER_NAME']; ?>/play/index/' + encodeURIComponent(encodeURIComponent(document.title.slice(7)));

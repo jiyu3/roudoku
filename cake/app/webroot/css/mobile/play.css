@@ -34,6 +34,10 @@
 /* main end */
 
 /* communication start */
+#communication img {
+	opacity:0.5;
+}
+
 #twitter {
 	z-index: 4;
 	position: absolute;
@@ -69,7 +73,7 @@
 
 #search {
 	font-family: ヒラギノ角ゴProN W3;
-	font-size: 12px;
+	font-size: 16px;
 }
 
 #audio_links {
@@ -82,9 +86,11 @@
 	white-space : nowrap;
 	z-index: 3;
 	border: black 1px solid;
+	overflow-x: hidden;
 }
 
 #audio_links h3 {
+	font-size: 18px;
 	margin-left: 10px; 
 }
 
@@ -92,6 +98,11 @@
 	margin-left: 20px;
 	text-decoration:none;
 	color:teal;'
+}
+
+#audio_links td {
+	line-height: 21px;
+	font-size: 16px;
 }
 
 #recommendation {
