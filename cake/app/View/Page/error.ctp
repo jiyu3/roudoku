@@ -1,4 +1,5 @@
-<article class="big" style="text-align:center;">
+<article>
+	<h2>【エラー】</h2>
 	<?php empty($error) ? $error = $this->Session->flash() : ''; ?>
 	<?php if(!empty($error)) : ?>
 		<p><?php echo $error; ?></p>
