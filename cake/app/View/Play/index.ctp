@@ -33,6 +33,8 @@
 			array('id'=>'setting_open', 'onclick'=>"$('.balloon').hideBalloon(); $('#sidebar, #setting_close').fadeIn();"));
 		echo $this->Html->image('window_close.png',
 			array('id'=>'setting_close', 'onclick'=>"$('#sidebar, #setting_close').fadeOut();"));
+		echo $this->Html->image('user.png',
+			array('id'=>'user', 'onclick'=>"location.href='/user'"));
 	}
 ?>
 <input class='no_disabled' id='skip' type='image' src='<?php echo Router::url('/', false); ?>img/skip.png' onclick='skip();'>
@@ -76,7 +78,13 @@
 
 <div id='sidebar'>
 	<div id='audio_links'>
-		<h3><img src='/img/audio_list.png'></h3>
+		<h3>
+			<?php if($is_mobile) : ?>
+				【オーディオブック一覧】
+			<?php else : ?>
+				<img src='/img/audio_list.png'>
+			<?php endif; ?>
+		</h3>
 		<?php if($is_mobile) : ?>
 			<input style='margin-left:20px;' type="text" name="search" value="" id="search" placeholder='検索' />
 		<?php endif; ?>
@@ -95,11 +103,6 @@
 				<?php endif; ?>
 			</tbody>
 		</table>
-		<?php if($is_mobile) : ?>
-			<div style="float:right">
-				<a href="/page/law">特定商取引法に関する表示</a>
-			</div>
-		<?php endif; ?>
 	</div>
 	<?php if(!$is_paying) : ?>
 		<script type='text/javascript'>

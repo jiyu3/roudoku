@@ -6,7 +6,7 @@
 	<tbody>
 		<tr>
 			<td>事業者名<br />代表者・運営責任者</td>
-			<td>ヌーメノン合同会社　村濱　章司</td>
+			<td><a href='http://noumenon.jp'>ヌーメノン合同会社</a>　村濱　章司</td>
 		</tr>
 		<tr>
 			<td>住所・電話番号</td>

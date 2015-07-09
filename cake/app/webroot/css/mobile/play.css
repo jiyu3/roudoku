@@ -41,35 +41,35 @@
 #twitter {
 	z-index: 4;
 	position: absolute;
-	top: 100px;
+	top: 130px;
 	left: 270px;
 }
 
 #facebook {
 	z-index: 4;
 	position: absolute;
-	top: 150px;
+	top: 180px;
 	left: 270px;
 }
 
 #line {
 	z-index: 4;
 	position: absolute;
-	top: 200px;
+	top: 230px;
 	left: 270px;
 }
 
 #pinterest {
 	z-index: 4;
 	position: absolute;
-	top: 250px;
+	top: 280px;
 	left: 270px;
 }
 
 #email {
 	z-index: 4;
 	position: absolute;
-	top: 300px;
+	top: 330px;
 	left: 270px;
 }
 /* sns end */
@@ -178,6 +178,16 @@
 	z-index: 11;
 	background-color: rgba(255,255,255,1);
 	display: none;
+}
+
+#user {
+	z-index: 10;
+	width: 50px;
+	height: 50px;
+	top: 52px;
+	right: 1px;
+	background-color: rgba(255,255,255,0.5);
+	position: absolute;
 }
 /* others end */
 

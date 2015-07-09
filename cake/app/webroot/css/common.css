@@ -25,18 +25,6 @@ header li {
 .link_button {
 	margin-left: 10px;
 }
-
-#home_button {
-}
-
-#login_button {
-}
-
-#logout_button {
-}
-
-#register_button {
-}
 /* header end */
 
 /* contents start */
@@ -72,7 +60,7 @@ h2, #headline {
 /* contents end */
 
 /* form start */
-form input:not([type='image']) {
+form input:not([type='image']):not([type='checkbox']) {
 	width: 250px;
 	font-size: 14px;
 }
@@ -85,7 +73,12 @@ form label {
 	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', YuGothic, '游ゴシック', sans-serif;
 }
 
-form input:not([type='image']) {
+form .checkbox label {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+form input:not([type='image']):not([type='checkbox']) {
 	margin-top: 10px;
 	text-align: center;
 }
@@ -103,16 +96,6 @@ form div.checkbox {
 	position: relative;
 	width: 100%;
 	height: 40px;
-}
-
-form div.checkbox label {
-	position: absolute;
-}
-
-form div.checkbox input {
-	position: absolute;
-	top: 20px;
-	left: 310px;
 }
 
 form div.submit {

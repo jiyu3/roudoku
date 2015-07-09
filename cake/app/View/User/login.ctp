@@ -28,8 +28,9 @@
 		echo $this->Form->input(
 			'remember_me',
 			array(
-				'type' => 'checkbox',
+				'type' => 'hidden',
 				'label' => 'ログインしたままにする',
+				'default' => '1'
 			)
 		);
 	?>
