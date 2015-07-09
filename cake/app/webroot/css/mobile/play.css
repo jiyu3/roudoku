@@ -86,12 +86,12 @@
 }
 
 #search {
-	font-family: ヒラギノ角ゴProN W3;
+	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', YuGothic, '游ゴシック', sans-serif;
 	font-size: 16px;
 }
 
 #audio_links {
-	font-family: ヒラギノ角ゴProN W3;
+	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', YuGothic, '游ゴシック', sans-serif;
 	font-size: 12px;
 	position: relative;
 	height: 100%;
@@ -122,7 +122,7 @@
 }
 
 #recommendation {
-	font-family: ヒラギノ角ゴProN W3;
+	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', YuGothic, '游ゴシック', sans-serif;
 	font-size: 16px;
 	position: absolute;
 	z-index: 4;
@@ -238,7 +238,6 @@
 
 /* subtitles start */
 #subtitles {
-	font-family: ヒラギノ明朝ProN W3;
 	font-size: 16px;
 	line-height: 26px;
 	top: 75%;
