@@ -93,15 +93,20 @@
 				<?php $i = 0; ?>
 				<?php if($is_paying) : ?>
 					<?php foreach($titles as $filename => $title) : ?>
-						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $i; ?>' class='<?php echo $filename; ?> no_pjax' onclick='<?php echo $onclick_text[$i++]; ?>'
+						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $i; ?>' class='<?php echo $filename; ?> no_pjax audio_title' onclick='<?php echo $onclick_text[$i++]; ?>'
 								href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
 					<?php endforeach; ?>
 				<?php else : ?>
 					<?php foreach($titles as $title) : ?>
-						<tr><td>◆<span><?php echo $title; ?></span></td></tr>
+						<tr><td>◆<span class='audio_title'><?php echo $title; ?></span></td></tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</tbody>
+			<script type='text/javascript'>
+				$('.audio_title').each(function(){
+					$(this).html($(this).html().replace(/~\d{3}~/g, "　"));
+				});
+			</script>
 		</table>
 	</div>
 	<?php if(!$is_paying) : ?>

@@ -1,3 +1,6 @@
+<?php if($this->App->isMobile()) : ?>
+	<p><a href='/'>トップページへ</a></p>
+<?php endif; ?>
 <table>
 	<colgroup>
 		<col width="160">
@@ -50,3 +53,6 @@
 		</tr>
 	</tbody>
 </table>
+<?php if($this->App->isMobile()) : ?>
+	<p><a href='/'>トップページへ</a></p>
+<?php endif; ?>
