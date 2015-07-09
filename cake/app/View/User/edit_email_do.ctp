@@ -1,8 +1,6 @@
 <article class="big" style="text-align:center;">
-	<h2><?php echo 'メールアドレスの再設定'; ?> </h2>
-	<p>
-		<?php echo __('メールアドレスを変更するためにパスワードを入力してください。'); ?> 
-	</p>
+	<h2>【メールアドレスの再設定】</h2>
+	<p>メールアドレスを変更するためにパスワードを入力してください。</p>
 	<?php if(isset($error)) : ?>
 		<p style="color:red;"><?php echo $error; ?></p>
 	<?php endif; ?>
@@ -22,6 +20,6 @@
 				'type' => 'password',
 			)
 		);
-		echo $this->Form->end('メールアドレスを再設定する');
+		echo $this->Form->end('/img/button/change.png');
 	?>
 </article>

@@ -1,34 +1,15 @@
-label {
-	width: 300px;
-	text-align: right;
+#index label {
+	display: block;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', YuGothic, '游ゴシック', sans-serif;
 }
 
-input {
-	margin-left: 20px;
-	margin-top: 20px;
+#index .user_info {
+	margin-bottom: 20px;
 }
 
-select {
-	margin-left: 20px;
-	margin-top: 20px;
-}
-
-div.checkbox {
-	width: 350px;
-	margin-top:20px;
-}
-
-div.checkbox input {
-	width: 30px;
-	height: 23px;
-	float: right;
-	margin-top: 0;
-}
-
-div.checkbox label {
-	clear: both;
-}
-
-div.submit input {
-	margin-left: 326px;
+#index .user_info div {
+	margin-top: 10px;
 }

@@ -1,22 +1,10 @@
-<style type="text/css">
-	label {
-		width: 120px;
-	}
-	
-	.input, .submit {
-		text-align: center;
-	}
-	
-	input {
-		margin-top: 20px;
-	}
-</style>
+<article>
+	<h2>【パスワード再設定】</h2>
 
-<article class="big">
 	<?php if(isset($error)) : ?>
 		<div style="margin-bottom:20px; text-align:center; color:red"><?php echo $error; ?></div>
 	<?php else : ?>
-		<div style="margin-bottom:20px; text-align:center;"><?php echo 'パスワード再設定用のURLを送りますので、登録したメールアドレスを入力してください。'; ?></div>
+		<div style="margin-bottom:20px; text-align:center;">パスワード再設定用のURLを送りますので、<br />登録したメールアドレスを入力してください。</div>
 	<?php endif; ?>
 
 	<?php 
@@ -30,9 +18,8 @@
 			array(
 					'type' => 'email',
 					'label' => false,
-					'style' => 'margin-top:0'
 			)
 		);
-		echo $this->Form->end('メールを送信');
+		echo $this->Form->end('/img/button/send.png');
 	?>
 </article>

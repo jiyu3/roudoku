@@ -287,7 +287,7 @@ class UserController extends AppController {
 					return false;
 				}
 
-				$message = 'パスワード再設定用URLをメールで送信しました。メールを確認してください。';
+				$message = 'パスワード再設定用URLをメールで送信しました。<br />メールを確認してください。';
 				$content = "以下のURLをクリックしてパスワードを変更してください。" . "\n" . 
 					"https://{$_SERVER['SERVER_NAME']}/user/password_change/?key=$regist_key";
 				$sent = $this->MyEmail->send($content, '['. SERVICE_NAME .']' . 'パスワード変更用メール', $user['User']['email']);
@@ -300,7 +300,7 @@ class UserController extends AppController {
 				$this->Session->write('User.from_password_reset', true);
 				$this->redirect('password_reset_sent');
 			} else {
-				$error = '入力したメールアドレスではユーザが見つかりません。正しいメールアドレスを入れてください。';
+				$error = '入力したメールアドレスではユーザが見つかりません。<br />正しいメールアドレスを入れてください。';
 				$this->set('error', $error);
 			}
 		}

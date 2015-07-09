@@ -1,9 +1,3 @@
-<style>
-	label {
-		width: 200px;
-	}
-</style>
-
 <script type="text/javascript">
 	function userConfirm() {
 		if($('#UserPassword').val() != $('#UserPasswordConfirm').val()) {
@@ -12,9 +6,8 @@
 		}
 	}
 </script>
-
-<article class="big" style="text-align:center;">
-	<h2 style="margin-bottom:20px;"><?php echo 'パスワード再設定'; ?> </h2>
+<article>
+	<h2>パスワード再設定</h2>
 	<?php if(isset($error)) : ?>
 		<p style="color:red;"><?php echo $error; ?></p>
 	<?php endif; ?>
@@ -53,6 +46,6 @@
 				'label' => '新しいパスワード（確認）',
 			)
 		);
-		echo $this->Form->end('パスワードを再設定する');
+		echo $this->Form->end('/img/button/change.png');
 	?>
 </article>

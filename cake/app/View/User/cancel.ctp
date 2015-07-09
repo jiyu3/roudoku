@@ -1,13 +1,3 @@
-<style type="text/css">	
-	div.submit input {
-		background-color: white;
-	}
-
-	div.submit input:hover {
-		background-color: gray;
-	}
-</style>
-
 <script type="text/javascript">
 	function cancelConfirm() {
 		var notice = '<?php echo '退会すると、あなたのユーザ情報の一切は削除されます。'; ?>\n' +
@@ -38,9 +28,9 @@
 		return false;
 	}
 </script>
-
-<article class="big" style="text-align:center;">
-	<p><?php echo '退会するためにはパスワードを以下に入力してください。'; ?> </p>
+<article>
+	<h2>【退会】</h2>
+	<p>退会するためにはパスワードを以下に入力してください。</p>
 	<?php if(isset($error)) : ?>
 		<div style="color:red; margin-top:20px;"><?php echo $error; ?></div>
 	<?php endif; ?>
@@ -60,7 +50,7 @@
 				'type' => 'password',
 			)
 		);
-		echo $this->Form->end('退会する');
+		echo $this->Form->end('/img/button/user_cancel.png');
 	?>
-	<a class="button" href="/"><?php echo 'トップページへ'; ?></a>
+	<a href="/">トップページへ</a>
 </article>

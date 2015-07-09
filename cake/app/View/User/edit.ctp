@@ -6,14 +6,13 @@
 		}
 	}
 </script>
+<article>
+	<h2>ユーザ情報の変更</h2>
 
-<article class="big">
-	<h2 style="text-align:center;"><?php echo 'ユーザ情報の変更'; ?> </h2>
-	
 	<?php if(isset($error)) : ?>
 		<div style="color:red;"><?php echo $error; ?></div>
 	<?php endif; ?>
-	
+
 	<p>メールアドレスの変更は<a href='/user/edit_email'>こちら</a>で行って下さい。</p>
 	<?php
 		echo $this->Form->create('User',
@@ -59,7 +58,7 @@
 		);
 	?>
 	<?php
-		echo $this->Form->end('変更する');
+		echo $this->Form->end('/img/button/change.png');
 	?>
-	<a class="cancel" href="/user/index"><?php echo '前のページに戻る'; ?> </a>
+	<a href="/user/index">前のページに戻る</a>
 </article>
