@@ -30,20 +30,15 @@
 		return false;
 	}
 </script>
-<article class="big">
-	<div id="description" style="text-align:center;">
-		<h2><?php echo 'クレジットカード情報を入力'; ?> </h2>
-		<p><?php echo '決済を行います。クレジットカード情報を入力してください。'; ?> </p>
-		<div class="notice" style="margin-top:20px;">
-			<div style="text-align:center; margin-top:20px;">
-				<img src='/img/brands.png' width='30%' alt='<?php echo '利用可能カードは、VISA, MasterCard, JCB, Amex, DinersClubです。'; ?> ' />
-			</div>
-		</div>
-	
-		<?php if(isset($error)) : ?>
-			<p style="color:red;"><?php echo $error; ?></p>
-		<?php endif; ?>
+<article>
+	<h2>【クレジットカード情報を入力】</h2>
+	<div id='available_cards'>
+		<img src='/img/brands.png' width='30%' alt='<?php echo '利用可能カードは、VISA, MasterCard, JCB, Amex, DinersClubです。'; ?> ' />
 	</div>
+
+	<?php if(isset($error)) : ?>
+		<p style="color:red;"><?php echo $error; ?></p>
+	<?php endif; ?>
 
 	<div id='price'>
 		支払額: <?php echo $amount; ?>円（税込）
@@ -83,18 +78,15 @@
 			data-key="<?php echo $public_key; ?>" data-lang="ja" 
 			data-partial="true" data-on-created="showSubmit">
 		</script>
-		<div id="due_date" class="check" style="margin-top:20px;">
-		<!-- 
-			<span style="color:red;">現在、初月無料キャンペーン中です。<br />課金したその月は無料でサービスを利用できます。</span>
+		<p id="due_date" class="check">
+			<span style="color:red;">現在、初月108円キャンペーン中です。<br />2017年7月度は108円でサービスを利用できます。<br /></span>
 			課金が終われば、すぐに利用可能です。<br />
 			翌月以降は今回支払いをしたクレジットカードに自動的に課金されます。<br />
 			自動課金のタイミングは、毎月１日です。
-		-->
-		<span style="color:red;">※現時点では課金機能は未実装です。課金はできません。</span>
-		</div>
+		</p>
 	</span>
 	<?php echo $this->Form->end(array('label'=>'支払を確定する', 'id'=>'payment_submit',  'style'=>'display:none;')); ?>
-	<div class='cancel_submit'>
+	<?php if($this->App->isMobile()) : ?>
 		<a class="cancel" href="/"><?php echo 'トップページへ戻る';?></a>
-	</div>
+	<?php endif; ?>
 </article>

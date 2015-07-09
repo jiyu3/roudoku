@@ -73,7 +73,7 @@ h2, #headline {
 
 /* form start */
 form input:not([type='image']) {
-	width: 200px;
+	width: 250px;
 	font-size: 14px;
 }
 
@@ -113,6 +113,10 @@ form div.checkbox input {
 	position: absolute;
 	top: 20px;
 	left: 310px;
+}
+
+form div.submit {
+	margin-bottom: 10px;
 }
 /* form end */
 

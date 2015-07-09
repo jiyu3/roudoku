@@ -1,4 +1,5 @@
-<article class="big" style="text-align:center;">
-	<?php echo '課金に成功しました。'; ?> 
-	<a class="button" href="/play"><?php echo 'プレイ画面へ'; ?> </a>
+<article>
+	<h2>【課金成功】</h2>
+	<p>課金に成功しました。</p>
+	<p><a class="button" href="/play">朗読を聴く</a></p>
 </article>

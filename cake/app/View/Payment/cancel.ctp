@@ -1,13 +1,3 @@
-<style type="text/css">	
-	div.submit input {
-		background-color: white;
-	}
-
-	div.submit input:hover {
-		background-color: gray;
-	}
-</style>
-
 <script type="text/javascript">
 	function cancelConfirm() {
 		var notice = '<?php echo '課金停止すると、ほとんどの朗読コンテンツを自由に聴くできなくなります。'; ?>\n' +
@@ -38,9 +28,9 @@
 		return false;
 	}
 </script>
-
-<article class="big" style="text-align:center;">
-	<p><?php echo '課金停止するためにはパスワードを以下に入力してください。'; ?> </p>
+<article>
+	<h2>【課金停止】</h2>
+	<p>課金停止するためにはパスワードを以下に入力してください。</p>
 	<?php if(isset($error)) : ?>
 		<div style="color:red; margin-top:20px;"><?php echo $error; ?></div>
 	<?php endif; ?>
@@ -60,7 +50,7 @@
 				'type' => 'password',
 			)
 		);
-		echo $this->Form->end('課金停止する');
+		echo $this->Form->end('/img/button/payment_cancel.png');
 	?>
-	<a class="button" href="/"><?php echo 'トップページへ'; ?></a>
+	<a href="/"><?php echo 'トップページへ'; ?></a>
 </article>

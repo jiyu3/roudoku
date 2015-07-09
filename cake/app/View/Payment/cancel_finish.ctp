@@ -1,4 +1,5 @@
-<article class="big" style="text-align:center;">
-	<p><?php echo '課金停止が完了しました。'; ?></p>
-	<a class="button" href="/"><?php echo 'トップページへ'; ?></a>
+<article>
+	<h2>【課金停止完了】</h2>
+	<p>課金停止が完了しました。</p>
+	<p><a href="/">トップページへ</a></p>
 </article>
