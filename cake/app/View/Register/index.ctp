@@ -1,15 +1,6 @@
-<style text="text/css">
-	input {
-		margin-left: 20px;
-	}
-	
-	div.submit input {
-		margin-left: 20px;
-	}
-</style>
-
-<article class="big" style="text-align: center;">
-	<p><?php echo '新規登録を行います。お使いのメールアドレスを入力してください。'; ?> </p>
+<article>
+	<h2>【新規登録】</h2>
+	<p>新規登録を行います。お使いのメールアドレスを入力してください。</p>
 	<?php if(isset($error)) : ?>
 		<div style="color:red; margin-top: 20px;">
 			<?php echo $error . '<br>'; ?>
@@ -26,10 +17,9 @@
 			array(
 				'type' => 'email',
 				'label' => false,
-				'style' => 'margin-top: 20px;'
 			)
 		);
-		echo $this->Form->end('新規登録する');
+		echo $this->Form->end('/img/button/send.png');
 	?>
 </article>
 	

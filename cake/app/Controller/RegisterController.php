@@ -43,7 +43,7 @@ class RegisterController extends AppController {
 					return false;
 				}
 
-				$message = '入力されたメールアドレスにメールを送りましたので、メールボックスを確認してください。';
+				$message = '入力されたメールアドレスにメールを送りましたので、<br />メールボックスを確認してください。';
 				$this->Session->setFlash($message);
 				$this->Session->write('Register.from_index', true);
 				$this->redirect('/register/sent');

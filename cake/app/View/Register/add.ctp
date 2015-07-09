@@ -1,5 +1,5 @@
-<article class="big">
-	<h2><?php echo '新規登録'; ?> </h2>
+<article>
+	<h2>【新規登録】</h2>
 	<?php if(isset($error)) : ?>
 		<?php echo $error . '<br>'; ?>
 	<?php endif; ?>
@@ -13,20 +13,25 @@
 				'onSubmit' => 'return userConfirm();'
 			)
 		);
+	?>
+	<div class='input'>
+		<label>メールアドレス</label>
+		<div style='font-size:14px; margin-top:10px;'><?php echo $email; ?></div>
+	</div>
+	<?php
+		echo $this->Form->input(
+				'email',
+				array(
+						'type' => 'hidden',
+						'label' => 'メールアドレス',
+						'default' => $email,
+				)
+		);
 		echo $this->Form->input(
 			'name',
 			array(
 				'type' => 'text',
 				'label' => 'お名前'
-			)
-		);
-		echo $this->Form->input(
-			'email',
-			array(
-				'type' => 'email',
-				'label' => 'メールアドレス',
-				'default' => $email,
-				'disabled' => 'disabled'
 			)
 		);
 		echo $this->Form->input(
@@ -45,6 +50,6 @@
 				'default' => true
 			)
 		);
-		echo $this->Form->end('この内容で新規登録する');
+		echo $this->Form->end('/img/button/send.png');
 	?>
 </article>

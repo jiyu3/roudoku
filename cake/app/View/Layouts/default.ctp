@@ -57,7 +57,7 @@
 		<div id="main">
 			<?php echo $content_for_layout; ?>
 		</div>
-		<?php if(!$this->App->isMobile() && !($this->name==="Play" && $this->action==="index")) : ?>
+		<?php if(!$this->App->isMobile() && $this->name==="User" && $this->action==="index") : ?>
 			<footer>
 				<?php echo $this->element('footer'); ?>
 			</footer>
