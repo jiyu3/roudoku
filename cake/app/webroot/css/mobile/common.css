@@ -26,7 +26,7 @@ h2, #headline {
 /* contents end */
 
 /* form start */
-form input:not([type='image']) {
+form input:not([type='image']):not([type='checkbox']):not([type='button']) {
 	width: 250px;
 	font-size: 14px;
 }

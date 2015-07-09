@@ -60,9 +60,11 @@ h2, #headline {
 /* contents end */
 
 /* form start */
-form input:not([type='image']):not([type='checkbox']) {
+form input:not([type='image']):not([type='checkbox']):not([type='button']) {
 	width: 250px;
 	font-size: 14px;
+	margin-top: 10px;
+	text-align: center;
 }
 
 form label {
@@ -76,11 +78,6 @@ form label {
 form .checkbox label {
 	font-size: 12px;
 	font-weight: normal;
-}
-
-form input:not([type='image']):not([type='checkbox']) {
-	margin-top: 10px;
-	text-align: center;
 }
 
 form select {

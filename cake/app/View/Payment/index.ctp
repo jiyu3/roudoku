@@ -1,20 +1,6 @@
 <script type="text/javascript">
 	function showSubmit() {
-		$('div.submit input, #save_card_info').fadeIn(200);
-	}
-
-	function hideSubmit() {
-		$('div.submit input, #save_card_info').css('display', 'none');
-	}
-
-	function showCreditCardFrom() {
-		$('#credit_card_form').fadeIn(200);
-		hideSubmit();
-	}
-
-	function hideCreditCardFrom() {
-		$('#credit_card_form').css('display', 'none');
-		showSubmit();
+		$('form .submit').fadeIn(200);
 	}
 
 	function paymentConfirm() {
@@ -41,7 +27,7 @@
 	<?php endif; ?>
 
 	<div id='price'>
-		支払額: <?php echo $amount; ?>円（税込）
+		支払額：108円（税込）<br />
 	</div>
 
 	<?php
@@ -79,13 +65,14 @@
 			data-partial="true" data-on-created="showSubmit">
 		</script>
 		<p id="due_date" class="check">
-			<span style="color:red;">現在、初月108円キャンペーン中です。<br />2017年7月度は108円でサービスを利用できます。<br /></span>
-			課金が終われば、すぐに利用可能です。<br />
+			<span style="color:red;">現在、初月108円キャンペーン中です。<br />2015年7月度は108円でサービスを利用できます。<br /></span>
 			翌月以降は今回支払いをしたクレジットカードに自動的に課金されます。<br />
-			自動課金のタイミングは、毎月１日です。
+			自動課金のタイミングは、毎月1日です。<br />
+			※2015年8月1日以降は月額324円（税込）となります。
 		</p>
 	</span>
-	<?php echo $this->Form->end(array('label'=>'支払を確定する', 'id'=>'payment_submit',  'style'=>'display:none;')); ?>
+	<?php echo $this->Form->end('/img/button/payment.png'); ?>
+	<style>form .submit{ display:none; }</style>
 	<?php if($this->App->isMobile()) : ?>
 		<a class="cancel" href="/"><?php echo 'トップページへ戻る';?></a>
 	<?php endif; ?>

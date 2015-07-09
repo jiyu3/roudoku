@@ -20,4 +20,9 @@
 	<div style='margin-top:-10px'>
 		<a class="button" href="/user/edit" style="margin-left:auto; margin-right:auto;"><img src='/img/button/edit_user.png'></a>
 	</div>
+	<?php if($this->App->isMobile()) : ?>
+		<div style='margin-top:20px;'>
+			<a href='/'>トップページへ</a>
+		</div>
+	<?php endif; ?>
 </article>

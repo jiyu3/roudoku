@@ -77,7 +77,7 @@ class PlayController extends AppController {
 				echo "'{$file}' has been converted.<br />";
 			}
 		}
-		exit;
+		$this->redirect('index');
 	}
 
 	/**
