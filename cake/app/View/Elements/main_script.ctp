@@ -23,6 +23,8 @@
 	var lip = [];
 	var subtitles;
 	var evnt = [];
+	var current_a_tag_id;
+	var next_a_tag_id;
 	var affiliate_txt;
 	var nb_img = 1;
 	var nb_img_max;
@@ -211,8 +213,8 @@
 		for (var i=0; i<$('#audio_links a').length; i++) {
 			regexp = new RegExp(title);
 			if($('#audio_links a').eq(i).attr('class').match(regexp)) {
-				var current_a_tag_id = $('#audio_links a').eq(i).attr('id');
-				var next_a_tag_id = $('#audio_links a').eq(i+1).attr('id');
+				current_a_tag_id = $('#audio_links a').eq(i).attr('id');
+				next_a_tag_id = $('#audio_links a').eq(i+1).attr('id');
 				$.cookie('last_read', current_a_tag_id);
 				$('#'+current_a_tag_id).css('font-weight', 'bold');
 				$('#next').attr('onclick', $('#'+next_a_tag_id).attr('onclick'));
@@ -758,7 +760,7 @@
 	 */
 	function showSubtitle() {
 		if(!current_frame || getPlayingAudio().id != audio_books_folder_name) {
-			$('#subtitles').html(document.title.slice(7) + '<br />を朗読します。');
+			$('#subtitles').html($('#'+current_a_tag_id).html() + '<br />を朗読します。');
 			showEvent(0);
 			return false;
 		}
