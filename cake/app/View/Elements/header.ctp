@@ -1,7 +1,7 @@
 <div id='navigation'>
 	<ul>
-		<li style='margin-right:18px;'>
-			<a href='/'><img id='logo' src='/img/header/logo.png'></a>
+		<li>
+			<a href='/'><img id='logo' src='/img/header/logo_bata.png'></a>
 		</li>
 		<li>
 			<a class='link_button' id='home_button' href='/'>
