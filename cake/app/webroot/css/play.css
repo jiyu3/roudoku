@@ -383,3 +383,12 @@
 	z-index: 6;
 }
 /* body end */
+
+/* widget start */
+#twitter_widget {
+	position: absolute;
+	left: 800px;
+	width: 200px;
+	top: 35px;
+}
+/* widget end */

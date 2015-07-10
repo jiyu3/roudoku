@@ -62,6 +62,12 @@
 				<?php echo $this->element('footer'); ?>
 			</footer>
 		<?php endif; ?>
+		<?php if($this->name==="Play" && !$this->App->isMobile()) : ?>
+			<div id='twitter_widget'>
+	            <a class="twitter-timeline"  href="https://twitter.com/hashtag/%E6%9C%97%E8%AA%AD%E5%B0%91%E5%A5%B3" data-widget-id="619571884661706752">#朗読少女 のツイート</a>
+	            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+		<?php endif; ?>
 	</div>
  </body>
 </html>
