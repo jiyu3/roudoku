@@ -107,14 +107,14 @@ class PlayController extends AppController {
 			if(end((explode('/', dirname($file)))) === AUDIO_BOOKS_FOLDER_NAME) {
 				continue;
 			} else if(end((explode('/', dirname($file)))) === 'today') {
-				$lip['today'] = '/audio/today/date_'.date("n_j").'.json';
-				$audio['today'] = '/audio/today/date_'.date("n_j").'.m4a';
+				$lip['today'] = '//'.$_SERVER['HTTP_HOST'].'/audio/today/date_'.date("n_j").'.json';
+				$audio['today'] = Router::url('/', false).'audio/today/date_'.date("n_j").'.m4a';
 			} else {
 				if(substr($file, -4, 4) === 'json') {
-					$lip[basename($file, ".json")] = '/' . $file;
+					$lip[basename($file, ".json")] = '//'.$_SERVER['HTTP_HOST'].'/'.$file;
 				}
 				if(substr($file, -3, 3) === 'm4a') {
-					$audio[basename($file, ".m4a")] = '/' . $file;
+					$audio[basename($file, ".m4a")] = Router::url('/', false) . $file;
 				}
 			}
 		}

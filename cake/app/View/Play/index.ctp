@@ -51,6 +51,7 @@
 	<?php echo $this->element('touch_body'); ?>
 
 	<span id='weather' onClick='weather();'></span>
+	<span id='weather_display' onClick='weather();'></span>
 	<span id='clock' onClick='clock();'></span>
 	<span id='affiliate'></span>
 
@@ -59,6 +60,7 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url("/mediaelement/mediaelementplayer.min.css"); ?>">
 	
 		<div id='main_player'>
+			<?php echo $this->Html->image('next.png', array('id'=>'next', 'alt'=>'次を再生', 'title'=>'次を再生')); ?>
 			<audio id='<?php echo AUDIO_BOOKS_FOLDER_NAME; ?>' controls="controls" onplay='start_reading();' onpause='stop_reading();' 
 					onvolumechange="$('audio').prop('volume', this.volume); $.cookie('volume', this.volume);">
 		 		<source src="<?php echo $audio[AUDIO_BOOKS_FOLDER_NAME]; ?>" type="audio/mp4">
@@ -79,13 +81,7 @@
 
 <div id='sidebar'>
 	<div id='audio_links'>
-		<h3>
-			<?php if($is_mobile) : ?>
-				【オーディオブック一覧】
-			<?php else : ?>
-				<img src='/img/audio_list.png'>
-			<?php endif; ?>
-		</h3>
+		<h3>【オーディオブック一覧】</h3>
 		<?php if($is_mobile) : ?>
 			<input style='margin-left:20px;' type="text" name="search" value="" id="search" placeholder='検索' />
 		<?php endif; ?>
@@ -115,11 +111,10 @@
 			$('#audio_links').animate({opacity:"0.2"});
 		</script>
 		<div id='recommendation'>
-			<p id='recommend_text'><a href='<?php echo $this->Html->url("/payment"); ?>'>月々300円で</a>、<br />
+			<p id='recommend_text'><a href='<?php echo $this->Html->url("/payment"); ?>'>月々324円で</a>、<br />
 			全ての朗読を聴くことができます。<br />手続きは<a href='<?php echo $this->Html->url("/payment"); ?>'>こちら</a>で行えます。</p>
 		</div>
 	<?php endif; ?>
 	<div id='affiliate_links'>
-		affiliate一覧
 	</div>
 </div>

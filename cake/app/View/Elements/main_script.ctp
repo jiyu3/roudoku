@@ -27,7 +27,6 @@
 	var nb_img = 1;
 	var nb_img_max;
 	var clocks = [];
-	var next_a_tag_id;
 	var page_change_stop = false;
 	var onclick_text = [];
 	<?php for($i=0; $i<count($onclick_text); $i++) : ?>
@@ -154,42 +153,7 @@
 							}
 						}).addClass('balloon');
 
-						page_change_count = audio['ending'].duration ? audio['ending'].duration : 5
-						page_change_stop = false;
 						interruptPlay(audio['ending'].id);
-						if(next_a_tag_id) {
-							if(is_mobile) {
-								var title_text = $('#'+next_a_tag_id).text();
-								var next_title = document.getElementById(next_a_tag_id).innerText;
-								$("#region_face").showBalloon({
-									contents:
-										'<div style="text-align:center;" id="go_next">次はこちらです<br />'+
-										'<span id="tmp"> </span></div>',
-									position: 'top',
-									css: {
-										zIndex: "6",
-										backgroundColor: "white"
-									}
-								}).addClass('balloon');
-								$('#'+next_a_tag_id).clone(true).insertAfter('#tmp');
-								$('#tmp').remove();
-							} else {
-								<?php if(isset($_GET['next']) && $_GET['next'] === 'auto') : ?>
-									var next_title = document.getElementById(next_a_tag_id).innerText;
-									$("#region_face").showBalloon({
-										contents:
-											'<div style="text-align:center;" id="go_next">あと<span id="timer">'+page_change_count+'</span>秒で以下のオーディオブックに移ります。<br />'+
-											'<a onclick=\'$("#"+next_a_tag_id).click();\' href="javascript:void(0);">'+next_title+'</a></div>',
-										position: 'top',
-										css: {
-											zIndex: "6",
-											backgroundColor: "white"
-										}
-									}).addClass('balloon');
-									pageChangeTimer(Math.ceil(page_change_count));
-								<?php endif; ?>
-							}
-						}
 					}, 1000);
 				}, false);
 			}, false);
@@ -244,13 +208,15 @@
 	 * string title オーディオブックのタイトル
 	 */
 	function refresh(title) {
-		next_a_tag_id = false;
 		for (var i=0; i<$('#audio_links a').length; i++) {
-			if($('#audio_links a').eq(i).attr('class') === title) {
-				next_a_tag_id = $('#audio_links a').eq(i+1).attr('id');
+			regexp = new RegExp(title);
+			if($('#audio_links a').eq(i).attr('class').match(regexp)) {
+				var next_a_tag_id = $('#audio_links a').eq(i+1).attr('id');
+				$('#next').attr('onclick', $('#'+next_a_tag_id).attr('onclick'));
 				break;
 			}
 		}
+		
 
 		$.get('/audio/'+audio_books_folder_name+'/'+title+'.json', function(json) {
 			lip[audio_books_folder_name] = json;
@@ -301,27 +267,6 @@
 // 				}
 			}
 		});
-	}
-
-	/**
-	 * 次のオーディオブック再生までの時間を表示し、0秒になったら再生する。
-	 * number time_left   残り時間（秒）
-	 */
-	function pageChangeTimer(time_left) {
-		if(page_change_stop) {
-			return false;
-		}
-
-		if(!time_left) {
-			$('#timer').html(time_left);
-			$('.balloon').hideBalloon();
-			page_change_stop = true;
-			$("#"+next_a_tag_id).click();
-			return true;
-		} else {
-			$('#timer').html(time_left);
-		}
-		return setTimeout(arguments.callee, 1000, time_left-1);
 	}
 
 	$(function(){
@@ -881,7 +826,7 @@
 	 * 現在地から天気を取得し、表示する。
 	 */
 	function weather() {
-		$("#weather").showBalloon({
+		$("#weather_display").showBalloon({
 			contents: '情報取得中…',
 			position: 'top',
 			css: {
@@ -893,15 +838,16 @@
 			var crd = pos.coords;
 			var lat = Math.round(crd.latitude);
 			var lon = + Math.round(crd.longitude);
-			$.get('/page/weather?lat='+lat+'&lon='+lon, function(w) {
-				weather = JSON.parse(w);
-				$("#weather").showBalloon({
-					contents: '天気：' + weather.weather[0]["main"],
+			$.get('/page/weather?lat='+lat+'&lon='+lon, function(json) {
+				w = JSON.parse(json);
+				$("#weather_display").showBalloon({
+					contents: '天気：' + w.weather[0]["main"],
 					position: 'top',
 					css: {
 						zIndex: "6"
 					}
 				}).addClass('balloon');
+				setTimeout(function(){$('#weather_display').hideBalloon();}, 2000);
 			});
 		};
 

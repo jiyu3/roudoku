@@ -17,7 +17,7 @@
 	}
 </script>
 <article>
-	<h2>【クレジットカード情報を入力】</h2>
+	<h2>【カード情報入力】</h2>
 	<div id='available_cards'>
 		<img src='/img/brands.png' width='30%' alt='<?php echo '利用可能カードは、VISA, MasterCard, JCB, Amex, DinersClubです。'; ?> ' />
 	</div>
@@ -66,9 +66,7 @@
 		</script>
 		<p id="due_date" class="check">
 			<span style="color:red;">現在、初月108円キャンペーン中です。<br />2015年7月度は108円でサービスを利用できます。<br /></span>
-			翌月以降は今回支払いをしたクレジットカードに自動的に課金されます。<br />
-			自動課金のタイミングは、毎月1日です。<br />
-			※2015年8月1日以降は月額324円（税込）となります。
+			翌月以降は毎月1日に自動的に課金されます。※2015年8月1日以降は月額324円（税込）です。
 		</p>
 	</span>
 	<?php echo $this->Form->end('/img/button/payment.png'); ?>

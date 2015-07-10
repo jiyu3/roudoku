@@ -1,0 +1,1 @@
+<?php echo file_get_contents("http://api.openweathermap.org/data/2.5/weather?lat={$_GET['lat']}&lon={$_GET['lon']}"); ?>
