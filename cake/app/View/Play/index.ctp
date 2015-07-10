@@ -60,7 +60,9 @@
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url("/mediaelement/mediaelementplayer.min.css"); ?>">
 	
 		<div id='main_player'>
-			<?php echo $this->Html->image('next.png', array('id'=>'next', 'alt'=>'次を再生', 'title'=>'次を再生')); ?>
+			<?php if($is_paying) : ?>
+				<?php echo $this->Html->image('next.png', array('id'=>'next', 'alt'=>'次を再生', 'title'=>'次を再生')); ?>
+			<?php endif; ?>
 			<audio id='<?php echo AUDIO_BOOKS_FOLDER_NAME; ?>' controls="controls" onplay='start_reading();' onpause='stop_reading();' 
 					onvolumechange="$('audio').prop('volume', this.volume); $.cookie('volume', this.volume);">
 		 		<source src="" type="audio/mp4">

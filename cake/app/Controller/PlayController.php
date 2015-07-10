@@ -11,8 +11,8 @@ class PlayController extends AppController {
  */
 	public $uses = array('Payment', 'User');
 	public $components = array('Cookie');
-	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
-	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門";
+	const DEFAULT_BOOK_TITLE = "時をかける少女~001~第1話";
+	const DEFAULT_BOOK_TITLE_LOGIN = "時をかける少女~001~第1話";
 	const DEFAULT_BOOK_TITLE_PAYMENT = "時をかける少女~001~第1話";
 	public $fps = 8;
 
