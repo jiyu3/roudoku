@@ -50,6 +50,7 @@
 	</div>
 	<?php echo $this->element('touch_body'); ?>
 
+	<span id='weather' onClick='weather();'></span>
 	<span id='clock' onClick='clock();'></span>
 	<span id='affiliate'></span>
 

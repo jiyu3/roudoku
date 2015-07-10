@@ -876,4 +876,39 @@
 		}
 		$(b_selecter+' '+d_selecter+':not('+e_selecter+')').css('display', 'none');
 	}
+
+	/**
+	 * 現在地から天気を取得し、表示する。
+	 */
+	function weather() {
+		$("#weather").showBalloon({
+			contents: '情報取得中…',
+			position: 'top',
+			css: {
+				zIndex: "6"
+			}
+		}).addClass('balloon');
+
+		function success(pos) {
+			var crd = pos.coords;
+			var lat = Math.round(crd.latitude);
+			var lon = + Math.round(crd.longitude);
+			var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon;
+			$.get(url, function(weather) {
+				$("#weather").showBalloon({
+					contents: '現在地の天気：' + weather.weather[0]["main"],
+					position: 'top',
+					css: {
+						zIndex: "6"
+					}
+				}).addClass('balloon');
+			});
+		};
+
+		function error(err) {
+			console.warn('ERROR(' + err.code + '): ' + err.message);
+		};
+
+		navigator.geolocation.getCurrentPosition(success, error);
+	}
 </script>

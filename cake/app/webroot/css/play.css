@@ -237,6 +237,14 @@
 	z-index: 6;
 }
 
+#weather {
+	position: absolute;
+	z-index: 6;
+	top: 70px;
+	width: 75px;
+	height: 75px;
+}
+
 #affiliate {
 	top: 230px;
 	left: -10px;

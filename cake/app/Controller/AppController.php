@@ -35,6 +35,9 @@ class AppController extends Controller {
 	 * ・ログインしてるユーザの情報をセッションに格納し、全てのページで使えるようにする
 	 */
 	public function beforeFilter(){
+		if($this->name === 'Play' && isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+			$this->redirect("http://{$_SERVER['SERVER_NAME']}/play/index");
+		}
 		if(strpos($_SERVER['SERVER_NAME'], 'www.') === 0) {
 			$server_name = substr($_SERVER['SERVER_NAME'], 4);
 			$this->redirect("https://{$server_name}");
@@ -52,8 +55,10 @@ class AppController extends Controller {
 		}
 
 		$this->Auth->allow();
-		$this->Security->blackHoleCallback = 'blackhole';
-		$this->Security->requireSecure();
+		if($this->name !== 'Play') {
+			$this->Security->blackHoleCallback = 'blackhole';
+			$this->Security->requireSecure();
+		}
 		$this->set('logged_in', $this->Auth->loggedIn());
 	}
 
