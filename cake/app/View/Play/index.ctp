@@ -118,4 +118,7 @@
 			全ての朗読を聴くことができます。<br />手続きは<a href='<?php echo $this->Html->url("/payment"); ?>'>こちら</a>で行えます。</p>
 		</div>
 	<?php endif; ?>
+	<div id='affiliate_links'>
+		affiliate一覧
+	</div>
 </div>
