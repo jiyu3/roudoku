@@ -211,16 +211,20 @@
 		for (var i=0; i<$('#audio_links a').length; i++) {
 			regexp = new RegExp(title);
 			if($('#audio_links a').eq(i).attr('class').match(regexp)) {
+				var current_a_tag_id = $('#audio_links a').eq(i).attr('id');
 				var next_a_tag_id = $('#audio_links a').eq(i+1).attr('id');
+				$.cookie('last_read', current_a_tag_id);
+				$('#'+current_a_tag_id).css('font-weight', 'bold');
 				$('#next').attr('onclick', $('#'+next_a_tag_id).attr('onclick'));
 				break;
 			}
 		}
-		
 
 		$.get('/audio/'+audio_books_folder_name+'/'+title+'.json', function(json) {
 			lip[audio_books_folder_name] = json;
 		});
+
+		document.getElementById(audio_books_folder_name).src = '/audio/'+audio_books_folder_name+'/'+title+'.m4a';
 
 		var common_title = title.slice(0, -4);
 		var nb_title = title.slice(-3, -1) + title.slice(-1);

@@ -12,7 +12,7 @@ class PlayController extends AppController {
 	public $uses = array('Payment', 'User');
 	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
 	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門";
-	const DEFAULT_BOOK_TITLE_PAYMENT = "ごん狐";
+	const DEFAULT_BOOK_TITLE_PAYMENT = "時をかける少女~001~第1話";
 	public $fps = 8;
 
 	public function beforeFilter() {
@@ -31,14 +31,18 @@ class PlayController extends AppController {
 	 */
 	public function index($title = null) {
 		if($this->Payment->isPaying($this->Auth->user('id'))) {
-			if(!$title || $title===self::DEFAULT_BOOK_TITLE) {
+			if(isset($_COOKIE['last_read']) && $title !== ($t = file_get_contents('audio/'.AUDIO_BOOKS_FOLDER_NAME."/{$_COOKIE['last_read']}.title"))) {
+				$this->redirect('index/' . $t);
+			} else if(!$title || $title === self::DEFAULT_BOOK_TITLE) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
 			}
 		} else if($this->Auth->loggedIn()) {
+			unset($_COOKIE['last_read']);
 			if($title !== self::DEFAULT_BOOK_TITLE_LOGIN) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_LOGIN);
 			}
 		} else {
+			unset($_COOKIE['last_read']);
 			if($title !== self::DEFAULT_BOOK_TITLE) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE);
 			}

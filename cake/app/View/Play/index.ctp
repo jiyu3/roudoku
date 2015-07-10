@@ -63,7 +63,7 @@
 			<?php echo $this->Html->image('next.png', array('id'=>'next', 'alt'=>'次を再生', 'title'=>'次を再生')); ?>
 			<audio id='<?php echo AUDIO_BOOKS_FOLDER_NAME; ?>' controls="controls" onplay='start_reading();' onpause='stop_reading();' 
 					onvolumechange="$('audio').prop('volume', this.volume); $.cookie('volume', this.volume);">
-		 		<source src="<?php echo $audio[AUDIO_BOOKS_FOLDER_NAME]; ?>" type="audio/mp4">
+		 		<source src="" type="audio/mp4">
 				お客様のブラウザはhtml5 オーディオをサポートしておりません。最新のブラウザをご利用下さい。
 			</audio>
 		</div>
@@ -90,7 +90,7 @@
 				<?php $i = 0; ?>
 				<?php if($is_paying) : ?>
 					<?php foreach($titles as $filename => $title) : ?>
-						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $i; ?>' class='<?php echo $filename; ?> no_pjax audio_title' onclick='<?php echo $onclick_text[$i++]; ?>'
+						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $filename; ?>' class='<?php echo $filename; ?> no_pjax audio_title' onclick='<?php echo $onclick_text[$i++]; ?>'
 								href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
 					<?php endforeach; ?>
 				<?php else : ?>
