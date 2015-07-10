@@ -38,4 +38,9 @@
 	<div>
 		<p><a href="/register/index">ユーザ登録をされていない方はこちら</a></p>
 	</div>
+	<?php if($this->App->isMobile()) : ?>
+		<div style='margin-top:20px;'>
+			<a href='/'>トップページへ</a>
+		</div>
+	<?php endif; ?>
 </article>

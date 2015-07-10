@@ -74,7 +74,7 @@ class UserController extends AppController {
 	 * ログアウトを行う。
 	 */
 	public function logout() {
-		$this->Cookie->delete('Auth');
+		$this->Cookie->destroy();
 		$this->Session->destroy();
 		$this->redirect($this->Auth->logout());
 	}

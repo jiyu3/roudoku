@@ -94,8 +94,8 @@
 								href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
 					<?php endforeach; ?>
 				<?php else : ?>
-					<?php foreach($titles as $title) : ?>
-						<tr><td>◆<span class='audio_title'><?php echo $title; ?></span></td></tr>
+					<?php foreach($titles as $filename => $title) : ?>
+						<tr><td>◆<span id='<?php echo $filename; ?>' class='audio_title'><?php echo $title; ?></span></td></tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
 			</tbody>

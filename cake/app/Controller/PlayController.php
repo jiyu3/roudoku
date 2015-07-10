@@ -10,6 +10,7 @@ class PlayController extends AppController {
  * @var array
  */
 	public $uses = array('Payment', 'User');
+	public $components = array('Cookie');
 	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
 	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門";
 	const DEFAULT_BOOK_TITLE_PAYMENT = "時をかける少女~001~第1話";
@@ -37,12 +38,10 @@ class PlayController extends AppController {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
 			}
 		} else if($this->Auth->loggedIn()) {
-			unset($_COOKIE['last_read']);
 			if($title !== self::DEFAULT_BOOK_TITLE_LOGIN) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_LOGIN);
 			}
 		} else {
-			unset($_COOKIE['last_read']);
 			if($title !== self::DEFAULT_BOOK_TITLE) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE);
 			}
@@ -103,7 +102,9 @@ class PlayController extends AppController {
 		if(!$title || !file_exists('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.m4a')) {
 			$this->redirect('index');
 		}
-		unset($titles[array_search(self::DEFAULT_BOOK_TITLE, $titles)]);
+		if($this->Auth->loggedIn()) {
+			unset($titles[array_search(self::DEFAULT_BOOK_TITLE, $titles)]);
+		}
 
 		$files = $this->getFileList("audio");
 		$today = date("n_j");

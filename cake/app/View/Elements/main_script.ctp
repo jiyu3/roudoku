@@ -23,7 +23,7 @@
 	var lip = [];
 	var subtitles;
 	var evnt = [];
-	var current_a_tag_id;
+	var current_a_tag_id = '<?php echo $current_filename ?>';
 	var next_a_tag_id;
 	var affiliate_txt;
 	var nb_img = 1;
@@ -198,6 +198,8 @@
 				){
 					$.cookie(time['month']+'/'+time['day'], 'played', {expires:1});
 					interruptPlay('today');
+				} else if(is_mobile) {
+					document.getElementById(audio_books_folder_name).play();
 				}
 				$('#loading').remove();
 			});
@@ -214,11 +216,19 @@
 			regexp = new RegExp(title);
 			if($('#audio_links a').eq(i).attr('class').match(regexp)) {
 				current_a_tag_id = $('#audio_links a').eq(i).attr('id');
-				next_a_tag_id = $('#audio_links a').eq(i+1).attr('id');
+				next_a_tag = $('#audio_links a').eq(i+1);
+				if(next_a_tag.length) {
+					next_a_tag_id = next_a_tag.attr('id');
+				} else {
+					next_a_tag_id = $('#audio_links a').eq(0).attr('id');
+				}
 				$.cookie('last_read', current_a_tag_id);
+				$('#audio_links a').css('font-weight', 'normal');
 				$('#'+current_a_tag_id).css('font-weight', 'bold');
 				$('#next').attr('onclick', $('#'+next_a_tag_id).attr('onclick'));
 				break;
+			} else {
+				$.removeCookie('last_read');
 			}
 		}
 
@@ -435,7 +445,7 @@
 	}
 
 	function start_reading() {
-		$('#setting_open').fadeOut('slow');
+		$('#setting_open, #user').fadeOut('slow');
 
 		document.getElementById('BGM').pause();
 
@@ -444,7 +454,7 @@
 	}
 
 	function stop_reading() {
-		$('#setting_open').fadeIn('slow');
+		$('#setting_open, #user').fadeIn('slow');
 
 		stopAll('ending');
 		document.getElementById('BGM').play();

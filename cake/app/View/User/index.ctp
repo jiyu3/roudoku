@@ -24,5 +24,8 @@
 		<div style='margin-top:20px;'>
 			<a href='/'>トップページへ</a>
 		</div>
+		<div style='margin-top:10px;'>
+			<a href='/user/logout'>ログアウト</a>
+		</div>
 	<?php endif; ?>
 </article>
