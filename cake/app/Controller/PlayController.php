@@ -49,7 +49,7 @@ class PlayController extends AppController {
 	}
 	
 	public function make() {
-		require APP . 'Vendor/Wave.php';
+		require APP . 'Vendor/wave.php';
 		ini_set('memory_limit', -1);
 		ini_set('max_execution_time', -1);
 		$files = $this->getFileList('audio');

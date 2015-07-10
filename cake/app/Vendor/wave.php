@@ -1,7 +1,7 @@
 <?php
 require 'dBug.php';
 
-class Wave {
+class wave {
 
 	var $fp, $filesize;
 	var $data, $blocktotal, $blockfmt, $blocksize;

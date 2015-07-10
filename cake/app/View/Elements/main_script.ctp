@@ -893,10 +893,10 @@
 			var crd = pos.coords;
 			var lat = Math.round(crd.latitude);
 			var lon = + Math.round(crd.longitude);
-			var url = 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon;
-			$.get(url, function(weather) {
+			$.get('/page/weather?lat='+lat+'&lon='+lon, function(w) {
+				weather = JSON.parse(w);
 				$("#weather").showBalloon({
-					contents: '現在地の天気：' + weather.weather[0]["main"],
+					contents: '天気：' + weather.weather[0]["main"],
 					position: 'top',
 					css: {
 						zIndex: "6"

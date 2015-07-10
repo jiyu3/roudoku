@@ -39,6 +39,13 @@ class PageController extends AppController {
 	}
 
 	/**
+	 * 天気表示ページ
+	 */
+	public function weather() {
+		$this->set('title_for_layout', '天気 - ' . SERVICE_NAME);
+	}
+
+	/**
 	 * 共通エラー画面
 	 */
 	public function error() {
