@@ -164,7 +164,8 @@
 							contents: affiliate_txt,
 							position: 'bottom',
 							css: {
-								zIndex: "6"
+								zIndex: "6",
+								opacity: "0.7"
 							}
 						}).addClass('balloon');
 
@@ -212,7 +213,8 @@
 							contents: 'このブラウザでは動作が<br />不安定になるかもしれません。<br /><a href="https://www.google.com/chrome/browser/desktop/">Chromeが推奨ブラウザです</a>。',
 							position: 'bottom',
 							css: {
-								zIndex: "6"
+								zIndex: "6",
+								opacity: "0.7"
 							}
 						}).addClass('balloon');
 						$.cookie('unsupport_warned', 'true');
@@ -225,7 +227,8 @@
 								contents: campaign_txt,
 								position: 'bottom',
 								css: {
-									zIndex: "6"
+									zIndex: "6",
+									opacity: "0.7"
 								}
 							}).addClass('balloon');
 						} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
@@ -877,7 +880,8 @@
 			contents: '情報取得中…',
 			position: 'top',
 			css: {
-				zIndex: "6"
+				zIndex: "6",
+				opacity: "0.7"
 			}
 		}).addClass('balloon');
 
@@ -891,7 +895,8 @@
 					contents: '天気：' + w.weather[0]["main"],
 					position: 'top',
 					css: {
-						zIndex: "6"
+						zIndex: "6",
+						opacity: "0.7"
 					}
 				}).addClass('balloon');
 				setTimeout(function(){$('#weather_display').hideBalloon();}, 2000);
