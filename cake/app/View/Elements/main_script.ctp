@@ -41,6 +41,7 @@
 	if(!is_mobile) {
 		setTopByHours();
 	}
+	var unsupported = false;
 
 	/*
 	 * DOMが全て読み込み終わった際の初期化関数。
@@ -51,7 +52,9 @@
 			skip = false;
 		}
 
-		if((ua.indexOf('windows')==-1 || (ua.indexOf('6.2')==-1 && ua.indexOf('6.3')==-1)) && ua.indexOf('firefox')==-1) { // Windows8/8.1 の Firefox の場合を除外
+		if(ua.indexOf('windows')!=-1 && (ua.indexOf('6.2')!=-1 || ua.indexOf('6.3')!=-1) && ua.indexOf('firefox')!=-1) { // Windows8/8.1 の Firefox の場合を除外
+			unsupported = true;
+		} else {
 			if(ua.indexOf("msie")!=-1 || ua.indexOf("rident")!=-1 || ua.indexOf('firefox')!=-1) { // firefox か IE の場合
 				$('#main_screen img').css('display', 'inline');
 			}
@@ -91,7 +94,9 @@
 		refresh("<?php echo $current_filename; ?>");
 
 		if(document.getElementById('mep_0') === null) {
-			if(is_mobile || ua.indexOf('safari') == -1) {
+			if(!is_mobile && ua.indexOf('safari')!=-1) {
+				unsupported = true;
+			} else {
 				$('#'+audio_books_folder_name).mediaelementplayer({
 					audioWidth: 300,
 				});
@@ -200,25 +205,39 @@
 			showImage(1, 1);
 			$('#loading').fadeOut(1000, function(){
 				loop();
-				$.get('/page/campaign?is_paying='+is_paying+'&logged_in='+logged_in, function(campaign_txt){
-					time = getTime(['month', 'day']);
-					if(campaign_txt) {
+
+				if(unsupported) {
+					if($.cookie('unsupport_warned') !== 'true') {
 						$("#affiliate").showBalloon({
-							contents: campaign_txt,
+							contents: 'このブラウザでは動作が<br />不安定になるかもしれません。<br /><a href="https://www.google.com/chrome/browser/desktop/">Chromeが推奨ブラウザです</a>。',
 							position: 'bottom',
 							css: {
 								zIndex: "6"
 							}
 						}).addClass('balloon');
-					} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
-						!$.cookie(time['month']+'/'+time['day'])
-					){
-						$.cookie(time['month']+'/'+time['day'], 'played', {expires:1});
-						interruptPlay('today');
-					} else if(is_mobile) {
-						document.getElementById(audio_books_folder_name).play();
+						$.cookie('unsupport_warned', 'true');
 					}
-				});
+				} else {
+					$.get('/page/campaign?is_paying='+is_paying+'&logged_in='+logged_in, function(campaign_txt){
+						time = getTime(['month', 'day']);
+						if(campaign_txt) {
+							$("#affiliate").showBalloon({
+								contents: campaign_txt,
+								position: 'bottom',
+								css: {
+									zIndex: "6"
+								}
+							}).addClass('balloon');
+						} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
+							!$.cookie(time['month']+'/'+time['day'])
+						){
+							$.cookie(time['month']+'/'+time['day'], 'played', {expires:1});
+							interruptPlay('today');
+						} else if(is_mobile) {
+							document.getElementById(audio_books_folder_name).play();
+						}
+					});
+				}
 
 				$('#loading').remove();
 			});
