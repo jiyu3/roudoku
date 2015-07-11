@@ -42,7 +42,7 @@ class EmailConfig {
 		'host' => 'noumenonjp.sakura.ne.jp',
 		'port' => 587,
 		'username' => 'info@noumenonjp.sakura.ne.jp',
-		'password' => 'pheno1192',
+		'password' => '12noumenon34',
 		'transport' => 'Smtp',
 	);
 
