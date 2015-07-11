@@ -141,7 +141,7 @@
 	top: 0;
 	z-index: 4;
 	width: 90%;
-	height: 480px;
+	height: 20%;
 	margin-top: 50%;
 	margin-left: 5%;
 }
@@ -196,7 +196,7 @@
 	background-size: contain;
 	text-align:left;
 	top: 0;
-	width: 640px;
+	width: 320px;
 	height: 480px;
 	position: absolute;
 	z-index: 3;

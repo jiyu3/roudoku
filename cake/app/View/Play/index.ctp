@@ -118,6 +118,6 @@
 		</div>
 	<?php endif; ?>
 	<div id='affiliate_links'>
-		<iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?t=roudokushoujo-22&o=9&p=12&l=bn1&mode=books-jp&browse=202188011&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="320" height="100" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>
+		<iframe style='margin-left:10px;' src="https://rcm-fe.amazon-adsystem.com/e/cm?t=roudokushoujo-22&o=9&p=12&l=bn1&mode=books-jp&browse=202188011&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="320" height="100" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>
 	</div>
 </div>
