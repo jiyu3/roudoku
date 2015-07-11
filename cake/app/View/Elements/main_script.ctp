@@ -196,15 +196,26 @@
 			showImage(1, 1);
 			$('#loading').fadeOut(1000, function(){
 				loop();
-				time = getTime(['month', 'day']);
-				if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
-					!$.cookie(time['month']+'/'+time['day'])
-				){
-					$.cookie(time['month']+'/'+time['day'], 'played', {expires:1});
-					interruptPlay('today');
-				} else if(is_mobile) {
-					document.getElementById(audio_books_folder_name).play();
-				}
+				$.get('/page/campaign?is_paying='+is_paying+'&logged_in='+logged_in, function(campaign_txt){
+					time = getTime(['month', 'day']);
+					if(campaign_txt) {
+						$("#affiliate").showBalloon({
+							contents: campaign_txt,
+							position: 'bottom',
+							css: {
+								zIndex: "6"
+							}
+						}).addClass('balloon');
+					} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
+						!$.cookie(time['month']+'/'+time['day'])
+					){
+						$.cookie(time['month']+'/'+time['day'], 'played', {expires:1});
+						interruptPlay('today');
+					} else if(is_mobile) {
+						document.getElementById(audio_books_folder_name).play();
+					}
+				});
+
 				$('#loading').remove();
 			});
 		}
@@ -449,6 +460,7 @@
 	}
 
 	function start_reading() {
+		$('.balloon').hideBalloon();
 		document.getElementById('BGM').pause();
 
 		otoha['state'] = 'read';

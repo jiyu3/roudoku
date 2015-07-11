@@ -123,7 +123,7 @@
 				全ての朗読を聴くことができます。<br />手続きは<a href='/payment'>こちら</a>で行えます。</p>
 			<?php else : ?>
 				<p id='recommend_text'><a href='/register'>新規登録すれば</a>、<br />
-				完全版を聴くことができます。<br />登録済みの方は<a href='<?php echo $this->Html->url("/user/login"); ?>'>こちら</a>でログインしてください。</p>
+				完全版を聴くことができます。<br />登録済みの方は<a href='<?php echo $this->Html->url("/user/login"); ?>'>ログインしてください</a>。</p>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>

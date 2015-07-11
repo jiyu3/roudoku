@@ -1,1 +1,1 @@
-<a href='/register'>新規登録</a>して続きを聞いて下さい。<br />登録済みの方は<a href='/user/login'>ログイン</a>して下さい。<br />
+<a href='/register'>登録すると</a>続きが聴けますよ。<br />登録済なら<a href='/user/login'>ログインして下さい</a>。<br />

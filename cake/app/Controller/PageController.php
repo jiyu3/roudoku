@@ -39,10 +39,17 @@ class PageController extends AppController {
 	}
 
 	/**
-	 * 天気表示ページ
+	 * 天気表示ページ(javascriptからの読み込み専用)
 	 */
 	public function weather() {
 		$this->set('title_for_layout', '天気 - ' . SERVICE_NAME);
+	}
+
+	/**
+	 * キャンペーン情報表示ページ(javascriptからの読み込み専用)
+	 */
+	public function campaign() {
+		$this->set('title_for_layout', 'キャンペーン - ' . SERVICE_NAME);
 	}
 
 	/**
