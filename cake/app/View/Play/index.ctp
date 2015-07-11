@@ -126,5 +126,6 @@
 		</div>
 	<?php endif; ?>
 	<div id='affiliate_links'>
+		<iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?t=tok0c-22&o=9&p=12&l=bn1&mode=hobby-jp&browse=2189356051&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="120" border="0" frameborder="0" style="margin-left:10px;" scrolling="no"></iframe>
 	</div>
 </div>
