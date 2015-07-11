@@ -18,7 +18,7 @@ class MyEmailComponent extends Component {
 		}
 		$email_sender = new CakeEmail();
 		$email_sender->config('noumenon');
-		$sent = $email_sender->from(array($from => 'Noumenon'))
+		$sent = $email_sender->from(array($from => PROVIDER_NAME))
 			->to($to)
 			->subject($subject)
 			->emailFormat('text')

@@ -43,7 +43,7 @@ class EmailConfig {
 		'port' => 587,
 		'username' => 'info@noumenonjp.sakura.ne.jp',
 		'password' => 'pheno1192',
-		'transport' => 'Smtp'
+		'transport' => 'Smtp',
 	);
 
 	public $default = array(

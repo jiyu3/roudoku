@@ -31,8 +31,15 @@ class RegisterController extends AppController {
 					return false;
 				}
 
-				$content = "仮登録が完了しました。以下のURLをクリックして本登録に進んでください。". "\n" .
-					"https://{$_SERVER['SERVER_NAME']}/register/add/?key={$regist_key}";
+				$content = "このたびは「朗読少女」にご登録いただき、" . "\n" .
+						"誠にありがとうございます。" . "\n" .
+						"仮登録の手続きが完了しましたのでご連絡いたします。" . "\n" .
+						"―――――――――――――――――――――――――――――――――――" . "\n" .
+						"以下のURLをクリックして本登録に進んでください。" . "\n" .
+						"URLが改行されてしまっている場合は、" . "\n" .
+						"お手数ですが全てつなげて閲覧していただけますようお願い申し上げます。" . "\n" .
+						"https://{$_SERVER['SERVER_NAME']}/register/add/?key={$regist_key}" . "\n\n" .
+						"※このメールに心当たりが無い場合は破棄して頂いて構いません。\n";
 				$sent = $this->MyEmail->send(
 					$content,
 					'['. SERVICE_NAME .']' . '仮登録完了',
