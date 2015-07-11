@@ -17,6 +17,10 @@ class PageController extends AppController {
 	 * /user/loginにリダイレクトされる。
 	 */
 	public function beforeFilter() {
+		if($this->Session->read('from.login')) {
+			$this->Session->delete('from.login');
+			$this->redirect('index');
+		}
 		parent::beforeFilter();
 	}
 

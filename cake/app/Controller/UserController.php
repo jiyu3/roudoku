@@ -63,6 +63,7 @@ class UserController extends AppController {
 						$this->Cookie->write('Auth', $data, true, '+1000 years');
 					}
 					$this->Session->delete('User.email');
+					$this->Session->write('from.login', true);
 					$this->redirect($this->Session->read('redirect_url'));
 				}
 				$this->Auth->logout();
