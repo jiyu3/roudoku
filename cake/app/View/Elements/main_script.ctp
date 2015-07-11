@@ -869,6 +869,7 @@
 
 		function error(err) {
 			console.warn('ERROR(' + err.code + '): ' + err.message);
+			$('#weather_display').hideBalloon();
 		};
 
 		navigator.geolocation.getCurrentPosition(success, error);

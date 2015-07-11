@@ -61,7 +61,7 @@
 	
 		<div id='main_player'>
 			<?php if($is_paying) : ?>
-				<?php echo $this->Html->image('next.png', array('id'=>'next', 'alt'=>'次を再生', 'title'=>'次を再生')); ?>
+				<?php echo $this->Html->image('next.png', array('id'=>'next', 'title'=>'次を再生')); ?>
 			<?php endif; ?>
 			<audio id='<?php echo AUDIO_BOOKS_FOLDER_NAME; ?>' controls="controls" onplay='start_reading();' onpause='stop_reading();' 
 					onvolumechange="$('audio').prop('volume', this.volume); $.cookie('volume', this.volume);">
@@ -118,5 +118,6 @@
 		</div>
 	<?php endif; ?>
 	<div id='affiliate_links'>
+		<iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?t=roudokushoujo-22&o=9&p=12&l=bn1&mode=books-jp&browse=202188011&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="320" height="100" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>
 	</div>
 </div>
