@@ -144,8 +144,6 @@
 				init2_2(false);
 				$('#bumper').fadeOut('slow', function(){$(this).remove();});
 				document.getElementById(audio_books_folder_name).addEventListener('ended', function(){
-					stopAll('ending');
-
 					setTimeout(function(){
 						$("#affiliate").showBalloon({
 							contents: affiliate_txt,
@@ -456,7 +454,6 @@
 	function stop_reading() {
 		$('#setting_open, #user').fadeIn('slow');
 
-		stopAll('ending');
 		document.getElementById('BGM').play();
 
 		if(/touch/.test(otoha['feature'])) {
@@ -701,17 +698,14 @@
 
 	/**
 	 * 現在再生中のオーディオを全て停止する。ただし、BGMは除く。
-	 * exception_id 例外とするオーディオのID。BGMとこのオーディオは停止しない。
 	 */
-	function stopAll(exception_id) {
+	function stopAll() {
 		var playing;
 		while(1) {
 			playing = getPlayingAudio();
 			if(playing) {
-				if(playing.id !== exception_id) {
-					playing.pause();
-					playing.currentTime = 0;
-				}
+				playing.pause();
+				playing.currentTime = 0;
 			} else {
 				break;
 			}
