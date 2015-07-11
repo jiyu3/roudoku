@@ -81,7 +81,7 @@ class User extends AppModel {
 	/**
 	 * 実際にユーザを本登録する。
 	 * @param  string $email       メールアドレス
-	 * @param  string $name        名前
+	 * @param  string $name        アカウント名
 	 * @param  string $password    パスワード(半角8文字以上)
 	 * @return boolean             ユーザ登録が成功したらtrue、失敗したらfalse
 	 */

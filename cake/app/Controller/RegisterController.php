@@ -91,7 +91,7 @@ class RegisterController extends AppController {
 				$this->ProvisionalRegistration->deleteProvisionalRegistration($regist_key_url);
 				$content = SERVICE_NAME . "への新規登録が完了しました。" . "\n" .
 					'メールアドレス' . ': ' . $email . "\n" .
-					'お名前' . ': ' . $this->request->data['User']['name'] . "\n" .
+					'アカウント名' . ': ' . $this->request->data['User']['name'] . "\n" .
 					'パスワード' . ': ' . "安全のため表示しません" . "\n";
 				$this->MyEmail->send($content, '[' . SERVICE_NAME . ']' . '新規登録完了', $email);
 				$this->Session->write('Register.from_add', true);

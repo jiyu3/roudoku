@@ -31,7 +31,7 @@
 			'name',
 			array(
 				'type' => 'text',
-				'label' => 'お名前'
+				'label' => 'アカウント名'
 			)
 		);
 		echo $this->Form->input(

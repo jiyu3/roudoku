@@ -1,6 +1,7 @@
 <script type="text/javascript">
 	function showSubmit() {
-		$('form .submit').fadeIn(200);
+		$('#payment_notice').fadeIn(200);
+		$('#due_date').fadeOut(200);
 	}
 
 	function paymentConfirm() {
@@ -66,11 +67,13 @@
 		</script>
 		<p id="due_date" class="check">
 			<span style="color:red;">現在、初月108円キャンペーン中です。<br />2015年7月度は108円でサービスを利用できます。<br /></span>
-			翌月以降は毎月1日に自動的に課金されます。※2015年8月1日以降は月額324円（税込）です。
+			翌月以降は毎月1日に自動的に課金されます。<br />※2015年8月1日以降は月額324円（税込）です。
 		</p>
 	</span>
-	<?php echo $this->Form->end('/img/button/payment.png'); ?>
-	<style>form .submit{ display:none; }</style>
+	<div id='payment_notice' style='display:none; margin-top:40px;'>
+		<div style='color:red; margin-bottom:10px; font-weight:bold; text-align:center;'>※以下のボタンを押すと、課金が完了します。<br />↓</div>
+		<?php echo $this->Form->end('/img/button/payment.png'); ?>
+	</div>
 	<?php if($this->App->isMobile()) : ?>
 		<a class="cancel" href="/"><?php echo 'トップページへ戻る';?></a>
 	<?php endif; ?>

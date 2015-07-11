@@ -6,7 +6,7 @@
 		<div><?php echo $email; ?>　<a href="/user/edit_email"><img src='/img/button/change_small.png'></a></div>
 	</div>
 	<div class='user_info'>
-		<label>名前</label>
+		<label>アカウント名</label>
 		<div><?php echo $name; ?></div>
 	</div>
 	<div class='user_info'>

@@ -22,7 +22,7 @@
 			'name',
 			array(
 				'type' => 'text',
-				'label' => '名前',
+				'label' => 'アカウント名',
 				'default' => $name
 			)
 		);
