@@ -94,7 +94,6 @@
 		} else {
 			document.getElementById(audio_books_folder_name).pause();
 			$('#'+audio_books_folder_name).attr('src', '/audio/'+audio_books_folder_name+'/'+<?php echo $current_filename; ?>+'.m4a');
-			document.getElementById(audio_books_folder_name).load();
 		}
 		if(!is_mobile) {
 	 		$('.mejs-time-rail').width(90);
