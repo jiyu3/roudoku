@@ -89,9 +89,11 @@
 		refresh("<?php echo $current_filename; ?>");
 
 		if(document.getElementById('mep_0') === null) {
-			$('#'+audio_books_folder_name).mediaelementplayer({
-				audioWidth: 300,
-			});
+			if(is_mobile || ua.indexOf('safari') == -1) {
+				$('#'+audio_books_folder_name).mediaelementplayer({
+					audioWidth: 300,
+				});
+			}
 			$('.mejs-playpause-button button').attr('id', 'play_button');
 		} else {
 			document.getElementById(audio_books_folder_name).pause();
