@@ -33,7 +33,7 @@ class User extends AppModel {
 	 */
 	public function beforeSave($option = array()) {
 		parent::beforeSave();
-		if(isset($this->data['User']['password']) && $this->data['User']['password'] < 20) {
+		if(isset($this->data['User']['password']) && strlen($this->data['User']['password']) < 20) {
 			$passwordHasher = new SimplePasswordHasher();
 			$this->data['User']['password'] = $passwordHasher->hash($this->data['User']['password']);
 		}
