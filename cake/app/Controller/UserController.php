@@ -246,11 +246,19 @@ class UserController extends AppController {
 				return false;
 			}
 			$this->Session->write('User.from_cancel', true);
+
 			$this->User->id = $this->Auth->user('id');
-			$this->request->data['User']['deleted'] = date("Y-m-d H:i:s");
-			if($this->Payment->cancel($this->Auth->user('id')) && $this->User->save($this->request->data)) {
-				$this->Auth->logout();
-				$this->redirect('cancel_finish');
+			$this->request->data['User']['email'] = str_replace('@', '#', $this->Auth->user('email'));
+			if($this->Payment->isPaying($this->Auth->user('id'))) {
+				if($this->Payment->cancel($this->Auth->user('id')) && $this->User->save($this->request->data, false)) {
+					$this->Auth->logout();
+					$this->redirect('cancel_finish');
+				}
+			} else {
+				if($this->User->save($this->request->data, false)) {
+					$this->Auth->logout();
+					$this->redirect('cancel_finish');
+				}
 			}
 			$this->redirect('/page/error');
 		}
