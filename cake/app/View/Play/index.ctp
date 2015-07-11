@@ -33,11 +33,16 @@
 			array('id'=>'setting_open', 'onclick'=>"$('.balloon').hideBalloon(); $('#sidebar, #setting_close').fadeIn();"));
 		echo $this->Html->image('window_close.png',
 			array('id'=>'setting_close', 'onclick'=>"$('#sidebar, #setting_close').fadeOut();"));
-		echo $this->Html->image('user.png',
-			array('id'=>'user', 'onclick'=>"location.href='/user'"));
+		if($logged_in) {
+			echo $this->Html->image('user.png',
+				array('id'=>'user', 'onclick'=>"location.href='/user'"));
+		} else {
+			echo $this->Html->image('user.png',
+				array('id'=>'user', 'onclick'=>"location.href='/register'"));
+		}
 	}
 ?>
-<input class='no_disabled' id='skip' type='image' src='<?php echo Router::url('/', false); ?>img/skip.png' onclick='skip();'>
+<input class='no_disabled' id='skip' type='image' src='/img/skip.png' onclick='skip();'>
 <div id='main_screen'>
 	<img id='main_background'>
 	<img id='event_background'>
@@ -75,7 +80,7 @@
 		</script>
 	</div>
 	<div class='reload'>
-		<?php echo $this->element('main_script', array('lip'=>$lip, 'fps'=>$fps, 'current_filename'=>$current_filename, 'onclick_text'=>$onclick_text)); ?>
+		<?php echo $this->element('main_script', array('lip'=>$lip, 'fps'=>$fps, 'current_filename'=>$current_filename, 'onclick_text'=>$onclick_text, 'is_paying'=>$is_paying, 'logged_in'=>$logged_in)); ?>
 	</div>
 
 	<div id='subtitles'></div>
@@ -113,8 +118,13 @@
 			$('#audio_links').animate({opacity:"0.2"});
 		</script>
 		<div id='recommendation'>
-			<p id='recommend_text'><a href='<?php echo $this->Html->url("/payment"); ?>'>月々324円で</a>、<br />
-			全ての朗読を聴くことができます。<br />手続きは<a href='<?php echo $this->Html->url("/payment"); ?>'>こちら</a>で行えます。</p>
+			<?php if($logged_in) : ?>
+				<p id='recommend_text'><a href='/payment'>月々324円で</a>、<br />
+				全ての朗読を聴くことができます。<br />手続きは<a href='/payment'>こちら</a>で行えます。</p>
+			<?php else : ?>
+				<p id='recommend_text'><a href='/register'>新規登録すれば</a>、<br />
+				完全版を聴くことができます。<br />登録済みの方は<a href='<?php echo $this->Html->url("/user/login"); ?>'>こちら</a>でログインしてください。</p>
+			<?php endif; ?>
 		</div>
 	<?php endif; ?>
 	<div id='affiliate_links'>

@@ -36,6 +36,8 @@
 	<?php endfor; ?>
 	var ua = window.navigator.userAgent.toLowerCase();
 	var url = false;
+	var logged_in = <?php echo $logged_in ? 1 : 0; ?>;
+	var is_paying = <?php echo $is_paying ? 1 : 0; ?>;
 	if(!is_mobile) {
 		setTopByHours();
 	}
@@ -144,6 +146,10 @@
 				init2_2(false);
 				$('#bumper').fadeOut('slow', function(){$(this).remove();});
 				document.getElementById(audio_books_folder_name).addEventListener('ended', function(){
+					$('.balloon').hideBalloon();
+					if(logged_in && !is_paying) {
+						affiliate_txt = '<a href="/payment">月々324円</a>で全ての朗読を<br />聴けますよ。';
+					}
 					setTimeout(function(){
 						$("#affiliate").showBalloon({
 							contents: affiliate_txt,
@@ -443,8 +449,6 @@
 	}
 
 	function start_reading() {
-		$('#setting_open, #user').fadeOut('slow');
-
 		document.getElementById('BGM').pause();
 
 		otoha['state'] = 'read';
@@ -452,8 +456,6 @@
 	}
 
 	function stop_reading() {
-		$('#setting_open, #user').fadeIn('slow');
-
 		document.getElementById('BGM').play();
 
 		if(/touch/.test(otoha['feature'])) {

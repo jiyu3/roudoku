@@ -272,7 +272,7 @@
 #subtitles {
 	font-size: 16px;
 	line-height: 26px;
-	top: 75%;
+	top: 72%;
 	left: 8%;
 	width: 240px;
 	height: 80px;
@@ -285,7 +285,7 @@
 
 /* player start */
 #main_player {
-	top: 90%;
+	top: 88%;
 	left: 10px;
 	z-index: 10;
 	width: 300px;

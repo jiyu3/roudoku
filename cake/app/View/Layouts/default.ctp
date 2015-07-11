@@ -32,6 +32,7 @@
 	<meta property="og:site_name" content="<?php echo SERVICE_NAME; ?>"/>
 	<meta property="fb:app_id" content="1450212918616270"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="twitter:widgets:csp" content="on">
 	<?php include_once(APP . 'Vendor/analyticstracking.php'); ?>
 	<script type='text/javascript'>
 		$(function() {

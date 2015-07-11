@@ -13,7 +13,7 @@ class PlayController extends AppController {
 	public $components = array('Cookie');
 	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
 	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門";
-	const DEFAULT_BOOK_TITLE_PAYMENT = "時をかける少女~001~第1話";
+	const DEFAULT_BOOK_TITLE_PAYMENT = "ごん狐";
 	public $fps = 8;
 
 	public function beforeFilter() {
