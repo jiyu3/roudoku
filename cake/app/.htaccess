@@ -10,6 +10,12 @@
 	Header set Pragma no-cache
 	Header set Cache-Control no-cache
 </Files>
+<Files ~ "\.(m4a|srt|subtitles|title|wav)$">
+	SetEnvIf Referer "^https://roudoku" ref_ok
+	order deny,allow
+	deny from all
+	allow from env=ref_ok
+</Files>
 AddType audio/aac .aac
 AddType audio/mp4 .mp4 .m4a
 AddType audio/mpeg .mp1 .mp2 .mp3 .mpg .mpeg
