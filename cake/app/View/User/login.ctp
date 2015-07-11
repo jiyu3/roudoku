@@ -21,7 +21,7 @@
 			)
 		);
 	?>
-	<div style='margin-top:-20px; font-size:12px; margin-bottom:20px;'>
+	<div style='margin-top:-15px; font-size:12px; margin-bottom:20px;'>
 		<a href="/user/password_reset">パスワードを忘れた方はこちら</a>
 	</div>
 	<?php
