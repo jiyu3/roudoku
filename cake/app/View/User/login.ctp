@@ -11,6 +11,7 @@
 			array(
 				'type' => 'text',
 				'label' => 'メールアドレス',
+				'default' => isset($email) ? $email : ''
 			)
 		);
 		echo $this->Form->input(

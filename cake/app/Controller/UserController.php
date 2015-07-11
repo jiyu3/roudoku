@@ -50,7 +50,7 @@ class UserController extends AppController {
 			}
 			$this->Cookie->delete('Auth');
 		}
-		
+
 		if($this->request->is('post')) {
 			if(!isset($this->request->data['User']['remember_me'])) {
 				$this->request->data['User']['remember_me'] = false;
@@ -62,12 +62,15 @@ class UserController extends AppController {
 						$data = $this->request->data;
 						$this->Cookie->write('Auth', $data, true, '+1000 years');
 					}
+					$this->Session->delete('User.email');
 					$this->redirect($this->Session->read('redirect_url'));
 				}
 				$this->Auth->logout();
 			}
 			$this->set('error', 'ユーザ名かパスワードが違います。');
 		}
+
+		$this->set('email', $this->Session->read('User.email'));
 	}
 	
 	/**

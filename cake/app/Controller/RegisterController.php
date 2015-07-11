@@ -95,6 +95,7 @@ class RegisterController extends AppController {
 					'パスワード' . ': ' . "安全のため表示しません" . "\n";
 				$this->MyEmail->send($content, '[' . SERVICE_NAME . ']' . '新規登録完了', $email);
 				$this->Session->write('Register.from_add', true);
+				$this->Session->write('User.email', $email);
 				$this->redirect('finish');
 			} else {
 				$this->setErrorMessage();

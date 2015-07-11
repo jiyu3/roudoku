@@ -1,5 +1,6 @@
 <article>
 	<h2>【新規登録】</h2>
+	<p>※登録済みの方は<a href='/user/login'>こちら</a>からログインできます。</p>
 	<p>新規登録を行います。お使いのメールアドレスを入力してください。</p>
 	<?php if(isset($error)) : ?>
 		<div style="color:red; margin-top: 20px;">
