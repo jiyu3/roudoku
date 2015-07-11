@@ -9,6 +9,30 @@ class User extends AppModel {
 		'email' => array(
 			'1' => array (
 				'rule' => 'isUnique',
+				'message' => 'このメールアドレスはすでに使用されています。',
+			),
+			'2' => array (
+				'rule' => 'email',
+				'message' => '正しいメールアドレスを入力してください。',
+			)
+		),
+		'name' => array(
+			'rule' => array('between', 1, 20),
+			'message' => '氏名は20文字以内にしてください。',
+			'allowEmpty' => false,
+			'last' => false
+		),
+		'password' => array(
+			'rule' => array('between', 8, 20),
+			'message' => 'パスワードは8文字以上20文字以下にしてください。',
+			'allowEmpty' => false
+		)
+	);
+
+	public $validate_edit = array(
+		'email' => array(
+			'1' => array (
+				'rule' => 'isUnique',
 				'message' => 'このメールアドレスはすでに使用されています。'
 			),
 			'2' => array (
@@ -19,6 +43,7 @@ class User extends AppModel {
 		'name' => array(
 			'rule' => array('between', 1, 20),
 			'message' => '氏名は20文字以内にしてください。',
+			'allowEmpty' => false,
 			'last' => false
 		),
 		'password' => array(
@@ -61,6 +86,10 @@ class User extends AppModel {
 	 * @return boolean             ユーザ登録が成功したらtrue、失敗したらfalse
 	 */
 	public function createUser($email, $name, $password) {
+		if(empty($password)) {
+			return false;
+		}
+
 		$user = array(
 			'User' => array(
 				'name' => $name,

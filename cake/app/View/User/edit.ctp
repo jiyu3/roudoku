@@ -8,12 +8,6 @@
 </script>
 <article>
 	<h2>ユーザ情報の変更</h2>
-
-	<?php if(isset($error)) : ?>
-		<div style="color:red;"><?php echo $error; ?></div>
-	<?php endif; ?>
-
-	<p>メールアドレスの変更は<a href='/user/edit_email'>こちら</a>で行って下さい。</p>
 	<?php
 		echo $this->Form->create('User',
 			array(

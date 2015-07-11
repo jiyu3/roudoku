@@ -13,8 +13,8 @@ class UserController extends AppController {
 	 * /user/loginにリダイレクトされる。
 	 */
 	public function beforeFilter() {
-		if($this->action === 'edit' || $this->action === 'edit_email_do' || $this->action === 'cancel') {
-			unset($this->User->validates);
+		if($this->action === 'edit') {
+			$this->User->validate = $this->User->validate_edit;
 		}
 		parent::beforeFilter();
  		$this->Auth->deny('index', 'edit', 'edit_email', 'edit_email_sent', 'edit_email_do',

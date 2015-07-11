@@ -63,7 +63,7 @@ h2, #headline {
 form input:not([type='image']):not([type='checkbox']):not([type='button']) {
 	width: 250px;
 	font-size: 14px;
-	margin-top: 10px;
+	margin-top: 5px;
 	text-align: center;
 }
 
@@ -86,7 +86,7 @@ form select {
 }
 
 form div.input {
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 
 form div.checkbox {
