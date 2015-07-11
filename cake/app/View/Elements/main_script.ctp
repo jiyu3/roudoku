@@ -15,7 +15,7 @@
 	var rand = [];
 	function rand_init() {
 		// Math.floor(Moth.round((max - min + 1) + min*fps) で max〜minの 乱数生成
-		rand['b'] = Math.floor(Math.random()*(5 - 1 + 1)*fps) + 1*fps;
+		rand['b'] = Math.floor(Math.random()*(15 - 1 + 1)*fps) + 1*fps;
 		rand['ptssr'] = Math.floor(Math.random()*(15 - 6 + 1)*fps) + 6*fps;
 	};
 	rand_init();
@@ -94,7 +94,7 @@
 		refresh("<?php echo $current_filename; ?>");
 
 		if(document.getElementById('mep_0') === null) {
-			if(!is_mobile && ua.indexOf('safari')!=-1) {
+			if(!is_mobile && ua.indexOf('safari')!=-1 && ua.indexOf('chrome')==-1) {
 				unsupported = true;
 			} else {
 				$('#'+audio_books_folder_name).mediaelementplayer({
@@ -693,7 +693,7 @@
 		$('*:not(html, body, header, ul, li, table, tbody, tr, td, div, p, a, .no_disabled)').css('pointer-events', 'none');
 		$('.mejs-button').css('pointer-events', 'none');
 
-		stopAll();
+		document.getElementById(audio_books_folder_name).pause();
 		if(!document.getElementById(interrupt_audio_id).duration) {
 			$('*').css('pointer-events', '');
 			return false;
