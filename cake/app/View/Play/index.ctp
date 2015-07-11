@@ -79,9 +79,7 @@
 			$('audio').not('#<?php echo AUDIO_BOOKS_FOLDER_NAME; ?>').not('#bgm').attr({'onpause':"$('*').css('pointer-events', '');"});
 		</script>
 	</div>
-	<div class='reload'>
-		<?php echo $this->element('main_script', array('lip'=>$lip, 'fps'=>$fps, 'current_filename'=>$current_filename, 'onclick_text'=>$onclick_text, 'is_paying'=>$is_paying, 'logged_in'=>$logged_in)); ?>
-	</div>
+	<?php echo $this->element('main_script', array('lip'=>$lip, 'fps'=>$fps, 'current_filename'=>$current_filename, 'onclick_text'=>$onclick_text, 'is_paying'=>$is_paying, 'logged_in'=>$logged_in)); ?>
 
 	<div id='subtitles'></div>
 </div>
@@ -128,6 +126,5 @@
 		</div>
 	<?php endif; ?>
 	<div id='affiliate_links'>
-		<iframe style='margin-left:10px;' src="https://rcm-fe.amazon-adsystem.com/e/cm?t=roudokushoujo-22&o=9&p=12&l=bn1&mode=books-jp&browse=202188011&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="320" height="100" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe>
 	</div>
 </div>
