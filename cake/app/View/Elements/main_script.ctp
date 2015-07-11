@@ -51,12 +51,14 @@
 			skip = false;
 		}
 
-		if(ua.indexOf("msie")!=-1 || ua.indexOf("rident")!=-1 || ua.indexOf('firefox')!=-1) {
-			$('#main_screen img').css('display', 'inline');
-		}
-		for(key in evnt) {
-			if(evnt[key]['img_path']) {
-				$('#event_background').css('background-image', 'url("'+evnt[key]['img_path']+'")');
+		if((ua.indexOf('windows')==-1 || (ua.indexOf('6.2')==-1 && ua.indexOf('6.3')==-1)) && ua.indexOf('firefox')==-1) { // Windows8/8.1 の Firefox の場合を除外
+			if(ua.indexOf("msie")!=-1 || ua.indexOf("rident")!=-1 || ua.indexOf('firefox')!=-1) { // firefox か IE の場合
+				$('#main_screen img').css('display', 'inline');
+			}
+			for(key in evnt) {
+				if(evnt[key]['img_path']) {
+					$('#event_background').css('background-image', 'url("'+evnt[key]['img_path']+'")');
+				}
 			}
 		}
 
