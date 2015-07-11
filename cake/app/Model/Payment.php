@@ -13,8 +13,8 @@ class Payment extends AppModel {
 	 */
 	const MAX_AMOUNT = 9999999;
 	const MIN_AMOUNT = 50;
-	const SECRET_KEY = "test_secret_9OXcdle3Eekp7gc9dk7BJ7lY";
-	const PUBLIC_KEY = "test_public_01O3MP8AJbvQ7YA4Hhd018fa";
+	const PUBLIC_KEY = "live_public_7hW8SWdAdco92DX2pBcczaSR";
+	const SECRET_KEY = "live_secret_8pfgB832A7uG47YdtTgh45Zs";
 	public $name = 'Payment';
 	public $belongsTo = array('User');
 	public $validate = array(
