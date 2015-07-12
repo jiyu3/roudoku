@@ -12,6 +12,7 @@
 </Files>
 <Files ~ "\.(m4a|srt|subtitles|title|wav)$">
 	SetEnvIf Referer "^https://roudoku" ref_ok
+	SetEnvIf Referer "^https://133.130.55.52" ref_ok
 	order deny,allow
 	deny from all
 	allow from env=ref_ok
