@@ -45,6 +45,7 @@ class UserController extends AppController {
 			$this->request->data = $this->Cookie->read('Auth');
 			if($this->Auth->login()) {
 				if(!$this->Auth->user('deleted')) {
+					$this->Session->write('from.login', true);
 					$this->redirect($this->Session->read('redirect_url'));
 				}
 			}
