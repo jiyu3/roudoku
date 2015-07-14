@@ -285,12 +285,14 @@
 		var nb_title = title.slice(-3, -1) + title.slice(-1);
 		$.get('/audio/ending/'+common_title+'.affiliate', function(txt) {
 			affiliate_txt = txt;
+		}).fail(function(){
+			affiliate_txt = '';
 		});
 		$.get('/audio/ending/'+common_title+'_ending_'+nb_title+'.json', function(json) {
 			lip['ending'] = json;
 		});
 		if(audio['ending']) {
-			audio['ending'].src = '/audio/ending/'+common_title+'_ending_'+nb_title+'_ending.m4a';
+			audio['ending'].src = '/audio/ending/'+common_title+'_ending_'+nb_title+'.m4a';
 		} else {
 			$("<audio/>").attr('id', 'ending').attr('src', '/audio/ending/'+common_title+'_ending_'+nb_title+'.m4a').appendTo('body');
 			audio['ending'] = document.getElementById('ending');
@@ -890,9 +892,12 @@
 		function success(pos) {
 			var crd = pos.coords;
 			var lat = Math.round(crd.latitude);
-			var lon = + Math.round(crd.longitude);
+			var lon = Math.round(crd.longitude);
 			$.get('/page/weather?lat='+lat+'&lon='+lon, function(json) {
 				w = JSON.parse(json);
+				console.log('/page/weather?lat='+lat+'&lon='+lon);
+				console.log("lat, lon = "+lat+', '+lon);
+				console.log(w);
 				$("#weather_display").showBalloon({
 					contents: '天気：' + w.weather[0]["main"],
 					position: 'top',
