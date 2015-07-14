@@ -95,7 +95,7 @@
 				<?php $i = 0; ?>
 				<?php if($is_paying) : ?>
 					<?php foreach($titles as $filename => $title) : ?>
-						<tr><td id='a_<?php echo $i; ?>'>◆<a id='<?php echo $filename; ?>' class='<?php echo $filename; ?> no_pjax audio_title' onclick='<?php echo $onclick_text[$i++]; ?>'
+						<tr><td id='a_<?php echo $i; ?>' style='white-space:pre-wrap;'>◆<a id='<?php echo $filename; ?>' class='<?php echo $filename; ?> no_pjax audio_title' onclick='<?php echo $onclick_text[$i++]; ?>'
 								href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
 					<?php endforeach; ?>
 				<?php else : ?>
