@@ -159,18 +159,20 @@
 					if(logged_in && !is_paying) {
 						affiliate_txt = '<a href="/payment">月々324円</a>で全ての朗読を<br />聴けますよ。';
 					}
-					setTimeout(function(){
-						$("#affiliate").showBalloon({
-							contents: affiliate_txt,
-							position: 'bottom',
-							css: {
-								zIndex: "6",
-								opacity: "0.7"
-							}
-						}).addClass('balloon');
-
-						interruptPlay(audio['ending'].id);
-					}, 1000);
+					if(affiliate_txt) {
+						setTimeout(function(){
+							$("#affiliate").showBalloon({
+								contents: affiliate_txt,
+								position: 'bottom',
+								css: {
+									zIndex: "6",
+									opacity: "0.7"
+								}
+							}).addClass('balloon');
+	
+							interruptPlay(audio['ending'].id);
+						}, 1000);
+					}
 				}, false);
 			}, false);
 		} else {

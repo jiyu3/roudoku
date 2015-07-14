@@ -75,6 +75,8 @@ class AppController extends Controller {
 	 * エラーの際にログ出力とAuth以外のセッションの削除を行う。
 	 */
 	public function appError($error) {
+		// TODO 404を返させる（呼び出し元でのステータスコード取得のため）
+
 		if($this->Auth->loggedIn()) {
 			$this->log("User id:" . $this->Auth->user('id'), 'app_error');
 			$this->log($this->Auth->user(), 'blackhole');

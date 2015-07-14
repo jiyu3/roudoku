@@ -10,7 +10,7 @@
 	Header set Pragma no-cache
 	Header set Cache-Control no-cache
 </Files>
-<Files ~ "\.(m4a|srt|subtitles|title|wav|json)$">
+<Files ~ "\.(m4a|srt|subtitles|title|wav|json|affiliate)$">
 	SetEnvIf Referer "^https://roudoku" ref_ok
 	SetEnvIf Referer "^https://133.130.55.52" ref_ok
 	order deny,allow
