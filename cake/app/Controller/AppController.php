@@ -75,6 +75,8 @@ class AppController extends Controller {
 	 * エラーの際にログ出力とAuth以外のセッションの削除を行う。
 	 */
 	public function appError($error) {
+		header("HTTP/1.0 404 Not Found");
+
 		if($this->Auth->loggedIn()) {
 			$this->log("User id:" . $this->Auth->user('id'), 'app_error');
 			$this->log($this->Auth->user(), 'blackhole');
@@ -90,7 +92,8 @@ class AppController extends Controller {
 				$this->Session->delete($key);
 			}
 		}
-		$this->redirect('/page/error');
+		echo file_get_contents("https://{$_SERVER['SERVER_NAME']}/page/error");
+		exit;
 	}
 
 	/**

@@ -283,11 +283,12 @@
 
 		var common_title = title.slice(0, -4);
 		var nb_title = title.slice(-3, -1) + title.slice(-1);
-		$.get('/audio/ending/'+common_title+'.affiliate', function(txt) {
+		$.get('/audio/ending/'+common_title+'.affiliate', function(txt,b,c) {
 			affiliate_txt = txt;
 		}).fail(function(){
 			affiliate_txt = '';
 		});
+		console.log("refresh");
 		$.get('/audio/ending/'+common_title+'_ending_'+nb_title+'.json', function(json) {
 			lip['ending'] = json;
 		});
