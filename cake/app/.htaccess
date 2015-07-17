@@ -12,7 +12,7 @@
 </Files>
 <Files ~ "\.(m4a|srt|subtitles|title|wav|json|affiliate)$">
 	SetEnvIf Referer "^https://roudoku" ref_ok
-	SetEnvIf Referer "^https://133.130.55.52" ref_ok
+	SetEnvIf Referer "^https://133.130.59.45" ref_ok
 	order deny,allow
 	deny from all
 	allow from env=ref_ok
@@ -23,3 +23,12 @@ AddType audio/mpeg .mp1 .mp2 .mp3 .mpg .mpeg
 AddType audio/ogg .oga .ogg
 AddType audio/wav .wav
 AddType audio/webm .webm
+
+php_value file_uploads On
+php_value upload_max_filesize 5000M
+php_value post_max_size 5000M
+php_value memory_limit 5000M
+php_value max_execution_time 300
+php_value max_input_time 300
+
+LimitRequestBody 2147483647

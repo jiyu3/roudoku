@@ -17,6 +17,11 @@ class PageController extends AppController {
 	 * /user/loginにリダイレクトされる。
 	 */
 	public function beforeFilter() {
+		$this->Security->csrfCheck = false;
+		$this->Security->csrfUseOnce = false;
+		$this->Security->validatePost = false;
+		$this->Security->unlockedActions = array('upload');
+
 		if($this->Session->read('from.login')) {
 			$this->Session->delete('from.login');
 			$this->redirect('index');
@@ -54,6 +59,31 @@ class PageController extends AppController {
 	 */
 	public function campaign() {
 		$this->set('title_for_layout', 'キャンペーン - ' . SERVICE_NAME);
+	}
+
+	public function upload() {
+		if($_SERVER['HTTP_HOST'] !== 'roudoku' && $_SERVER['HTTP_HOST'] !== '133.130.59.45') {
+			$this->redirect('index');
+		}
+
+		if($this->request->is('post')) {
+			foreach($_FILES['userfile']['size'] as $key => $file) {
+				if(empty($file)) {
+					$this->set('error', "エラー:４つのファイルを全てアップロードしてください");
+					return false;
+				}
+				move_uploaded_file($_FILES['userfile']['tmp_name'][$key],
+					"audio/".AUDIO_BOOKS_FOLDER_NAME."/{$_FILES['userfile']['name'][$key]}");
+			}
+	
+			if(!empty($_POST['twitter_link'])) {
+				preg_match("/(.+)(_\d{3})?\./", $_FILES['userfile']['name'][0], $match);
+				$url = $_POST["twitter_link"];
+				$affiliate_txt = "<a href='{$url}'>ツイートみてくださいね。</a>";
+				file_put_contents("audio/ending/{$match[1]}.affiliate", $affiliate_txt, LOCK_EX);
+			}
+			$this->set('result', true);
+		}
 	}
 
 	/**
