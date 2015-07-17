@@ -225,14 +225,14 @@
 					$.get('/page/campaign?is_paying='+is_paying+'&logged_in='+logged_in, function(campaign_txt){
 						time = getTime(['month', 'day']);
 						if(campaign_txt) {
-							$("#affiliate").showBalloon({
-								contents: campaign_txt,
-								position: 'bottom',
-								css: {
-									zIndex: "6",
-									opacity: "0.7"
-								}
-							}).addClass('balloon');
+// 							$("#affiliate").showBalloon({
+// 								contents: campaign_txt,
+// 								position: 'bottom',
+// 								css: {
+// 									zIndex: "6",
+// 									opacity: "0.7"
+// 								}
+// 							}).addClass('balloon');
 						} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
 							!$.cookie(time['month']+'/'+time['day'])
 						){

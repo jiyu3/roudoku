@@ -48,7 +48,7 @@
 	<img id='event_background'>
 	<img id='chair'>
 
-	<?php echo $this->element('sns'); ?>
+	<?php // echo $this->element('sns'); ?>
 
 	<div class='character'>
 		<?php echo $this->element('read_images_direct'); ?>
@@ -119,13 +119,7 @@
 			<?php if($logged_in) : ?>
 				<p id='recommend_text'><a href='/payment'>月々324円で</a>、<br />
 				全ての朗読を聴くことができます。<br />手続きは<a href='/payment'>こちら</a>で行えます。</p>
-			<?php else : ?>
-				<p id='recommend_text'><a href='/register'>新規登録すれば</a>、<br />
-				完全版を聴くことができます。<br />登録済みの方は<a href='<?php echo $this->Html->url("/user/login"); ?>'>ログインしてください</a>。</p>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>
-	<div id='affiliate_links'>
-		<iframe src="https://rcm-fe.amazon-adsystem.com/e/cm?t=tok0c-22&o=9&p=12&l=bn1&mode=hobby-jp&browse=2189356051&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="300" height="120" border="0" frameborder="0" style="margin-left:10px;" scrolling="no"></iframe>
-	</div>
 </div>

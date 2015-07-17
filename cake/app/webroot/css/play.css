@@ -108,7 +108,7 @@
 	font-family: 'ヒラギノ角ゴ ProN', 'Hiragino Kaku Gothic ProN', YuGothic, '游ゴシック', sans-serif;
 	font-size: 12px;
 	position: relative;
-	height: 360px;
+	height: 480px;
 	width: 95%;
 	overflow: scroll;
 	white-space : nowrap;
@@ -144,11 +144,6 @@
 	height: 20%;
 	margin-top: 50%;
 	margin-left: 5%;
-}
-
-#affiliate_links {
-	height: 120px;
-	border-top: 1px solid;
 }
 /* sidebar end */
 
