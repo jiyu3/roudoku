@@ -2,7 +2,7 @@
 	<h2>【アップロード】</h2>
 	<p>間違ってファイルをアップロードした場合は、<a href='/page/init'>初期化してください</a>。</p>
 	<?php if(isset($result)) : ?>
-		<p>アップロードが完了しました。次に <a href='/play/make'>こちらをクリックして</a>wavを変換して下さい。</p>
+		<p>アップロードが完了しました。次に <a href='/play/make'>こちらをクリックして</a>wavをjsonに変換して下さい。</p>
 	<?php else : ?>
 		<form action="/page/upload" method="post" enctype="multipart/form-data">
 			<p>str, m4a, wav, txtを順にアップロードしてください:</p>
