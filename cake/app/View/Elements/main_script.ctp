@@ -907,7 +907,7 @@
 						opacity: "0.7"
 					}
 				}).addClass('balloon');
-				setTimeout(function(){$('#weather_display').hideBalloon();}, 2000);
+				setTimeout(function(){$('#weather_display').hideBalloon();}, 5000);
 			});
 		};
 
