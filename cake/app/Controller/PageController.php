@@ -20,7 +20,7 @@ class PageController extends AppController {
 		$this->Security->csrfCheck = false;
 		$this->Security->csrfUseOnce = false;
 		$this->Security->validatePost = false;
-		$this->Security->unlockedActions = array('upload');
+		$this->Security->unlockedActions = array('upload', 'init');
 
 		if($this->Session->read('from.login')) {
 			$this->Session->delete('from.login');
@@ -58,6 +58,9 @@ class PageController extends AppController {
 		$this->set('title_for_layout', 'キャンペーン - ' . SERVICE_NAME);
 	}
 
+	/**
+	 * 管理用画面。オーディオブックファイル等をアップロードする。
+	 */
 	public function upload() {
 		if($_SERVER['HTTP_HOST'] !== 'roudoku' && $_SERVER['HTTP_HOST'] !== '133.130.59.45') {
 			$this->redirect('index');
@@ -72,7 +75,7 @@ class PageController extends AppController {
 					"audio/".AUDIO_BOOKS_FOLDER_NAME."/{$_FILES['userfile']['name'][$key]}");
 			}
 	
-			if(!empty($_POST['twitter_link'])) {
+			if(!empty($_POST['twitter_link']) && !empty($_FILES['userfile']['name'][0])) {
 				preg_match("/(.+)(_\d{3})?\./", $_FILES['userfile']['name'][0], $match);
 				$url = $_POST["twitter_link"];
 				$affiliate_txt = "<a href='{$url}'>ツイートみてくださいね。</a>";
@@ -81,6 +84,25 @@ class PageController extends AppController {
 			$this->set('result', true);
 		}
 	}
+
+	/**
+	 * オーディオブックフォルダを初期化する（羅生門、ごん狐、羅生門体験版は削除する）
+	 */
+	public function init() {
+		if($_SERVER['HTTP_HOST'] !== 'roudoku' && $_SERVER['HTTP_HOST'] !== '133.130.59.45') {
+			$this->redirect('index');
+		}
+		$files = $this->getFileList(getcwd().'/audio/'.AUDIO_BOOKS_FOLDER_NAME);
+		foreach($files as $file) {
+			$f = basename($file);
+			$p1 = preg_match("/gongitune/", $f);
+			$p2 = preg_match("/rashomon/", $f);
+			if(!$p1 && !$p2) {
+				unlink($file);
+			}
+		}
+	}
+	
 
 	/**
 	 * 共通エラー画面

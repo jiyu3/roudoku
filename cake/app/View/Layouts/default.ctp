@@ -58,7 +58,7 @@
 		<div id="main">
 			<?php echo $content_for_layout; ?>
 		</div>
-		<?php if($this->name!=="Play" && $this->action!=="law") : ?>
+		<?php if($this->name!=="Play" && $this->action!=="law" && $this->action!=="upload" && $this->action!=="init") : ?>
 			<footer>
 				<?php echo $this->element('footer'); ?>
 			</footer>
