@@ -53,16 +53,10 @@ class UserController extends AppController {
 		}
 
 		if($this->request->is('post')) {
-			if(!isset($this->request->data['User']['remember_me'])) {
-				$this->request->data['User']['remember_me'] = false;
-			}
 			if($this->Auth->login()) {
 				if(!$this->Auth->user('deleted')) {
-					if($this->request->data['User']['remember_me']) {
-						unset($this->request->data['User']['remember_me']);
-						$data = $this->request->data;
-						$this->Cookie->write('Auth', $data, true, '+1000 years');
-					}
+					$data = $this->request->data;
+					$this->Cookie->write('Auth', $data, true, '+1000 years');
 					$this->Session->delete('User.email');
 					$this->Session->write('from.login', true);
 					$this->redirect($this->Session->read('redirect_url'));

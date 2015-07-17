@@ -11,8 +11,8 @@
 	Header set Cache-Control no-cache
 </Files>
 <Files ~ "\.(m4a|srt|subtitles|title|wav|json|affiliate)$">
-	SetEnvIf Referer "^https://roudoku" ref_ok
-	SetEnvIf Referer "^https://133.130.59.45" ref_ok
+	SetEnvIf Referer "^https?://roudoku" ref_ok
+	SetEnvIf Referer "^https?://133.130.59.45" ref_ok
 	order deny,allow
 	deny from all
 	allow from env=ref_ok

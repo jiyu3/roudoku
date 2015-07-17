@@ -894,11 +894,7 @@
 			var crd = pos.coords;
 			var lat = Math.round(crd.latitude);
 			var lon = Math.round(crd.longitude);
-			$.get('/page/weather?lat='+lat+'&lon='+lon, function(json) {
-				w = JSON.parse(json);
-				console.log('/page/weather?lat='+lat+'&lon='+lon);
-				console.log("lat, lon = "+lat+', '+lon);
-				console.log(w);
+			$.get('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon, function(w) {
 				$("#weather_display").showBalloon({
 					contents: '天気：' + w.weather[0]["main"],
 					position: 'top',

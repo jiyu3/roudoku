@@ -26,6 +26,10 @@ class PageController extends AppController {
 			$this->Session->delete('from.login');
 			$this->redirect('index');
 		}
+
+		if(env('HTTPS')) {
+			$this->redirect('http://' . env('SERVER_NAME') . $this->here);
+		}
 		parent::beforeFilter();
 	}
 
@@ -48,13 +52,6 @@ class PageController extends AppController {
 	}
 
 	/**
-	 * 天気表示ページ(javascriptからの読み込み専用)
-	 */
-	public function weather() {
-		$this->set('title_for_layout', '天気 - ' . SERVICE_NAME);
-	}
-
-	/**
 	 * キャンペーン情報表示ページ(javascriptからの読み込み専用)
 	 */
 	public function campaign() {
@@ -69,8 +66,7 @@ class PageController extends AppController {
 		if($this->request->is('post')) {
 			foreach($_FILES['userfile']['size'] as $key => $file) {
 				if(empty($file)) {
-					$this->set('error', "エラー:４つのファイルを全てアップロードしてください");
-					return false;
+					continue;
 				}
 				move_uploaded_file($_FILES['userfile']['tmp_name'][$key],
 					"audio/".AUDIO_BOOKS_FOLDER_NAME."/{$_FILES['userfile']['name'][$key]}");

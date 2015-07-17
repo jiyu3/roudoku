@@ -12,8 +12,8 @@ class PlayController extends AppController {
 	public $uses = array('Payment', 'User');
 	public $components = array('Cookie');
 	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
-	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門";
-	const DEFAULT_BOOK_TITLE_PAYMENT = "ごん狐";
+	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門　芥川龍之介 27分";
+	const DEFAULT_BOOK_TITLE_PAYMENT = "ごん狐 新美南吉 21分";
 	public $fps = 8;
 
 	public function beforeFilter() {
@@ -23,6 +23,10 @@ class PlayController extends AppController {
 
 		$this->set('title_for_layout', SERVICE_NAME);
 		$this->set('is_paying', $this->Payment->isPaying($this->Auth->user('id')));
+
+		if(env('HTTPS')) {
+			$this->redirect('http://' . env('SERVER_NAME') . $this->here);
+		}
 		parent::beforeFilter();
 	}
 
@@ -52,6 +56,7 @@ class PlayController extends AppController {
 	}
 	
 	public function make() {
+		echo "<a href='/play/index'>プレイ画面を確認する</a><br />";
 		require APP . 'Vendor/wave.php';
 		ini_set('memory_limit', -1);
 		ini_set('max_execution_time', -1);
@@ -80,7 +85,7 @@ class PlayController extends AppController {
 				echo "'{$file}' has been converted.<br />";
 			}
 		}
-		$this->redirect('index');
+		exit;
 	}
 
 	/**

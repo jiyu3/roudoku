@@ -52,8 +52,13 @@ class AppController extends Controller {
 		}
 
 		$this->Auth->allow();
-		$this->Security->blackHoleCallback = 'blackhole';
-		$this->Security->requireSecure();
+		if($this->name !== 'Play' && $this->name !== 'Page') {
+			if(!env('HTTPS')) {
+				$this->redirect('https://'.$_SERVER['SERVER_NAME'].$this->here);
+			}
+			$this->Security->blackHoleCallback = 'blackhole';
+			$this->Security->requireSecure();
+		}
 		$this->set('logged_in', $this->Auth->loggedIn());
 	}
 
@@ -66,7 +71,7 @@ class AppController extends Controller {
 		$this->log($this->Auth->user(), 'blackhole');
 		$this->log($this->request, 'blackhole');
 		if($type === 'secure') {
-			$this->redirect("https://{$_SERVER['SERVER_NAME']}");
+			$this->redirect("https://{$_SERVER['SERVER_NAME']}/");
 		}
 		$this->redirect('/page/error');
 	}
