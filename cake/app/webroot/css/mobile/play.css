@@ -247,8 +247,7 @@
 #weather_display {
 	position: absolute;
 	z-index: 6;
-	top: 100px;
-	width: 50px;
+	top: 120px;
 	height: 75px;
 	left: 160px;
 }
