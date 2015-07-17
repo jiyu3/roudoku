@@ -247,10 +247,10 @@
 #weather_display {
 	position: absolute;
 	z-index: 6;
-	top: 70px;
+	top: 100px;
 	width: 50px;
 	height: 75px;
-	left: 40px;
+	left: 160px;
 }
 
 #affiliate {

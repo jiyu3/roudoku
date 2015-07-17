@@ -243,10 +243,9 @@
 #weather_display {
 	position: absolute;
 	z-index: 6;
-	top: 70px;
-	width: 50px;
+	top: 100px;
 	height: 75px;
-	left: 40px;
+	left: 160px;
 }
 
 #affiliate {

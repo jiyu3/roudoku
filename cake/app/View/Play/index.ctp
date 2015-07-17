@@ -56,7 +56,7 @@
 	<?php echo $this->element('touch_body'); ?>
 
 	<span id='weather' onClick='weather();'></span>
-	<span id='weather_display' onClick='weather();'></span>
+	<span id='weather_display'></span>
 	<span id='clock' onClick='clock();'></span>
 	<span id='affiliate'></span>
 

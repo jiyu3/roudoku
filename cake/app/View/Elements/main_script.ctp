@@ -895,8 +895,12 @@
 			var lat = Math.round(crd.latitude);
 			var lon = Math.round(crd.longitude);
 			$.get('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+lon, function(w) {
+				var max_temp = Math.round((w.main.temp_max - 273.15)*10)/10;
+				var min_temp = Math.round((w.main.temp_min - 273.15)*10)/10;
 				$("#weather_display").showBalloon({
-					contents: '天気：' + w.weather[0]["main"],
+					contents: '今日のお天気は ' + w.weather[0]["main"] + '<br />' +
+							'最高気温／最低気温は '  + max_temp + '／' + min_temp + '度です。<br />' + 
+							'今日も一日、頑張ってください。',
 					position: 'top',
 					css: {
 						zIndex: "6",
