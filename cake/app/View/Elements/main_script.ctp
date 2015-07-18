@@ -898,7 +898,7 @@
 				var max_temp = Math.round((w.main.temp_max - 273.15)*10)/10;
 				var min_temp = Math.round((w.main.temp_min - 273.15)*10)/10;
 				$("#weather_display").showBalloon({
-					contents: '今日のお天気は ' + w.weather[0]["main"] + '、' + '降水確率' +  '<br />' +
+					contents: '今日のお天気は ' + w.weather[0]["main"] + '<br />' +
 							'最高気温／最低気温は '  + max_temp + '／' + min_temp + '度です。<br />' + 
 							'今日も一日、頑張ってください。',
 					position: 'top',
