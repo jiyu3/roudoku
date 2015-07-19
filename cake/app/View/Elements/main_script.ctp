@@ -135,7 +135,6 @@
 				$('#loaded').fadeIn(1000);
 			}
 			document.getElementById('loading').addEventListener('click', function() {
-				document.getElementById('BGM').load();
 				document.getElementById(audio_books_folder_name).load();
 				time = getTime(['month', 'day']);
 				if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
@@ -198,6 +197,7 @@
 		}
 		$('audio').prop('volume', $.cookie('volume'));
 		document.getElementById('BGM').play();
+
 
 		if(skip) {
 			document.getElementById(audio_books_folder_name).play();
