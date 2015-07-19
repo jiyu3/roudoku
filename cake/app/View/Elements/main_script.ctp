@@ -196,7 +196,9 @@
 			$.cookie('volume', 0.5);
 		}
 		$('audio').prop('volume', $.cookie('volume'));
-		document.getElementById('BGM').play();
+		if(!is_mobile) {
+			document.getElementById('BGM').play();
+		}
 
 
 		if(skip) {
@@ -492,14 +494,18 @@
 
 	function start_reading() {
 		$('.balloon').hideBalloon();
-		document.getElementById('BGM').pause();
+		if(!is_mobile) {
+			document.getElementById('BGM').pause();
+		}
 
 		otoha['state'] = 'read';
 		otoha['feature'] = 'to_read';
 	}
 
 	function stop_reading() {
-		document.getElementById('BGM').play();
+		if(!is_mobile) {
+			document.getElementById('BGM').play();
+		}
 
 		if(/touch/.test(otoha['feature'])) {
 			otoha['state'] = 'sit';
