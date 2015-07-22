@@ -114,6 +114,7 @@
 	<?php if(!$is_paying) : ?>
 		<script type='text/javascript'>
 			$('#audio_links').animate({opacity:"0.2"});
+			$('#banner').css('display', 'inline');
 		</script>
 		<div id='recommendation'>
 			<?php if($logged_in) : ?>
