@@ -45,6 +45,11 @@
 </head>
 <body>
 	<div id="content">
+		<?php if($this->name==="Play" && !$this->App->isMobile()) : ?>
+			<div id='banner'>
+				<a href='/register'><img src='/img/banner/banner_0<?php echo mt_rand(1, 4); ?>.jpg'></a>
+			</div>
+		<?php endif; ?>
 		<?php if(!$this->App->isMobile() && !(isset($_GET['header']) && $_GET['header']==='none')) : ?>
 	 		<header>
 				<?php echo $this->element('header'); ?>

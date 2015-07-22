@@ -378,6 +378,15 @@
 }
 /* body end */
 
+/* banner start */
+#banner {
+	position: absolute;
+	left: -150px;
+	width: 200px;
+	top: 35px;
+}
+/* banner end */
+
 /* widget start */
 #twitter_widget {
 	position: absolute;
