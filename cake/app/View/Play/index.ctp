@@ -93,16 +93,17 @@
 		<table>
 			<tbody>
 				<?php $i = 0; ?>
-				<?php if($is_paying) : ?>
-					<?php foreach($titles as $filename => $title) : ?>
+				<?php foreach($titles as $filename => $title) : ?>
+					<?php if($is_paying) : ?>
 						<tr><td id='a_<?php echo $i; ?>' style='white-space:pre-wrap;'>◆<a id='<?php echo $filename; ?>' class='<?php echo $filename; ?> no_pjax audio_title' onclick='<?php echo $onclick_text[$i++]; ?>'
-								href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
-					<?php endforeach; ?>
-				<?php else : ?>
-					<?php foreach($titles as $filename => $title) : ?>
+							href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
+					<?php elseif($logged_in) : ?>
+						<tr><td id='a_<?php echo $i; ?>' style='white-space:pre-wrap;'>◆<a id='<?php echo $filename; ?>' class='<?php echo $filename; ?> no_pjax audio_title' onclick='<?php echo $onclick_text[$i++]; ?>'
+							href='javascript:void(0);'><?php echo $title; ?></a></td></tr>
+					<?php else : ?>
 						<tr><td>◆<span id='<?php echo $filename; ?>' class='audio_title'><?php echo $title; ?></span></td></tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
 			</tbody>
 			<script type='text/javascript'>
 				$('.audio_title').each(function(){
@@ -111,16 +112,12 @@
 			</script>
 		</table>
 	</div>
-	<?php if(!$is_paying) : ?>
+	<?php if(!$logged_in) : ?>
 		<script type='text/javascript'>
 			$('#audio_links').animate({opacity:"0.2"});
 			$('#banner').css('display', 'inline');
 		</script>
 		<div id='recommendation'>
-			<?php if($logged_in) : ?>
-				<p id='recommend_text'><a href='/payment'>月々324円で</a>、<br />
-				全ての朗読を聴くことができます。<br />手続きは<a href='/payment'>こちら</a>で行えます。</p>
-			<?php endif; ?>
 		</div>
 	<?php endif; ?>
 </div>

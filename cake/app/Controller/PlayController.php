@@ -11,8 +11,10 @@ class PlayController extends AppController {
  */
 	public $uses = array('Payment', 'User');
 	public $components = array('Cookie');
+	const DEFAULT_FILE_NAME = 'rashomon_short';
 	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
-	const DEFAULT_BOOK_TITLE_LOGIN = "羅生門　芥川龍之介 27分";
+	const DEFAULT_FILE_NAME_LOGIN = 'gongitune_short';
+	const DEFAULT_BOOK_TITLE_LOGIN = "ごん狐 新美南吉（体験版）";
 	const DEFAULT_BOOK_TITLE_PAYMENT = "ごん狐 新美南吉 21分";
 	public $fps = 8;
 
@@ -40,14 +42,6 @@ class PlayController extends AppController {
 				$this->redirect('index/' . $t);
 			} else if(!$title || $title === self::DEFAULT_BOOK_TITLE) {
 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
-			}
-		} else if($this->Auth->loggedIn()) {
-			if($title !== self::DEFAULT_BOOK_TITLE_LOGIN) {
-				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_LOGIN);
-			}
-		} else {
-			if($title !== self::DEFAULT_BOOK_TITLE) {
-				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE);
 			}
 		}
 
@@ -93,6 +87,8 @@ class PlayController extends AppController {
 	 * @param string $title	そのページで表示すべきオーディオファイルのタイトル
 	 */
 	private function setAll($title) {
+		$logged_in = $this->Auth->loggedIn();
+		$is_paying = $this->Payment->isPaying($this->Auth->user('id'));
 		$current_filename = '';
 		$files = $this->getFileList("audio/".AUDIO_BOOKS_FOLDER_NAME);
 		foreach($files as $file) {
@@ -101,10 +97,23 @@ class PlayController extends AppController {
 				if($content === $title) {
 					$current_filename = basename($file, '.title');
 				}
-				$titles[basename($file, '.title')] = file_get_contents($file);
+				if($is_paying && !preg_match("/_short/", $file)) {
+					$titles[basename($file, '.title')] = trim(file_get_contents($file));
+				} else if(!$is_paying && $logged_in && preg_match("/_short/", $file)) {
+					$titles[basename($file, '.title')] = trim(file_get_contents($file));
+				} else if(!$logged_in && !preg_match("/_short/", $file)) {
+					$titles[basename($file, '.title')] = trim(file_get_contents($file));
+				}
 			}
 		}
-		if(!$title || !file_exists('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.m4a')) {
+		if(!$logged_in) {
+			$current_filename = self::DEFAULT_FILE_NAME;
+			$titles[self::DEFAULT_FILE_NAME] = file_get_contents('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.title');
+		} elseif(!$is_paying) {
+			$current_filename = self::DEFAULT_FILE_NAME_LOGIN;
+		}
+		if(!file_exists('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.m4a')) {
+			$this->de('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.m4a');
 			$this->redirect('index');
 		}
 		if($this->Auth->loggedIn()) {

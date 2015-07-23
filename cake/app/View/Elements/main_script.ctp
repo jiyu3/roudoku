@@ -283,25 +283,23 @@
 
 		document.getElementById(audio_books_folder_name).src = '/audio/'+audio_books_folder_name+'/'+title+'.m4a';
 
-		var common_title = title.slice(0, -4);
-		var nb_title = title.slice(-3, -1) + title.slice(-1);
-		$.get('/audio/ending/'+common_title+'.affiliate', function(txt,b,c) {
+		$.get('/audio/ending/'+title+'.affiliate', function(txt,b,c) {
 			affiliate_txt = txt;
 		}).fail(function(){
 			affiliate_txt = '';
 		});
-		console.log("refresh");
-		$.get('/audio/ending/'+common_title+'_ending_'+nb_title+'.json', function(json) {
+		$.get('/audio/ending/'+title+'_ending.json', function(json) {
 			lip['ending'] = json;
 		});
 		if(audio['ending']) {
-			audio['ending'].src = '/audio/ending/'+common_title+'_ending_'+nb_title+'.m4a';
+			audio['ending'].src = '/audio/ending/'+title+'_ending.m4a';
 		} else {
-			$("<audio/>").attr('id', 'ending').attr('src', '/audio/ending/'+common_title+'_ending_'+nb_title+'.m4a').appendTo('body');
+			$("<audio/>").attr('id', 'ending').attr('src', '/audio/ending/'+title+'_ending.m4a').appendTo('body');
 			audio['ending'] = document.getElementById('ending');
 		}
 
 		$.getScript('/audio/'+audio_books_folder_name+'/'+title+'.subtitles', function() {
+			console.log(subtitles);
 			forward = subtitles.start[0];
 			for(key in subtitles.start) {
 				subtitles.start[key] -= forward;
@@ -319,7 +317,7 @@
 // 			}
 // 		}
 		evnt = [];
-		$.getScript('/audio/event/'+common_title+'_roudoku_frame.event', function() {
+		$.getScript('/audio/event/'+title+'_roudoku_frame.event', function() {
 			for(key in evnt) {
 				if(evnt[key]['img_path']) {
 					$('#event_background').css('background-image', 'url("' + evnt[key]['img_path'] + '")');
