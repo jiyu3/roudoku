@@ -15,6 +15,7 @@ class PlayController extends AppController {
 	const DEFAULT_BOOK_TITLE = "羅生門（体験版）";
 	const DEFAULT_FILE_NAME_LOGIN = 'gongitune_short';
 	const DEFAULT_BOOK_TITLE_LOGIN = "ごん狐 新美南吉（体験版）";
+	const DEFAULT_FILE_NAME_PAYMENT = 'gongitune';
 	const DEFAULT_BOOK_TITLE_PAYMENT = "ごん狐 新美南吉 21分";
 	public $fps = 8;
 
@@ -37,19 +38,21 @@ class PlayController extends AppController {
 	 * @param string $title		オーディオブックのタイトル
 	 */
 	public function index($title = null) {
-		if($this->Payment->isPaying($this->Auth->user('id'))) {
-			if(isset($_COOKIE['last_read']) && $title !== ($t = file_get_contents('audio/'.AUDIO_BOOKS_FOLDER_NAME."/{$_COOKIE['last_read']}.title"))) {
-				$this->redirect('index/' . $t);
-			} else if(!$title || $title === self::DEFAULT_BOOK_TITLE) {
-				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
-			}
-		}
-
-		$this->set('title_for_layout', SERVICE_NAME . ' - ' . preg_replace('/~\d{3}~/', '　', $title));
+// 		if($this->Payment->isPaying($this->Auth->user('id'))) {
+// 			if(isset($_COOKIE['last_read']) && $title !== ($t = file_get_contents('audio/'.AUDIO_BOOKS_FOLDER_NAME."/{$_COOKIE['last_read']}.title"))) {
+// 				$this->redirect('index/' . $t);
+// 			} else if(!$title || $title === self::DEFAULT_BOOK_TITLE) {
+// 				$this->redirect('index/' . self::DEFAULT_BOOK_TITLE_PAYMENT);
+// 			}
+// 		}
 		$this->setAll($title);
 	}
 	
 	public function make() {
+		if($_SERVER['HTTP_HOST'] !== 'roudoku' && $_SERVER['HTTP_HOST'] !== '133.130.59.45') {
+			$this->redirect('index');
+		}
+
 		echo "<a href='/play/index'>プレイ画面を確認する</a><br />";
 		require APP . 'Vendor/wave.php';
 		ini_set('memory_limit', -1);
@@ -109,11 +112,18 @@ class PlayController extends AppController {
 		if(!$logged_in) {
 			$current_filename = self::DEFAULT_FILE_NAME;
 			$titles[self::DEFAULT_FILE_NAME] = file_get_contents('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.title');
+			$this->set('title_for_layout', SERVICE_NAME . ' - ' . preg_replace('/~\d{3}~/', '　', $titles[self::DEFAULT_FILE_NAME]));
 		} elseif(!$is_paying) {
 			$current_filename = self::DEFAULT_FILE_NAME_LOGIN;
+			$titles[self::DEFAULT_FILE_NAME_LOGIN] = file_get_contents('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.title');
+			$this->set('title_for_layout', SERVICE_NAME . ' - ' . preg_replace('/~\d{3}~/', '　', $titles[self::DEFAULT_FILE_NAME_LOGIN]));
+		} else {
+			$current_filename = self::DEFAULT_FILE_NAME_PAYMENT;
+			$titles[self::DEFAULT_FILE_NAME_PAYMENT] = file_get_contents('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.title');
+			$this->set('title_for_layout', SERVICE_NAME . ' - ' . preg_replace('/~\d{3}~/', '　', $titles[self::DEFAULT_FILE_NAME_PAYMENT]));
 		}
+
 		if(!file_exists('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.m4a')) {
-			$this->de('audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.m4a');
 			$this->redirect('index');
 		}
 		if($this->Auth->loggedIn()) {

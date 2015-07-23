@@ -300,7 +300,6 @@
 		}
 
 		$.getScript('/audio/'+audio_books_folder_name+'/'+title+'.subtitles', function() {
-			console.log(subtitles);
 			forward = subtitles.start[0];
 			for(key in subtitles.start) {
 				subtitles.start[key] -= forward;
