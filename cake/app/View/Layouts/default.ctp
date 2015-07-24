@@ -8,7 +8,7 @@
 	</title>
 	<?php
 		echo $this->Html->meta('favicon.ico', '/img/favicon.ico', array('type'=>'icon'));
-		$css_prefix = $this->App->isMobile() ? 'mobile/' : '';
+		$css_prefix = $is_mobile ? 'mobile/' : '';
 		echo $this->Html->css("{$css_prefix}common");
 		echo $this->Html->css($css_prefix.strtolower($this->name));
 		echo $scripts_for_layout;
@@ -44,40 +44,44 @@
 	</script>
 </head>
 <body>
-	<div id="content">
-		<?php if($this->name==="Play" && !$this->App->isMobile()) : ?>
-			<div id='banner'>
-				<?php if(!$logged_in) : ?>
-					<a href='/register'><img src='/img/banner/banner_0<?php echo mt_rand(1, 4); ?>.jpg'></a>
-				<?php else : ?>
-					<a href='/payment'><img src='/img/banner/banner_0<?php echo mt_rand(1, 4); ?>.jpg'></a>
-				<?php endif; ?>
+	<?php if($this->action==='help') : ?>
+		<?php echo $content_for_layout; ?>
+	<?php else : ?>
+		<div id="content">
+			<?php if($this->name==="Play" && !$is_mobile) : ?>
+				<div id='banner'>
+					<?php if(!$logged_in) : ?>
+						<a href='/register'><img src='/img/banner/banner_0<?php echo mt_rand(1, 4); ?>.jpg'></a>
+					<?php else : ?>
+						<a href='/payment'><img src='/img/banner/banner_0<?php echo mt_rand(1, 4); ?>.jpg'></a>
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+			<?php if(!$is_mobile && !(isset($_GET['header']) && $_GET['header']==='none')) : ?>
+		 		<header>
+					<?php echo $this->element('header'); ?>
+				</header>
+			<?php endif; ?>
+			<?php if(!$is_mobile && $this->name==="Play" && $this->action==="index") : ?>
+				<div id='search_box'>
+					<input type="text" name="search" value="" id="search" placeholder='検索' />
+				</div>
+			<?php endif; ?>
+			<div id="main">
+				<?php echo $content_for_layout; ?>
 			</div>
-		<?php endif; ?>
-		<?php if(!$this->App->isMobile() && !(isset($_GET['header']) && $_GET['header']==='none')) : ?>
-	 		<header>
-				<?php echo $this->element('header'); ?>
-			</header>
-		<?php endif; ?>
-		<?php if(!$this->App->isMobile() && $this->name==="Play" && $this->action==="index") : ?>
-			<div id='search_box'>
-				<input type="text" name="search" value="" id="search" placeholder='検索' />
-			</div>
-		<?php endif; ?>
-		<div id="main">
-			<?php echo $content_for_layout; ?>
+			<?php if($this->name!=="Play" && $this->action!=="law" && $this->action!=="upload" && $this->action!=="init") : ?>
+				<footer>
+					<?php echo $this->element('footer'); ?>
+				</footer>
+			<?php endif; ?>
+			<?php if($this->name==="Play" && !$is_mobile) : ?>
+				<div id='twitter_widget'>
+		            <a class="twitter-timeline"  href="https://twitter.com/hashtag/%E6%9C%97%E8%AA%AD%E5%B0%91%E5%A5%B3" data-widget-id="619571884661706752">#朗読少女 のツイート</a>
+		            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+			<?php endif; ?>
 		</div>
-		<?php if($this->name!=="Play" && $this->action!=="law" && $this->action!=="upload" && $this->action!=="init") : ?>
-			<footer>
-				<?php echo $this->element('footer'); ?>
-			</footer>
-		<?php endif; ?>
-		<?php if($this->name==="Play" && !$this->App->isMobile()) : ?>
-			<div id='twitter_widget'>
-	            <a class="twitter-timeline"  href="https://twitter.com/hashtag/%E6%9C%97%E8%AA%AD%E5%B0%91%E5%A5%B3" data-widget-id="619571884661706752">#朗読少女 のツイート</a>
-	            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-			</div>
-		<?php endif; ?>
-	</div>
+	<?php endif; ?>
  </body>
 </html>

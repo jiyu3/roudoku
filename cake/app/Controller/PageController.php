@@ -102,7 +102,13 @@ class PageController extends AppController {
 			}
 		}
 	}
-	
+
+	/**
+	 * PC用ヘルプ画面
+	 */
+	public function help() {
+		$this->set('title_for_layout', 'ヘルプ - ' . SERVICE_NAME);
+	}
 
 	/**
 	 * 共通エラー画面

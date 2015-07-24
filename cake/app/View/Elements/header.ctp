@@ -31,6 +31,11 @@
 				</a>
 			</li>
 		<?php endif; ?>
+		<li>
+			<a class='link_button' id='help_button' href='/page/help' style='margin-left:15px;'>
+				<img src='/img/header/help.png' style='margin-top:5px;'>
+			</a>
+		</li>
 	</ul>
 </div>
 <script type='text/javascript'>

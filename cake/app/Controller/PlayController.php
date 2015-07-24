@@ -151,7 +151,6 @@ class PlayController extends AppController {
 		$lip[AUDIO_BOOKS_FOLDER_NAME] = Router::url('/', false) . 'audio/' . AUDIO_BOOKS_FOLDER_NAME . '/' . $current_filename . '.json';
 
 		asort($titles);
-		$this->set('is_mobile', $this->isMobile());
 		$this->set('fps', $this->fps);
 		$this->set('lip', $lip);
 		$this->set('audio', $audio);

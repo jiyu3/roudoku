@@ -60,6 +60,7 @@ class AppController extends Controller {
 			$this->Security->requireSecure();
 		}
 		$this->set('logged_in', $this->Auth->loggedIn());
+		$this->set('is_mobile', $this->isMobile());
 	}
 
 	/**
