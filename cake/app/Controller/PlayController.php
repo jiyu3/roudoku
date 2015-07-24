@@ -102,7 +102,7 @@ class PlayController extends AppController {
 				}
 				if($is_paying && !preg_match("/_short/", $file)) {
 					$titles[basename($file, '.title')] = trim(file_get_contents($file));
-				} else if(!$is_paying && $logged_in && preg_match("/_short/", $file)) {
+				} else if(!$is_paying && $logged_in && (preg_match("/_short/", $file) || preg_match("/rashomon/", $file))) {
 					$titles[basename($file, '.title')] = trim(file_get_contents($file));
 				} else if(!$logged_in && !preg_match("/_short/", $file)) {
 					$titles[basename($file, '.title')] = trim(file_get_contents($file));
