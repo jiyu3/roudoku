@@ -32,8 +32,8 @@
 			</li>
 		<?php endif; ?>
 		<li>
-			<a class='link_button' id='help_button' href='/page/help' style='margin-left:15px;'>
-				<img src='/img/header/help.png' style='margin-top:5px;'>
+			<a class='link_button' id='help_button' href='/page/help' target='_blank' style='margin-left:10px;'>
+				<img src='/img/header/help.png'>
 			</a>
 		</li>
 	</ul>
@@ -54,4 +54,7 @@
 	$('#register_button').hover(
 		function(){$('#register_button > img').attr('src', '/img/header/register_hover.png');},
 		function(){$('#register_button > img').attr('src', '/img/header/register.png');});
+	$('#help_button').hover(
+		function(){$('#help_button > img').attr('src', '/img/header/help_hover.png');},
+		function(){$('#help_button > img').attr('src', '/img/header/help.png');});
 </script>
