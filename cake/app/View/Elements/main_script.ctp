@@ -137,7 +137,9 @@
 			document.getElementById('loading').addEventListener('click', function() {
 				document.getElementById(audio_books_folder_name).load();
 				time = getTime(['month', 'day']);
-				if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
+				if(<?php echo isset($_GET['first']) && $_GET['first']==='listen' ? 1 : 0 ?> || !$.cookie('first')) {
+					document.getElementById('first').load();
+				} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
 					!$.cookie(time['month']+'/'+time['day'])
 				) {
 					document.getElementById('today').load();
@@ -236,10 +238,13 @@
 // 								}
 // 							}).addClass('balloon');
 //						} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
-						if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
+						if(<?php echo isset($_GET['first']) && $_GET['first']==='listen' ? 1 : 0 ?> || !$.cookie('first')) {
+							$.cookie('first', 'first_played', {expires:99999});
+							interruptPlay('first');
+						} else if(<?php echo isset($_GET['today']) && $_GET['today']==='listen' ? 1 : 0 ?> ||
 							!$.cookie(time['month']+'/'+time['day'])
 						){
-							$.cookie(time['month']+'/'+time['day'], 'played', {expires:1});
+							$.cookie(time['month']+'/'+time['day'], 'today_played', {expires:1});
 							interruptPlay('today');
 						} else if(is_mobile) {
 							document.getElementById(audio_books_folder_name).play();
