@@ -132,14 +132,17 @@ class PlayController extends AppController {
 
 		$files = $this->getFileList("audio");
 		$today = date("n_j");
+		if(!empty($_GET['date'])) {
+			$today = date($_GET['date']);
+		}
 		foreach($files as $file) {
 			if(end((explode('/', dirname($file)))) === AUDIO_BOOKS_FOLDER_NAME) {
 				continue;
 			} else if(end((explode('/', dirname($file)))) === 'today') {
-				$lip['today'] = '//'.$_SERVER['HTTP_HOST'].'/audio/today/date_'.date("n_j").'.json';
-				$audio['today'] = Router::url('/', false).'audio/today/date_'.date("n_j").'.m4a';
+				$lip['today'] = '//'.$_SERVER['HTTP_HOST']."/audio/today/date_{$today}.json";
+				$audio['today'] = Router::url('/', false)."audio/today/date_{$today}.m4a";
 			} else if(end((explode('/', dirname($file)))) === 'first') {
-				$lip['first'] = '//'.$_SERVER['HTTP_HOST'].'/audio/first/event_a_first.json';
+				$lip['first'] = "//{$_SERVER['HTTP_HOST']}/audio/first/event_a_first.json";
 				$audio['first'] = Router::url('/', false).'audio/first/event_a_first.m4a';
 			} else {
 				if(substr($file, -4, 4) === 'json') {
