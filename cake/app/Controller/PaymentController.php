@@ -10,7 +10,7 @@ class PaymentController extends AppController {
  * @var array
  */
 	public $uses = array('UserPaymentInformation', 'User', 'Payment');
-	
+
 	public function beforeFilter() {
 		if($this->action === 'cancel') {
 			unset($this->User->validates);

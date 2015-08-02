@@ -28,7 +28,7 @@
 	<?php endif; ?>
 
 	<div id='price'>
-		支払額：108円（税込）<br />
+		支払額：324円（税込）<br />
 	</div>
 
 	<?php
@@ -66,8 +66,7 @@
 			data-partial="true" data-on-created="showSubmit">
 		</script>
 		<p id="due_date" class="check">
-			<span style="color:red;">現在、初月108円キャンペーン中です。<br />2015年7月度は108円でサービスを利用できます。<br /></span>
-			翌月以降は毎月1日に自動的に課金されます。<br />※2015年8月1日以降は月額324円（税込）です。
+			翌月以降は毎月1日に自動的に課金されます。
 		</p>
 	</span>
 	<div id='payment_notice' style='display:none; margin-top:40px;'>

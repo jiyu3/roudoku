@@ -220,69 +220,8 @@ class Payment extends AppModel {
 		$payment = $payment['Payment'];
 
 		$year = substr($payment['commencement'], 0, 4);
-		$month = (int)substr($payment['commencement'], 5, 2) + 1;
-		if($month===13) {
-			$month = 1;
-		}
-		if($month < 10) {
-			$month = "0{$month}";
-		}
+		$month = substr($payment['commencement'], 5, 2);
 		$unixstanp_of_first_day = strtotime("{$year}-{$month}-01 00:00:00");
-		$charge_info = array( // TODO 2015-08-01削除
-			'amount' => 108,
-			'currency' => 'jpy',
-			"customer" => $customer_id,
-			"created" => strtotime($payment['commencement']),
-			"description" => SERVICE_NAME . "　初月課金"
-		);
-		try {
-			$charge = $webpay->charge->create($charge_info);
-		} catch (\WebPay\Exception\CardException $e) {
-			$error = "CardException\n" .
-				'Status is:' . $e->getStatus() . "\n" .
-				'Code is:' . $e->getCardErrorCode() . "\n" .
-				'Message is:' . $e->getMessage() . "\n" .
-				'Params are:';
-			$dataSource->rollback();
-			$this->putLog($error, $payment, $webpay, $charge);
-			return "CardException";
-		} catch (\WebPay\Exception\InvalidRequestException $e) {
-			$error = "InvalidRequestException\n" .
-				'Message is:' . $e->getMessage() . "\n" .
-				'Params are:';
-			$dataSource->rollback();
-			$this->putLog($error, $payment, $webpay, $charge);
-			return "InvalidRequestException";
-		} catch (\WebPay\Exception\AuthenticationException $e) {
-			$error = "AuthenticationException\n" .
-				'Message is:' . $e->getMessage() . "\n" .
-				'Params are:';
-			$dataSource->rollback();
-			$this->putLog($error, $payment, $webpay, $charge);
-			return "AuthenticationException";
-		} catch (\WebPay\Exception\APIConnectionException $e) {
-			$error = "APIConnectionException\n" .
-				'Message is:' . $e->getMessage() . "\n" .
-				'Params are:';
-			$dataSource->rollback();
-			$this->putLog($error, $payment, $webpay, $charge);
-			return "APIConnectionException";
-		} catch (\WebPay\Exception\APIException $e) {
-			$error = "APIException\n" .
-				'Message is:' . $e->getMessage() . "\n" .
-				'Params are:';
-			$dataSource->rollback();
-			$this->putLog($error, $payment, $webpay, $charge);
-			return "APIException";
-		} catch (Exception $e) {
-			$error = "UnexpectedException\n" .
-				'Message is:' . $e->getMessage() . "\n" .
-				'Params are:';
-			$dataSource->rollback();
- 			$this->putLog($error, $payment, $webpay, $charge);
-			return "UnexpectedException";
-		}
-
 		$recursion_info = array(
 				'amount' => intval($payment['amount']),
 				'currency' => 'jpy',
