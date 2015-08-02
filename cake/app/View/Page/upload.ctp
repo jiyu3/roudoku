@@ -1,6 +1,6 @@
 <article>
 	<h2>【アップロード】</h2>
-	<p>間違ってファイルをアップロードした場合は、<a href='/page/init'>初期化してください</a>。</p>
+	<p>間違ってファイルをアップロードした場合は、<a href='/page/init/upload'>初期化してください</a>。</p>
 	<?php if(isset($result)) : ?>
 		<p>アップロードが完了しました。次に <a href='/play/make'>こちらをクリックして</a>wavをjsonに変換して下さい。</p>
 	<?php else : ?>
