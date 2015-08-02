@@ -96,9 +96,6 @@ class PageController extends AppController {
 		}
 
 		if($this->request->is('post')) {
-			$this->d($_POST);
-			$this->d($_FILES);
-
 			$event = '';
 			foreach($_FILES['image']['size'] as $key => $file) {
 				if(empty($file)) {
