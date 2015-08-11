@@ -66,7 +66,7 @@
 			data-partial="true" data-on-created="showSubmit">
 		</script>
 		<p id="due_date" class="check">
-			翌月以降は毎月1日に自動的に課金されます。
+			翌月以降は毎月1日に自動的に課金されます。<br />
 			※JCBカードは近日対応予定です。
 		</p>
 	</span>
