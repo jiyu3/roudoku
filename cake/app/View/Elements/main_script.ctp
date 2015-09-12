@@ -853,6 +853,8 @@
 				} else {
 					if($('#event_background').css('display') === 'none') {
 						$('#event_background').css('background-image', 'url("' + evnt[key]['img_path'] + '")').fadeIn(300);
+					} else {
+						$('#event_background').css('background-image', 'url("' + evnt[key]['img_path'] + '")').fadeIn(300);
 					}
 				}
 // 				if(evnt[key]['audio_id']) {
