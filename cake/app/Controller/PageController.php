@@ -104,6 +104,7 @@ class PageController extends AppController {
 				$img_name = $_POST['title']. "_" . sprintf("%03d", $key+1) . '.png';
 				move_uploaded_file($_FILES['image']['tmp_name'][$key],
 						"audio/event/{$img_name}");
+				
 	 			$event .= "evnt[{$key}] = {'start':'', 'end':'', 'img_path':'', 'audio_id':''};\n";
 				$event .= "evnt[{$key}]['start'] = '" . $_POST["image_start"][$key] . "';\n";
 				$event .= "evnt[{$key}]['end'] = '" . $_POST["image_end"][$key] . "';\n";
@@ -111,6 +112,9 @@ class PageController extends AppController {
 				$event .= "evnt[{$key}]['audio_id'] = '';\n";
 			}
 			file_put_contents("audio/event/{$_POST['title']}_".AUDIO_BOOKS_FOLDER_NAME."_frame.event", $event, LOCK_EX);
+
+			chmod("audio/event/{$img_name}", 0707);
+			chmod("audio/event/{$_POST['title']}_".AUDIO_BOOKS_FOLDER_NAME."_frame.event", 0707);
 
 			$this->set('result', true);
 			return true;
