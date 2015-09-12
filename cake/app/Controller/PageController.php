@@ -176,4 +176,26 @@ class PageController extends AppController {
 	public function error() {
 		$this->set('title_for_layout', 'エラー - ' . SERVICE_NAME);
 	}
-}
+
+//	public function mail() {
+// 		$this->set('title_for_layout', 'メール - ' . SERVICE_NAME);
+//  		$email = explode(",","zou13mito@gmail.com,yutaka@bc9.ne.jp,yukineko1984@outlook.jp,yuki101610161016@yahoo.co.jp,yoshinonaka0408@gmail.com,yorokobi.taro.0514@gmail.com,ynr090@gmail.com,ykrn@gol.com,ye24243e72tqhzE05SE@softbank.ne.jp,y.m.4160@gmail.com,x2@crazysound.jp,www@smilestudio-jp.com,wakao_kohji@mac.com,ulqtakuz@gmail.com,ukky3134@yahoo.co.jp,to_indy@hotmail.com,toyohatagumo@nifty.com,tom_wat1900@ybb.ne.jp,teracha11@gmail.com,tam@sea.plala.or.jp,takutaku3279@gmail.com,t.ohtsuka.mobile@gmail.com,t.kiyose@eisys.co.jp,stead2013@yahoo.co.jp,stationlovejp@ybb.ne.jp,souma_ryuto@yahoo.co.jp,souichirou.nakatsu@gmail.com,sigureminato124@gmail.com,shinya.ina2@gmail.com,schon.mofa@gmail.com,salkasumi119@gmail.com,sakayuki0178@gmail.com,rxn05543@nifty.com,RX-104ff@hotmail.co.jp,rostrs12345@docomo.ne.jp,popowajp@yahoo.co.jp,osanekohu@gmail.com,omi_omi_zodiac_libra@yahoo.co.jp,okina-ka@cosmos.ne.jp,notfound333@outlook.jp,nishioka.tomohiro@gmail.com,naked_feels0508@yahoo.co.jp,murahama@msc.biglobe.ne.jp,murahama@me.com,murahama@lmd.co.jp,mrday12@gmail.com,modesty.is.virtue@gmail.com,mino2357@gmail.com,maxx0902@gmail.com,masaki.m1108@docomo.ne.jp,maborosi_zexy@yahoo.co.jp,m@noumenon.jp,lucky_mild@yahoo.co.jp,lrf@mue.biglobe.ne.jp,liyuray@gmail.com,linux.truth@gmail.com,limms@chollian.net,kotaron66@gmail.com,kohaku.miyabino@gmail.com,kiyohara.qlo-96@i.softbank.jp,kentakano@mac.com,keiba1@sakalab.org,katsuya317@gmail.com,kametaho@gmail.com,j@noumenon.jp,isima99@gmail.com,isei@shinri.biz,info@noumenon.jp,imachan.t4blueimpulse.10thanv@docomo.ne.jp,hiyo_ko_tori@yahoo.co.jp,hisyoku_soukyu_sora_hare_ke@yahoo.co.jp,haruhiko1217@gmail.com,hamboneress@gmail.com,hab24300@syd.odn.ne.jp,gotoysl37@gmail.com,giogio416jojo@i.softbank.jp,gen_info@hotmail.com,gaxuuuuuu@gmail.com,fumyufumyu927@yahoo.co.jp,fiasse.crystela@gmail.com,fbhoych@yahoo.co.jp,etouchida@gmail.com,eltjam3@mac.com,efax@lmd.co.jp,davyjablonski@yahoo.co.jp,daisuke.teol0926@gmail.com,CQE03363@nifty.ne.jp,cian_inthepool@live.jp,chipmunk9117@yahoo.co.jp,cawboy-bebop@docomo.ne.jp,blackrockpepper@gmail.com,awy5k4uo6z5syhjct6ery86a7@gmail.com,aokero@io.ocn.ne.jp,ant-spiral0720bussan0422@docomo.ne.jp,alfonce@goo.jp,726749804@qq.com");
+// 		$content = "こんにちは。
+
+// 朗読少女　サポートセンターです。
+
+// 2015年9月3日から、同年9月11日までの間、課金を行っても有料会員になれない不具合があることが判明しました。
+// これらの課金に関しては、全額返金の処置を取りました。
+// この期間内に課金を行ったお客様には、ご面倒をお掛けし申し訳ありません。
+
+// 今回の件の謝罪として、お客様のアカウントにおいて、無料で有料会員の全ての機能を使えるように致しました。
+// 2015年9月度限りとなりますが、全ての機能がお使いいただけます。
+
+// この度は重ね重ね申し訳ありませんでした。
+// 再発を防ぐよう努力していきますので、今後も朗読少女をお使いいただけると幸いです。";
+//  		$this->MyEmail = $this->Components->load('MyEmail');
+//  		foreach($email as $e) {
+//  			$this->MyEmail->send($content, '[' . SERVICE_NAME . ']' . '課金機能の不具合に関して', $e);
+//  		}
+// 	}
+//}
