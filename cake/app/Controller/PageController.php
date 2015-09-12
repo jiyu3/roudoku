@@ -198,4 +198,4 @@ class PageController extends AppController {
 //  			$this->MyEmail->send($content, '[' . SERVICE_NAME . ']' . '課金機能の不具合に関して', $e);
 //  		}
 // 	}
-//}
+}
