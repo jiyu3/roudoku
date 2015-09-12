@@ -279,7 +279,6 @@ class Payment extends AppModel {
 			return "UnexpectedException";
 		}
 
-		$payment['webpay_charge_id'] = $charge->__get('id');
 		$payment['webpay_recursion_id'] = $recursion->__get('id');
 		if(!$this->save($payment)) {
 			$dataSource->rollback();
